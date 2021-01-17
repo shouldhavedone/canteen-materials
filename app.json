@@ -1,0 +1,47 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/news/news",
+    "pages/personalCenter/personalCenter"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "",
+    "navigationStyle": "default",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#808080",
+    "selectedColor": "#3A62FD",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabbar_icon_vitoselected@2x.png",
+        "selectedIconPath": "images/tabbar_icon_vitonormal@2x.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "动态",
+        "iconPath": "images/home_icon_highlight@2x1.png",
+        "selectedIconPath": "images/home_icon_highlight@2x.png"
+      },
+      {
+        "pagePath": "pages/personalCenter/personalCenter",
+        "text": "我的",
+        "iconPath": "images/home_icon_wode_norq@2x.png",
+        "selectedIconPath": "images/home_icon_wode_nor@2x.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取当前位置"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

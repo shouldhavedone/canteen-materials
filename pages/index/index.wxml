@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="notice-wrap">信息通知</view>
+  <view class="easyfun-wrap">
+    <view class="model-title">快捷功能</view>
+  </view>
+  <view class="funmodel-wrap">
+    <view class="model-title">功能模块</view>
+  </view>
+</view>

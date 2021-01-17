@@ -1,0 +1,18 @@
+<!-- 组件模板 -->
+<view class="wrap-box">
+  <view class="wrapper">
+    <!-- <view>
+            <image src='../../image/icon/loading3.gif' mode='aspectFill'></image>
+            <text>{{content}}</text>
+        </view> -->
+    <view class="">
+      <view class="weui-toast">
+        <view class="weui-finish weui-icon_toast" wx:if="{{iconType==='success'}}"></view>
+        <view class="weui-warning weui-icon_toast" wx:elif="{{iconType==='warning'}}"></view>
+        <view class="weui-waitting weui-icon_toast" wx:elif="{{iconType==='waitting'}}"></view>
+        <view class="weui-loading weui-icon_toast" wx:else></view>
+        <view class="weui-toast__content finishIcon">{{ content }}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,27 @@
+{
+  "name": "canteen-materials",
+  "version": "1.0.0",
+  "description": "食堂物资管理微信小程序平台",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shouldhavedone/canteen-materials.git"
+  },
+  "keywords": [
+    "食堂",
+    "物资",
+    "小程序"
+  ],
+  "author": "wutao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shouldhavedone/canteen-materials/issues"
+  },
+  "homepage": "https://github.com/shouldhavedone/canteen-materials#readme",
+  "dependencies": {
+    "weui-miniprogram": "^1.0.7"
+  }
+}

@@ -1,0 +1,15 @@
+// /page/tools.wxs
+var strToArr = function(str, mark) {
+  return str.split(mark);
+};
+var foldText = function(str, length) {
+  return str.substring(0, length);
+};
+var sliceText = function(str, remark) {
+  return str.split(remark);
+};
+module.exports = {
+  strToArr: strToArr,
+  foldText: foldText,
+  sliceText: sliceText
+};
