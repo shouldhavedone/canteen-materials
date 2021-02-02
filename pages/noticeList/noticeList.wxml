@@ -1,0 +1,10 @@
+<!--pages/noticeList/noticeList.wxml-->
+<view class="container">
+  <view class="notice-item" wx:for="{{noticeList}}" wx:key="index">
+    <view class="notice-wrap" bindtap="toNoticeContent">
+      <view class="title">【{{item.title}}】{{item.endtime}}</view>
+      <view class="createtime">{{item.createtime}}</view>
+    </view>
+    <image src="../../images/right.png"></image>
+  </view>
+</view>

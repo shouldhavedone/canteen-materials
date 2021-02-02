@@ -2,7 +2,7 @@
   "usingComponents": {
   },
   "enablePullDownRefresh": true,
-  "navigationBarBackgroundColor": "#FFFFFF",
+  "navigationBarBackgroundColor": "#FEFEFE",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "食堂物资管理"
 }

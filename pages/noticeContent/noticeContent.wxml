@@ -1,0 +1,8 @@
+<!--pages/noticeContent/noticeContent.wxml-->
+<view class="container">
+  <view class="header-wrap">
+    <view class="title">【充值提醒】2021/1/31</view>
+    <view class="createtime">34天0小时36分</view>
+  </view>
+
+</view>

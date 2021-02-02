@@ -1,0 +1,24 @@
+/* pages/noticeContent/noticeContent.wxss */
+.container {
+  height: 100vh;
+  width: 100%;
+  background: rgba(239, 244, 248, 1);
+}
+
+.header-wrap {
+  margin-top: 20rpx;
+  height: 120rpx;
+  background-color: #fff;
+  padding: 0 16rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.header-wrap .title {
+  font-weight: 600;
+  margin-bottom: 10rpx;
+  color: #000;
+}

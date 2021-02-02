@@ -2,7 +2,9 @@
   "pages":[
     "pages/index/index",
     "pages/news/news",
-    "pages/personalCenter/personalCenter"
+    "pages/personalCenter/personalCenter",
+    "pages/noticeList/noticeList",
+    "pages/noticeContent/noticeContent"
   ],
   "window": {
     "backgroundTextStyle": "light",

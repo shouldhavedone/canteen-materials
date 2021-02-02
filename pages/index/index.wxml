@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="notice-wrap">
+  <view class="notice-wrap" bindtap="toNoticeList">
     <image src="../../images/notice.png" alt></image>
     <view>我是一段文字</view>
   </view>
