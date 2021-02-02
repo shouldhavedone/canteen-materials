@@ -1,10 +1,49 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="notice-wrap">信息通知</view>
+  <view class="notice-wrap">
+    <image src="../../images/notice.png" alt></image>
+    <view>我是一段文字</view>
+  </view>
   <view class="easyfun-wrap">
-    <view class="model-title">快捷功能</view>
+    <view class="model-title">系统信息</view>
+    <view class="model-list">
+      <view class="model-item">
+        <image src="../../images/model.png"></image>
+        <view>关于我们</view>
+      </view>
+      <view class="model-item">
+        <image src="../../images/model.png"></image>
+        <view>关于我们</view>
+      </view>
+      <view class="model-item">
+        <image src="../../images/model.png"></image>
+        <view>关于我们</view>
+      </view>
+      <view class="model-item">
+        <image src="../../images/model.png"></image>
+        <view>关于我们</view>
+      </view>
+    </view>
   </view>
   <view class="funmodel-wrap">
     <view class="model-title">功能模块</view>
+    <view class="model-list">
+      <view class="model-item">
+        <image src="../../images/model.png"></image>
+        <view>关于我们</view>
+      </view>
+      <view class="model-item">
+        <image src="../../images/model.png"></image>
+        <view>关于我们</view>
+      </view>
+      <view class="model-item">
+        <image src="../../images/model.png"></image>
+        <view>关于我们</view>
+      </view>
+      <view class="model-item">
+        <image src="../../images/model.png"></image>
+        <view>关于我们</view>
+      </view>
+    </view>
   </view>
 </view>

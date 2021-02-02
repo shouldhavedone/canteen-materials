@@ -18,7 +18,7 @@ VT = {
     }
   },
 
-  appId = null,
+  appId: null,
 
   setAppId: function () {
     if (appId == 0) {

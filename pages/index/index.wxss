@@ -13,10 +13,26 @@
   border-radius: 10rpx;
   font-size: 28rpx;
   padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.notice-wrap image {
+  height: 32rpx;
+  width: 32rpx;
+  margin-right: 16rpx;
+}
+
+.notice-wrap view {
+  width: 100%;
+  padding-right: 12rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .easyfun-wrap {
-  height: 200rpx;
+  /* height: 200rpx; */
   border-radius: 10rpx;
   padding: 20rpx;
   background: #fff;
@@ -24,7 +40,6 @@
 }
 
 .funmodel-wrap {
-  height: 300rpx;
   border-radius: 10rpx;
   padding: 20rpx;
   background-color: #fff;
@@ -35,4 +50,25 @@
   font-size: 30rpx;
   font-family: 'DIN Condensed';
   margin-bottom: 20rpx;
+}
+
+.model-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.model-item {
+  height: 100%;
+  width: 25%;
+  font-size: 20rpx;
+  text-align: center;
+  color: #555;
+  font-weight: 600;
+}
+
+.model-item image {
+  margin-bottom: 8rpx;
+  height: 96rpx;
+  width: 96rpx;
 }
