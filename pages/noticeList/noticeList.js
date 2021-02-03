@@ -27,9 +27,9 @@ Page({
     ]
   },
 
-  toNoticeContent() {
+  toNoticeContent(event) {
     wx.navigateTo({
-      url: '../noticeContent/noticeContent',
+      url: '../noticeContent/noticeContent?id=' +  event.currentTarget.dataset.item.id,
     })
   },
 

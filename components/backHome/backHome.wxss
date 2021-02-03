@@ -1,0 +1,19 @@
+/* components/backHome/backHome.wxss */
+
+.back-home {
+  height: 72rpx;
+  width: 72rpx;
+  border-radius: 50%;
+  background-color: rgba(255, 136, 0, .9);
+  position: fixed;
+  right: 40rpx;
+  bottom: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  height: 32rpx;
+  width: 32rpx;
+}
