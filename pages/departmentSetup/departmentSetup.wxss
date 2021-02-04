@@ -25,7 +25,7 @@
 }
 
 .depart-item {
-  height: 300rpx;
+  height: 222rpx;
   width: 100%;
   border: 2rpx solid #ccc;
   border-radius: 28rpx;
@@ -36,5 +36,33 @@
 }
 
 .item-wrap {
-  height: 160rpx;
+  height: 124rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-left view{
+  margin-top: 10rpx;
+}
+
+.item-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.item-btn view {
+  display: inline-block;
+  width: 152rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 32rpx;
+}
+
+.del-btn {
+  background-color: rgb(255, 51, 17);
+  color: #fff;
 }

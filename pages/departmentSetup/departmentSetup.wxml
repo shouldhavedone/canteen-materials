@@ -16,7 +16,20 @@
       </view>
       <view class="item-btn">
         <view>编辑</view>
-        <view>删除</view>
+        <view class="del-btn">删除</view>
+      </view>
+    </view>
+    <view class="depart-item">
+      <view class="item-wrap">
+        <view class="item-left">
+          <view>部门：财务部</view>
+          <view>排序：1</view>
+        </view>
+        <view class="item-right"><van-switch checked="{{ checked }}" size="48rpx" /></view>
+      </view>
+      <view class="item-btn">
+        <view>编辑</view>
+        <view class="del-btn">删除</view>
       </view>
     </view>
   </view>
