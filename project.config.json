@@ -32,8 +32,11 @@
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
+    "packNpmManually": true,
+    "packNpmRelationList": [{
+      "packageJsonPath": "./package.json",
+      "miniprogramNpmDistDir": "./"
+    }],
     "minifyWXSS": true,
     "bundle": false,
     "useApiHostProcess": false
@@ -67,15 +70,13 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "id": 0,
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
-          "query": "",
-          "scene": null
-        }
-      ]
+      "list": [{
+        "id": 0,
+        "name": "pages/index/index",
+        "pathName": "pages/index/index",
+        "query": "",
+        "scene": null
+      }]
     }
   }
 }

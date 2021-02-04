@@ -1,6 +1,8 @@
 {
   "pages":[
+    
     "pages/index/index",
+    "pages/userMag/userMag",
     "pages/news/news",
     "pages/personalCenter/personalCenter",
     "pages/noticeList/noticeList",
@@ -44,6 +46,5 @@
       "desc": "获取当前位置"
     }
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

@@ -28,9 +28,11 @@ button, button:active {
   color: rgba(255, 255, 255, 1);
 }
 
-.content {
+.container {
   width: 100%;
-  padding: 0 36rpx;
+  background: rgba(239, 244, 248, 1);
+  /* padding: 0 16rpx; */
+  /* background: rgba(239, 244, 248, 1); */
 }
 
 .line-hidden {

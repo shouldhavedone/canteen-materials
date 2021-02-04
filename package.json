@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/shouldhavedone/canteen-materials#readme",
   "dependencies": {
+    "@vant/weapp": "^1.5.3",
     "weui-miniprogram": "^1.0.7"
   }
 }
