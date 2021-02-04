@@ -1,19 +1,16 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="notice-wrap" bindtap="toNoticeList">
-    <image src="../../images/notice.png" alt></image>
-    <view>我是一段文字</view>
-  </view>
+  <van-notice-bar left-icon="volume-o" background="#fff" mode="link" bindtap="toNoticeList" text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。" />
   <view class="easyfun-wrap">
-    <view class="model-title">系统信息</view>
+    <view class="model-title">系统管理</view>
     <view class="model-list">
-      <view class="model-item">
+      <view class="model-item" catchtap="toUserMag">
         <image src="../../images/model.png"></image>
-        <view>关于我们</view>
+        <view>用户管理</view>
       </view>
       <view class="model-item">
         <image src="../../images/model.png"></image>
-        <view>关于我们</view>
+        <view>学生管理</view>
       </view>
       <view class="model-item">
         <image src="../../images/model.png"></image>
@@ -26,7 +23,7 @@
     </view>
   </view>
   <view class="funmodel-wrap">
-    <view class="model-title">功能模块</view>
+    <view class="model-title">快捷功能</view>
     <view class="model-list">
       <view class="model-item">
         <image src="../../images/model.png"></image>

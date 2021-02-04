@@ -1,8 +1,6 @@
 /* pages/noticeList/noticeList.wxss */
 .container {
   height: 100vh;
-  width: 100%;
-  background: rgba(239, 244, 248, 1);
   padding: 20rpx;
 }
 

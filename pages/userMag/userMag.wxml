@@ -1,0 +1,5 @@
+<!--pages/userMag/userMag.wxml-->
+<view class="container">
+  <van-search value="{{ value }}" placeholder="请输入用户名" />
+  
+</view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index"
+  },
+  "navigationBarTitleText": "用户管理",
+  "navigationBarBackgroundColor": "#FEFEFE"
+}

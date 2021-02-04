@@ -14,6 +14,12 @@ Page({
       url: '../noticeList/noticeList'
     })
   },
+
+  toUserMag() {
+    wx.navigateTo({
+      url: '../userMag/userMag',
+    })
+  },
   onLoad() {
     if (app.globalData.userInfo) {
       this.setData({
