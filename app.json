@@ -1,12 +1,13 @@
 {
   "pages":[
-    
+    "pages/departmentSetup/departmentSetup",
     "pages/index/index",
     "pages/userMag/userMag",
     "pages/news/news",
     "pages/personalCenter/personalCenter",
     "pages/noticeList/noticeList",
     "pages/noticeContent/noticeContent"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

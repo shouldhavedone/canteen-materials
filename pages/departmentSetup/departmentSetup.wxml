@@ -1,0 +1,24 @@
+<!--pages/departmentSetup/departmentSetup.wxml-->
+<view class="container">
+  <view class="header-wrap"> 
+    <van-field value="{{ value }}" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" />
+    <view class="add-depart"><van-icon name="search" />搜索</view>
+    <view class="add-depart"><van-icon name="plus" />添加部门</view>
+  </view>
+  <view class="content-wrap">
+    <view class="depart-item">
+      <view class="item-wrap">
+        <view class="item-left">
+          <view>部门：财务部</view>
+          <view>排序：1</view>
+        </view>
+        <view class="item-right"><van-switch checked="{{ checked }}" size="48rpx" /></view>
+      </view>
+      <view class="item-btn">
+        <view>编辑</view>
+        <view>删除</view>
+      </view>
+    </view>
+  </view>
+</view>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

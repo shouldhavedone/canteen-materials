@@ -20,6 +20,12 @@ Page({
       url: '../userMag/userMag',
     })
   },
+
+  toDeptSetup() {
+    wx.navigateTo({
+      url: '../departmentSetup/departmentSetup',
+    })
+  },
   onLoad() {
     if (app.globalData.userInfo) {
       this.setData({
