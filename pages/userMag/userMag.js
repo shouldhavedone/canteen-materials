@@ -5,7 +5,39 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchColumns: ['姓名', '电话'],
+    searchValue: '',
+    searchPicker: false,
+    screenPicker: false,
+  },
 
+  showSearchPicker() {
+    this.setData({
+      searchPicker: true,
+    })
+  },
+
+  closeSearchPicker() {
+    this.setData({
+      searchPicker: false
+    });
+  },
+  showScreenPicker() {
+    this.setData({
+      screenPicker: true,
+    })
+  },
+
+  closeScreenPicker() {
+    this.setData({
+      screenPicker: false
+    });
+  },
+
+  onSearchChange(event) {
+    const {
+      value
+    } = event.detail;
   },
 
   /**

@@ -1,27 +1,13 @@
-// pages/departmentSetup/departmentSetup.js
+// pages/foodRank/foodRank.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    departName: '',
-    value: '',
-    checked: true,
-    show: false,
-  },
-  showPopup() {
-    this.setData({ show: true });
+    activeKey: 0,
   },
 
-  onClose() {
-    this.setData({ show: false });
-  },
-  
-  onChange(event) {
-    // event.detail 为当前输入的值
-    console.log(event.detail);
-  },
   /**
    * 生命周期函数--监听页面加载
    */

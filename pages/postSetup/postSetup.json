@@ -5,8 +5,9 @@
     "van-switch": "@vant/weapp/switch/index",
     "van-field": "@vant/weapp/field/index",
     "van-popup": "@vant/weapp/popup/index"
+    
   },
   "navigationBarBackgroundColor": "#FEFEFE",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "部门设置"
+  "navigationBarTitleText": "职位设置"
 }

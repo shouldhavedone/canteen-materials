@@ -1,5 +1,46 @@
 <!--pages/userMag/userMag.wxml-->
 <view class="container">
-  <van-search value="{{ value }}" placeholder="请输入用户名" />
-  
+  <view class="header-wrap">
+    <view class="add-post" catchtap="showSearchPicker">
+      姓名
+      <van-icon name="arrow" />
+    </view>
+    <view class="search-input">
+      <van-field value="{{ searchValue }}" clearable placeholder="姓名、手机号" border="{{ false }}" />
+    </view>
+    <view class="add-post">
+      <van-icon name="search" />搜索</view>
+    <view class="add-post" bindtap="showScreenPicker">
+      <van-icon name="apps-o" />更多</view>
+  </view>
+  <view class="content-wrap">
+    <view class="post-item">
+      <view class="item-wrap">
+        <view class="item-left">
+          <view>姓名：测试</view>
+          <view>部门：测试</view>
+          <view>职务：测试</view>
+          <view>状态：测试</view>
+          <view>手机：15182161727</view>
+        </view>
+      </view>
+      <view class="item-btn">
+        <view>编辑</view>
+        <view class="del-btn">删除</view>
+      </view>
+    </view>
+  </view>
 </view>
+<van-popup show="{{ screenPicker }}" closeable position="right" custom-style="width: 95%;height: 100%"
+  bind:close="closeScreenPicker">
+</van-popup>
+
+<van-popup show="{{ searchPicker }}" position="bottom" custom-style="height: 50%;" bind:close="closeSearchPicker">
+  <view class="popup-header">
+    <view catchtap="closeSearchPicker">取消</view>
+    <view catchtap="closeSearchPicker" class="sure-btn">确认</view>
+  </view>
+  <van-picker default-index="{{ 1 }}" columns="{{ searchColumns }}" bind:change="onSearchChange" />
+</van-popup>
+
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

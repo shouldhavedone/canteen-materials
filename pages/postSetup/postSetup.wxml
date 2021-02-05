@@ -1,17 +1,17 @@
-<!--pages/departmentSetup/departmentSetup.wxml-->
+<!--pages/postSetup/postSetup.wxml-->
 <view class="container">
   <view class="header-wrap">
-    <van-field value="{{ value }}" placeholder="请输入部门名称" border="{{ false }}" bind:change="onChange" />
-    <view class="add-depart">
+    <van-field value="{{ value }}" placeholder="请输入职位名称" border="{{ false }}" bind:change="onChange" />
+    <view class="add-post">
       <van-icon name="search" />搜索</view>
-    <view class="add-depart" bindtap="showPopup">
-      <van-icon name="plus" />添加部门</view>
+    <view class="add-post" bindtap="showPopup">
+      <van-icon name="plus" />添加职位</view>
   </view>
   <view class="content-wrap">
-    <view class="depart-item">
+    <view class="post-item">
       <view class="item-wrap">
         <view class="item-left">
-          <view>部门：财务部</view>
+          <view>职员</view>
           <view>排序：1</view>
         </view>
         <view class="item-right">
@@ -23,11 +23,11 @@
         <view class="del-btn">删除</view>
       </view>
     </view>
-    <view class="depart-item">
+    <view class="post-item">
       <view class="item-wrap">
         <view class="item-left">
-          <view>部门：财务部</view>
-          <view>排序：1</view>
+          <view>主管</view>
+          <view>排序：2</view>
         </view>
         <view class="item-right">
           <van-switch checked="{{ checked }}" size="48rpx" />
@@ -48,11 +48,11 @@
     </view>
     <view class="form-input fl-s">
       <view>名称：</view>
-      <van-field value="{{ departName }}" placeholder="请输入部门名称" border="{{ false }}" />
+      <van-field value="{{ postName }}" placeholder="请输入职位名称" border="{{ false }}" />
     </view>
     <view class="form-input fl-s">
       <view>排序：</view>
-      <van-field value="{{ departSort }}" placeholder="请输入数字" border="{{ false }}" />
+      <van-field value="{{ postSort }}" placeholder="请输入数字" border="{{ false }}" />
     </view>
     <view class="item-btn"><view class="del-btn">保存</view></view>
   </view>

@@ -1,4 +1,4 @@
-/* pages/userMag/userMag.wxss */
+/* pages/postSetup/postSetup.wxss */
 .container {
   height: 100%;
   padding: 8rpx 20rpx;
@@ -12,18 +12,16 @@
   border: 2rpx solid #ccc;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   padding-left: 24rpx;
 }
-.search-input {
-  flex: 1;
-}
+
 .add-post {
   height: 100%;
   display: flex;
   align-items: center;
   font-size: 30rpx;
-  margin-right: 16rpx;
+  margin-right: 24rpx;
 }
 
 .post-item {
@@ -77,17 +75,4 @@
 .form-input {
   font-size: 28rpx;
 
-}
-
-.popup-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20rpx;
-  margin: 20rpx;
-  font-size: 30rpx;
-}
-
-.sure-btn {
-  color: #058de9;
 }

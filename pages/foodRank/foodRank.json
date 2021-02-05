@@ -2,11 +2,11 @@
   "usingComponents": {
     "loading": "../../components/loading/loading",
     "van-icon": "@vant/weapp/icon/index",
-    "van-switch": "@vant/weapp/switch/index",
     "van-field": "@vant/weapp/field/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-sidebar": "@vant/weapp/sidebar/index",
+    "van-sidebar-item": "@vant/weapp/sidebar-item/index"
   },
   "navigationBarBackgroundColor": "#FEFEFE",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "部门设置"
+  "navigationBarTitleText": "菜品库"
 }

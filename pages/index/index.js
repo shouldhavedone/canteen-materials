@@ -21,6 +21,12 @@ Page({
     })
   },
 
+  toUPostSetup() {
+    wx.navigateTo({
+      url: '../postSetup/postSetup',
+    })
+  },
+
   toDeptSetup() {
     wx.navigateTo({
       url: '../departmentSetup/departmentSetup',

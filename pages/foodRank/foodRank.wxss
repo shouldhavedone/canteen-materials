@@ -1,0 +1,56 @@
+/* pages/foodRank/foodRank.wxss */
+.food-rank {
+  height: 100vh;
+  background-color: #fff;
+  width: 100%;
+}
+
+.header-wrap {
+  margin: 0 20rpx 20rpx;
+  height: 100rpx;
+  border-radius: 20rpx;
+  border: 2rpx solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 24rpx;
+}
+
+.add-post {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  margin-right: 24rpx;
+}
+
+.content-wrap {
+  display: flex;
+  height: calc(100% - 120rpx);
+}
+
+.nav-left {
+  width: 170rpx;
+}
+
+.content-right {
+  flex: 1;
+  background-color: #f0f3f6;
+  padding: 20rpx;
+}
+
+.dishes-item {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+
+.dishes-image {
+  text-align: center;
+}
+
+.dishes-image image {
+  height: 120rpx;
+  width: 160rpx;
+}

@@ -30,7 +30,7 @@ button, button:active {
 
 .container {
   width: 100%;
-  background: rgba(239, 244, 248, 1);
+  background: #f0f3f6;
   /* padding: 0 16rpx; */
   /* background: rgba(239, 244, 248, 1); */
 }
@@ -52,6 +52,12 @@ button::after {
 .fl-s {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+}
+
+.fl-c {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 

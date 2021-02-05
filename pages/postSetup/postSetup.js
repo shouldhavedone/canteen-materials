@@ -1,11 +1,11 @@
-// pages/departmentSetup/departmentSetup.js
+// pages/postSetup/postSetup.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    departName: '',
+    postName: '',
     value: '',
     checked: true,
     show: false,

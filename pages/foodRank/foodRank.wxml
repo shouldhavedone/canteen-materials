@@ -1,0 +1,28 @@
+<!--pages/foodRank/foodRank.wxml-->
+<view class="food-rank">
+  <view class="header-wrap">
+    <van-field value="{{ value }}" placeholder="请输入菜品名称" border="{{ false }}" bind:change="onChange" />
+    <view class="add-post">
+      <van-icon name="search" />搜索</view>
+    <view class="add-post" bindtap="showPopup">
+      <van-icon name="plus" />添加菜品</view>
+  </view>
+  <view class="content-wrap">
+    <view class="nav-left">
+      <van-sidebar active-key="{{ activeKey }}">
+      <van-sidebar-item title="固定餐" />
+      <van-sidebar-item title="标签名" />
+      <van-sidebar-item title="标签名" />
+    </van-sidebar>
+    </view>
+    <view class="content-right">
+      <view class="dishes-item">
+        <view class="dishes-image"><image src="../../images/dished.jpg"></image></view>
+        <view>名称：早餐：5元早餐</view>
+        <view>价格：5</view>
+        <view>已上架：早餐</view>
+        <view>循环周期：日、一、二、三、四、五、六</view>
+      </view>
+    </view>
+  </view>
+</view>

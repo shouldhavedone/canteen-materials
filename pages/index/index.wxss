@@ -47,13 +47,13 @@
   font-weight: 600;
   font-size: 30rpx;
   font-family: 'DIN Condensed';
-  margin-bottom: 20rpx;
 }
 
 .model-list {
   height: 100%;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .model-item {
@@ -63,6 +63,7 @@
   text-align: center;
   color: #555;
   font-weight: 600;
+  margin-top: 20rpx;
 }
 
 .model-item image {

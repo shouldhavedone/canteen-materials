@@ -1,13 +1,15 @@
 {
   "pages":[
-    "pages/departmentSetup/departmentSetup",
+    "pages/foodRank/foodRank",
     "pages/index/index",
-    "pages/userMag/userMag",
     "pages/news/news",
     "pages/personalCenter/personalCenter",
+    "pages/userMag/userMag",
     "pages/noticeList/noticeList",
-    "pages/noticeContent/noticeContent"
-    
+    "pages/noticeContent/noticeContent",
+    "pages/departmentSetup/departmentSetup",
+    "pages/postSetup/postSetup",
+    "pages/mealDate/mealDate"
   ],
   "window": {
     "backgroundTextStyle": "light",

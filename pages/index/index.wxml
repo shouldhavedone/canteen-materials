@@ -4,17 +4,17 @@
   <view class="easyfun-wrap">
     <view class="model-title">人员管理</view>
     <view class="model-list">
-      <view class="model-item" catchtap="toUserMag">
-        <image src="../../images/model.png"></image>
-        <view>用户管理</view>
-      </view>
       <view class="model-item" catchtap="toDeptSetup">
         <image src="../../images/model.png"></image>
         <view>部门设置</view>
       </view>
-      <view class="model-item">
+      <view class="model-item" catchtap="toUPostSetup">
         <image src="../../images/model.png"></image>
-        <view>关于我们</view>
+        <view>职位设置</view>
+      </view>
+      <view class="model-item" catchtap="toUserMag">
+        <image src="../../images/model.png"></image>
+        <view>人员管理</view>
       </view>
       <view class="model-item">
         <image src="../../images/model.png"></image>
@@ -23,23 +23,23 @@
     </view>
   </view>
   <view class="funmodel-wrap">
-    <view class="model-title">快捷功能</view>
+    <view class="model-title">用餐管理</view>
     <view class="model-list">
       <view class="model-item">
         <image src="../../images/model.png"></image>
-        <view>关于我们</view>
+        <view>开餐日期</view>
       </view>
       <view class="model-item">
         <image src="../../images/model.png"></image>
-        <view>关于我们</view>
+        <view>用餐时段</view>
       </view>
       <view class="model-item">
         <image src="../../images/model.png"></image>
-        <view>关于我们</view>
+        <view>菜品库</view>
       </view>
       <view class="model-item">
         <image src="../../images/model.png"></image>
-        <view>关于我们</view>
+        <view>每日菜谱</view>
       </view>
     </view>
   </view>

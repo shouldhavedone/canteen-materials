@@ -25,9 +25,7 @@
 }
 
 .depart-item {
-  height: 222rpx;
   width: 100%;
-  border: 2rpx solid #ccc;
   border-radius: 28rpx;
   margin-top: 16rpx;
   padding: 24rpx;
@@ -36,7 +34,6 @@
 }
 
 .item-wrap {
-  height: 124rpx;
   display: flex;
   justify-content: space-between;
 }
@@ -47,6 +44,7 @@
 
 .item-btn {
   width: 100%;
+  margin-top: 20rpx;
   display: flex;
   justify-content: space-around;
 }
@@ -54,8 +52,8 @@
 .item-btn view {
   display: inline-block;
   width: 152rpx;
-  height: 50rpx;
-  line-height: 50rpx;
+  height: 58rpx;
+  line-height: 58rpx;
   font-size: 24rpx;
   text-align: center;
   border: 1px solid #ccc;
@@ -63,6 +61,18 @@
 }
 
 .del-btn {
-  background-color: rgb(255, 51, 17);
+  background-color: #ee0a24;
   color: #fff;
+  border: 1px solid #ee0a24;
+}
+
+.add-form {
+  width: 706rpx;
+  height: 400rpx;
+  padding: 74rpx 40rpx 0;
+}
+
+.form-input {
+  font-size: 28rpx;
+
 }
