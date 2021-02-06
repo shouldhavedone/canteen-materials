@@ -33,7 +33,7 @@
         <image src="../../images/model.png"></image>
         <view>用餐时段</view>
       </view>
-      <view class="model-item">
+      <view class="model-item" catchtap="toFoodRank">
         <image src="../../images/model.png"></image>
         <view>菜品库</view>
       </view>

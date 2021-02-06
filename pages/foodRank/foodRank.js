@@ -8,6 +8,12 @@ Page({
     activeKey: 0,
   },
 
+  toFoodDetail() {
+    wx.navigateTo({
+      url: '../foodDetail/foodDetail',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

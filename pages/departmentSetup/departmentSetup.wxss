@@ -72,7 +72,3 @@
   padding: 74rpx 40rpx 0;
 }
 
-.form-input {
-  font-size: 28rpx;
-
-}

@@ -1,12 +1,4 @@
 {
-  "usingComponents": {
-    "loading": "../../components/loading/loading",
-    "van-icon": "@vant/weapp/icon/index",
-    "van-switch": "@vant/weapp/switch/index",
-    "van-field": "@vant/weapp/field/index",
-    "van-popup": "@vant/weapp/popup/index",
-    "van-picker": "@vant/weapp/picker/index"
-  },
   "navigationBarTitleText": "人员管理",
   "navigationBarBackgroundColor": "#FEFEFE"
 }

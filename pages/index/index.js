@@ -26,6 +26,11 @@ Page({
       url: '../postSetup/postSetup',
     })
   },
+  toFoodRank() {
+    wx.navigateTo({
+      url: '../foodRank/foodRank',
+    })
+  },
 
   toDeptSetup() {
     wx.navigateTo({

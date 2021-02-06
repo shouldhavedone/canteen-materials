@@ -1,7 +1,4 @@
 {
-  "usingComponents": {
-    "backHome": "../../components/backHome/backHome"
-  },
   "navigationBarTitleText": "公告消息内容",
   "navigationBarBackgroundColor": "#FEFEFE"
 }

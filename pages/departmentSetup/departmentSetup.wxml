@@ -1,7 +1,7 @@
 <!--pages/departmentSetup/departmentSetup.wxml-->
 <view class="container">
   <view class="header-wrap">
-    <van-field value="{{ value }}" placeholder="请输入部门名称" border="{{ false }}" bind:change="onChange" />
+    <van-field value="{{ value }}" clearable placeholder="请输入部门名称" border="{{ false }}" bind:change="onChange" />
     <view class="add-depart">
       <van-icon name="search" />搜索</view>
     <view class="add-depart" bindtap="showPopup">
@@ -48,11 +48,11 @@
     </view>
     <view class="form-input fl-s">
       <view>名称：</view>
-      <van-field value="{{ departName }}" placeholder="请输入部门名称" border="{{ false }}" />
+      <van-field class="input-field" clearable value="{{ departName }}" placeholder="请输入部门名称" border="{{ false }}" />
     </view>
     <view class="form-input fl-s">
       <view>排序：</view>
-      <van-field value="{{ departSort }}" placeholder="请输入数字" border="{{ false }}" />
+      <van-field class="input-field" clearable value="{{ departSort }}" placeholder="请输入数字" border="{{ false }}" />
     </view>
     <view class="item-btn"><view class="del-btn">保存</view></view>
   </view>
