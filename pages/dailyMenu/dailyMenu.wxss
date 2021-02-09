@@ -1,0 +1,114 @@
+/* pages/dailyMenu/dailyMenu.wxss */
+.daily-menu {
+  height: 100vh;
+  background-color: #fff;
+  width: 100%;
+}
+
+.heaer-wrap {
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.next-date {
+  width: 160rpx;
+  text-align: center;
+  color: rgb(255, 204, 119);
+  font-weight: 600;
+}
+.select-date {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-box {
+  display: flex;
+  height: 1054rpx;
+}
+
+.nav-left {
+  width: 170rpx;
+}
+
+.content-right {
+  flex: 1;
+  background-color: #f0f3f6;
+  padding: 20rpx;
+}
+
+.dishes-item {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 2rpx 2rpx 2rpx #ddd;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.dishes-box {
+  display: flex;
+}
+
+.dishes-image {
+  margin-right: 20rpx;
+}
+
+.dished-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dishes-image image {
+  height: 120rpx;
+  width: 130rpx;
+  border-radius: 16rpx;
+}
+
+.add-dishes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.add-dishes view {
+  width: 260rpx;
+  height: 50rpx;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 25rpx;
+  color: #fff;
+  background-color: rgb(218, 87, 12);
+}
+
+.item-btn {
+  width: 100%;
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-btn view {
+  display: inline-block;
+  width: 200rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 24rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 32rpx;
+}
+
+.del-btn {
+  background-color: #ee0a24;
+  color: #fff;
+  border: 1px solid #ee0a24;
+}

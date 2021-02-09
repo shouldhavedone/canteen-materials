@@ -37,6 +37,26 @@ Page({
       url: '../departmentSetup/departmentSetup',
     })
   },
+
+  toDailyMenu() {
+    wx.navigateTo({
+      url: '../dailyMenu/dailyMenu',
+    })
+  },
+
+  toDinnerTime() {
+    wx.navigateTo({
+      url: '../dinnerTime/dinnerTime',
+    })
+  },
+
+  toMealOpenTime() {
+    wx.navigateTo({
+      url: '../mealOpeningTime/mealOpeningTime',
+    })
+  },
+
+
   onLoad() {
     if (app.globalData.userInfo) {
       this.setData({

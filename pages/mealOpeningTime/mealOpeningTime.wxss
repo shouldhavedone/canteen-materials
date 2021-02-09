@@ -1,0 +1,111 @@
+/* pages/mealOpeningTime/mealOpeningTime.wxss */
+.meal-open-time {
+  background-color: #fff;
+  width: 100%;
+  padding: 20rpx;
+}
+
+.open-model {
+  margin-bottom: 20rpx;
+}
+
+.btn-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 60rpx;
+  align-items: center;
+}
+
+.btn {
+  width: 260rpx;
+  height: 50rpx;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 25rpx;
+  color: #fff;
+  background-color: rgb(218, 87, 12);
+}
+
+.open-time > view {
+  font-size: 30rpx;
+}
+
+.radio-box {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+
+.radio-box > view {
+  width: 50%;
+  margin-bottom: 16rpx;
+  font-size: 28rpx;
+}
+
+.advance-date {
+  display: flex;
+  height: 60rpx;
+  align-items: center;
+}
+
+.form-input {
+  flex: 1;
+}
+
+.update-btn {
+  width: 140rpx;
+  font-size: 24rpx;
+  background-color: rgb(218, 87, 12);
+  color: #fff;
+  display: flex;
+  height: 48rpx;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24rpx;
+}
+
+.content {
+  margin-top: 32rpx;
+}
+
+.scroll-wrap {
+  height: 700rpx;
+  width: 100%;
+  background-color: #efefef;
+}
+
+.item-btn {
+  width: 100%;
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: space-around;
+}
+
+.stop-date-item {
+  margin: 14rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 14rpx;
+}
+
+
+
+.item-btn view {
+  display: inline-block;
+  width: 152rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  font-size: 24rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 32rpx;
+}
+
+.del-btn {
+  background-color: #ee0a24;
+  color: #fff;
+  border: 1px solid #ee0a24;
+}

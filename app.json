@@ -1,12 +1,15 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/news/news",
     "pages/personalCenter/personalCenter",
     "pages/userMag/userMag",
+    "pages/mealOpeningTime/mealOpeningTime",
+    "pages/dailyMenu/dailyMenu",
     "pages/foodRank/foodRank",
     "pages/foodDetail/foodDetail",
     "pages/noticeList/noticeList",
+    "pages/dinnerTime/dinnerTime",
     "pages/noticeContent/noticeContent",
     "pages/departmentSetup/departmentSetup",
     "pages/postSetup/postSetup",
@@ -24,8 +27,7 @@
     "selectedColor": "#3A62FD",
     "backgroundColor": "#fff",
     "borderStyle": "black",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/tabbar_icon_vitoselected@2x.png",
@@ -66,7 +68,9 @@
     "van-sidebar": "@vant/weapp/sidebar/index",
     "van-sidebar-item": "@vant/weapp/sidebar-item/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index",
-    "van-picker": "@vant/weapp/picker/index"
+    "van-picker": "@vant/weapp/picker/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "sitemapLocation": "sitemap.json"
 }

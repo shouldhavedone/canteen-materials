@@ -25,11 +25,11 @@
   <view class="funmodel-wrap">
     <view class="model-title">用餐管理</view>
     <view class="model-list">
-      <view class="model-item">
+      <view class="model-item" catchtap="toMealOpenTime">
         <image src="../../images/model.png"></image>
         <view>开餐日期</view>
       </view>
-      <view class="model-item">
+      <view class="model-item" catchtap="toDinnerTime">
         <image src="../../images/model.png"></image>
         <view>用餐时段</view>
       </view>
@@ -37,7 +37,7 @@
         <image src="../../images/model.png"></image>
         <view>菜品库</view>
       </view>
-      <view class="model-item">
+      <view class="model-item" catchtap="toDailyMenu">
         <image src="../../images/model.png"></image>
         <view>每日菜谱</view>
       </view>

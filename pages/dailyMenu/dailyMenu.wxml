@@ -1,0 +1,46 @@
+<!--pages/dailyMenu/dailyMenu.wxml-->
+<view class="daily-menu">
+  <view class="heaer-wrap">
+    <view class="next-date" catchtap="onClickLeft">前一天</view>
+    <view class="select-date">2021-02-06 星期六
+      <van-icon name="arrow" />
+    </view>
+    <view class="next-date" catchtap="onClickRight">后一天</view>
+  </view>
+  <view class="content-wrap">
+    <van-tabs active="{{ active }}">
+      <van-tab title="早餐">
+        <view class="content-box">
+          <view class="nav-left">
+            <van-sidebar active-key="{{ activeKey }}">
+              <van-sidebar-item title="固定餐" />
+              <van-sidebar-item title="标签名" />
+              <van-sidebar-item title="标签名" />
+            </van-sidebar>
+          </view>
+          <scroll-view scroll-y="true" class="content-right">
+            <view class="dishes-item">
+              <view class="dishes-box">
+                <view class="dishes-image">
+                  <image src="../../images/dished.jpg"></image>
+                </view>
+                <view class="dished-info">
+                  <view>菜品名称：早餐：五元早餐</view>
+                  <view>价格：5</view>
+                  <view>库存：9999</view>
+                </view> 
+              </view>
+              <view class="item-btn">
+                <view>编辑菜品</view>
+                <view class="del-btn">移除菜品</view>
+              </view>
+            </view>
+            <view class="add-dishes"><view>添加菜品</view></view>
+          </scroll-view>
+        </view>
+      </van-tab>
+      <van-tab title="午餐">内容 2</van-tab>
+      <van-tab title="晚餐">内容 3</van-tab>
+    </van-tabs>
+  </view>
+</view>

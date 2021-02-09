@@ -1,0 +1,51 @@
+<!--pages/mealOpeningTime/mealOpeningTime.wxml-->
+<view class="meal-open-time">
+  <view class="open-model">
+    <view class="title">开餐模式</view>
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <view class="radio-box">
+        <view>
+          <van-radio name="1">每日开餐</van-radio>
+        </view>
+        <view>
+          <van-radio name="2">周日不开餐</van-radio>
+        </view>
+        <view>
+          <van-radio name="3">工作日不开餐</van-radio>
+        </view>
+        <view>
+          <van-radio name="4">自选开餐</van-radio>
+        </view>
+      </view>
+    </van-radio-group>
+    <view class="btn-box">
+      <view class="btn">更新</view>
+    </view>
+  </view>
+  <view class="open-time">
+    <view class="advance-date">
+      <view>可提前报餐天数：</view>
+      <view class="form-input"><van-field value="{{ value }}" clearable placeholder="请输入内容" border="{{ false }}" bind:change="onChange" /></view>
+      <view class="update-btn">更新</view>
+    </view>
+    <view>特殊停餐日期：</view>
+    <view class="btn-box">
+      <view class="btn">添加特殊停餐日期</view>
+    </view>
+
+  </view>
+  <view class="content">
+    <scroll-view scroll-y="true" class="scroll-wrap">
+      <view class="stop-date-item">
+        <view>日期：2021-02-10</view>
+        <view>类型 不开餐</view>
+        <view class="item-btn"><view class="del-btn">删除</view></view>
+      </view>
+      <view class="stop-date-item">
+        <view>日期：2021-02-10</view>
+        <view>类型 不开餐</view>
+        <view class="item-btn"><view class="del-btn">删除</view></view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
