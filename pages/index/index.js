@@ -56,8 +56,17 @@ Page({
     })
   },
 
+  test() {
+    app.requestNoToken({
+      url: `/`,
+    }).then(res => {
+      console.log(res)
+    })
+  },
+
 
   onLoad() {
+    this.test()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
