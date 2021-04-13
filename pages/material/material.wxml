@@ -1,0 +1,44 @@
+<!--pages/material/material.wxml-->
+<view class="container">
+  <view class="header-wrap">
+    <van-field value="{{ materialName }}" clearable placeholder="请输入物资名称" border="{{ false }}" bind:change="searchName" bind:clear="clearSearchName"/>
+    <view class="search-btn" catchtap="getMaterialData">
+      <van-icon name="search" />搜索</view>
+    <view class="add-post" bindtap="showPopup">
+      <van-icon name="plus" />添加物资</view>
+  </view>
+  <view class="content-wrap">
+    <view class="post-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
+      <view class="item-wrap">
+        <view class="item-left">
+          <view>供应商：{{item.Supplier ? item.Supplier.name : ''}}</view>
+          <view>物资：{{item.name}}</view>
+          <view>库存：{{item.count}}</view>
+          <view>价格：{{item.price}}</view>
+        </view>
+      </view>
+      <view class="item-btn">
+        <view bindtap="toDetail" data-id="{{ item.id }}">编辑</view>
+        <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteMaterial">删除</view>
+      </view>
+    </view>
+  </view>
+</view>
+<van-popup show="{{ show }}" closeable bind:close="onClose">
+  <view class="add-form">
+    <view class="form-input fl-s">
+      <view>状态：</view>
+      <van-switch checked="{{ checked }}" size="48rpx" />
+    </view>
+    <view class="form-input fl-s">
+      <view>名称：</view>
+      <van-field class="input-field" clearable value="{{ materialName }}" placeholder="请输入物资名称" border="{{ false }}" />
+    </view>
+    <view class="form-input fl-s">
+      <view>排序：</view>
+      <van-field class="input-field" clearable value="{{ materialSort }}" placeholder="请输入数字" border="{{ false }}" />
+    </view>
+    <view class="item-btn"><view class="del-btn">保存</view></view>
+  </view>
+</van-popup>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

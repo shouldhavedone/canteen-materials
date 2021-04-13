@@ -1,6 +1,14 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/material/material",
+    "pages/addMaterial/addMaterial",
+    "pages/supplier/supplier",
+    "pages/addSupplier/addSupplier",
+    "pages/login/login",
+    "pages/addDepartment/addDepartment",
+    "pages/addPost/addPost",
     "pages/news/news",
     "pages/personalCenter/personalCenter",
     "pages/userMag/userMag",

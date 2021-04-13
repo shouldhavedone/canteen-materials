@@ -21,9 +21,9 @@ let wxStore = new Store({
 App({
   onLaunch() {
     // 打开调试     
-    wx.setEnableDebug({
-      enableDebug: true
-    })
+    // wx.setEnableDebug({
+    //   enableDebug: true
+    // })
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -227,33 +227,6 @@ App({
               this.hiddLoading()
             }
           } else {
-            // if (res.data.code == 10000 && options.url.includes('/vito-sys/vitoservice/serviceniniappuser/getByMobile')) {
-            //   wx.removeStorageSync('userInfo')
-            //   wx.removeStorageSync('tel')
-            //   wx.switchTab({
-            //     url: '/pages/index/index',
-            //   })
-            // }
-            // // 检测用户是否具有邀请权限
-            // if (res.data.code == 10000 && options.url.includes('/vito-sys/vitoservice/serviceinvite/detect')) {
-            //   relove(res.data)
-            //   return
-            // }
-            // // 检测是否参与积分
-            // if (res.data.code == 10000 && options.url.includes('/vito-sys/vitoservice/serviceniniappuser/detectIntegral')) {
-            //   relove(res.data)
-            //   return
-            // }
-            // // 产品动态
-            // if (options.url.includes('/vito-sys/sys/sysuser/getUserToalAsMonth')) {
-            //   relove(res.data)
-            //   return
-            // }
-            // // 功能使用频率
-            // if (options.url.includes('/vito-sys/service_project/service_project/getFunctionUseRank')) {
-            //   relove(res.data)
-            //   return
-            // }
             let title = '系统错误'
             switch (res.statusCode) {
               case 200:

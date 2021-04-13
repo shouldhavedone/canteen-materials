@@ -46,12 +46,11 @@ VT = {
     })
   },
 
-  setStorgage: function (key, data) {
-    wx.setStorageSync('key', data);
+  setStorage: function(key, data) {
+    wx.setStorageSync(key, data);
   },
-
-  getStorage: function (key) {
-    wx.getStorageSync('key');
+  getStorage: function(key) {
+    return wx.getStorageSync(key);
   },
 
   isSkipUrl: false,

@@ -1,41 +1,27 @@
 <!--pages/postSetup/postSetup.wxml-->
 <view class="container">
   <view class="header-wrap">
-    <van-field value="{{ value }}" clearable placeholder="请输入职位名称" border="{{ false }}" bind:change="onChange" />
-    <view class="add-post">
+    <van-field value="{{ postName }}" clearable placeholder="请输入职位名称" border="{{ false }}" bind:change="searchName" bind:clear="clearSearchName"/>
+    <view class="search-btn" catchtap="getPositionData">
       <van-icon name="search" />搜索</view>
     <view class="add-post" bindtap="showPopup">
       <van-icon name="plus" />添加职位</view>
   </view>
   <view class="content-wrap">
-    <view class="post-item">
+    <view class="post-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
       <view class="item-wrap">
         <view class="item-left">
-          <view>职员</view>
+          <view>部门：{{item.Department ? item.Department.name : ''}}</view>
+          <view>职位：{{item.name}}</view>
           <view>排序：1</view>
         </view>
         <view class="item-right">
-          <van-switch checked="{{ checked }}" size="48rpx" />
+          <van-switch checked="{{ item.state ? true : false }}" size="48rpx" />
         </view>
       </view>
       <view class="item-btn">
-        <view>编辑</view>
-        <view class="del-btn">删除</view>
-      </view>
-    </view>
-    <view class="post-item">
-      <view class="item-wrap">
-        <view class="item-left">
-          <view>主管</view>
-          <view>排序：2</view>
-        </view>
-        <view class="item-right">
-          <van-switch checked="{{ checked }}" size="48rpx" />
-        </view>
-      </view>
-      <view class="item-btn">
-        <view>编辑</view>
-        <view class="del-btn">删除</view>
+        <view bindtap="toDetail" data-id="{{ item.id }}">编辑</view>
+        <view class="del-btn" data-id="{{ item.id }}" bindtap="deletePost">删除</view>
       </view>
     </view>
   </view>

@@ -1,4 +1,8 @@
 // pages/postSetup/postSetup.js
+const vt = require("../../utils/vt.js")
+const apiAddress = require("../../api/lcy.js")
+const app = getApp()
+
 Page({
 
   /**
@@ -6,18 +10,87 @@ Page({
    */
   data: {
     postName: '',
-    value: '',
     checked: true,
     show: false,
+    noneData: false,
+    lists: [],
+  },
+
+  searchName(e) {
+    this.setData({
+      postName: e.detail
+    })
   },
   showPopup() {
-    this.setData({ show: true });
+    wx.navigateTo({
+      url: '../addPost/addPost'
+    })
+  },
+
+  clearSearchName() {
+    this.setData({
+      postName: '',
+    })
+    this.getPositionData()
+  },
+
+  getPositionData() {
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getPositionList}`,
+      data: {
+        queryName: that.data.postName
+      }
+    }).then(res => {
+      let total = res.total;
+      if (!total) {
+        that.setData({
+          noneData: true,
+        })
+      }
+      that.setData({
+        lists: res.data
+      })
+      wx.stopPullDownRefresh()
+    })
+  },
+
+  deletePost(e) {
+    let that = this;
+    wx.showModal({
+      'content': '确定要删除该职位吗？',
+      'cancelColor': '#0076FF',
+      'confirmColor': '#0076FF',
+      success: function (res) {
+        if (res.confirm) {
+          app.requestNoToken({
+            url: `${apiAddress.default.delPosition}`,
+            data: {
+              ids: e.currentTarget.dataset.id
+            }
+          }).then(res => {
+            wx.showModal({
+              'showCancel': false,
+              'content': res.message,
+              'confirmColor': '#0076FF',
+              success: function () {
+                that.getPositionData();
+              }
+            })
+          })
+        }
+
+      }
+    })
   },
 
   onClose() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
-  
+
   onChange(event) {
     // event.detail 为当前输入的值
     console.log(event.detail);
@@ -40,7 +113,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getPositionData();
   },
 
   /**

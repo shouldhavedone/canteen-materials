@@ -16,12 +16,22 @@
   padding-left: 24rpx;
 }
 
+.search-btn {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  margin-right: 24rpx;
+  width: 100rpx;
+}
+
 .add-depart {
   height: 100%;
   display: flex;
   align-items: center;
   font-size: 30rpx;
   margin-right: 24rpx;
+  width: 180rpx;
 }
 
 .depart-item {

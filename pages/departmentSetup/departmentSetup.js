@@ -1,4 +1,8 @@
 // pages/departmentSetup/departmentSetup.js
+const vt = require("../../utils/vt.js")
+const apiAddress = require("../../api/lcy.js")
+const app = getApp()
+
 Page({
 
   /**
@@ -6,22 +10,85 @@ Page({
    */
   data: {
     departName: '',
-    value: '',
     checked: true,
-    show: false,
-  },
-  showPopup() {
-    this.setData({ show: true });
+    noneData: false,
+    lists: [],
   },
 
-  onClose() {
-    this.setData({ show: false });
+  searchName(e) {
+    this.setData({
+      departName: e.detail
+    })
   },
-  
-  onChange(event) {
-    // event.detail 为当前输入的值
-    console.log(event.detail);
+
+  clearSearchName() {
+    this.setData({
+      departName: '',
+    })
+    this.getDepartmentData()
   },
+
+  showPopup() {
+    wx.navigateTo({
+      url: '../addDepartment/addDepartment'
+    })
+  },
+
+  toDetail(e) {
+    console.log(e.currentTarget.dataset.id)
+  },
+
+  getDepartmentData() {
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getDepartmentList}`,
+      data: {
+        queryName: that.data.departName
+      }
+    }).then(res => {
+      let total = res.total;
+      if (!total) {
+        that.setData({
+          noneData: true,
+        })
+      }
+      that.setData({
+        lists: res.data
+      })
+      wx.stopPullDownRefresh()
+    })
+  },
+
+  deleteDepart(e) {
+    let that = this;
+    wx.showModal({
+      'content': '确定要删除该部门吗？',
+      'cancelColor': '#0076FF',
+      'confirmColor': '#0076FF',
+      success: function (res) {
+        if (res.confirm) {
+          app.requestNoToken({
+            url: `${apiAddress.default.delDepartment}`,
+            data: {
+              ids: e.currentTarget.dataset.id
+            }
+          }).then(res => {
+            wx.showModal({
+              'showCancel': false,
+              'content': res.message,
+              'confirmColor': '#0076FF',
+              success: function () {
+                that.getDepartmentData();
+              }
+            })
+          })
+        }
+        
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -40,7 +107,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getDepartmentData()
   },
 
   /**
