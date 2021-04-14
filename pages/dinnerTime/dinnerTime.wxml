@@ -1,30 +1,41 @@
 <!--pages/departmentSetup/departmentSetup.wxml-->
 <view class="container">
-  <view class="header-wrap">
-    <van-field value="{{ value }}" clearable placeholder="请输入时段名称" border="{{ false }}" bind:change="onChange" />
-    <view class="add-depart">
-      <van-icon name="search" />搜索</view>
-    <view class="add-depart" bindtap="showPopup">
-      <van-icon name="plus" />添加时段</view>
+  <view class="page-header-search">
+    <view class="page-header-wrap {{focus?'page-header-wrap-changeWidth':'page-header-wrap-defautWidth'}}">
+      <image class="page-header-search-icon" src="../../images/search_icon@2x.png"></image>
+      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}" placeholder="搜索时段名称" value="{{mealTimeName}}"
+        bindinput="searchName" bindfocus="contentFocus" bindconfirm="getMealTimeData"
+        placeholder-class="page-header-input-placeholder" focus="{{focus}}" confirm-type="search"></input>
+      <view class="page-header-line" wx:if="{{!focus}}"></view>
+      <view class="page-header-add" wx:if="{{!focus}}" catchtap="showPopup">
+        <image class="page-header-add-icon" src="../../images/icon_add search@2x.png"></image>
+      </view>
+      <view class="page-header-del-icon-wrap" catchtap="clearSearchName" wx:if="{{focus}}">
+        <image class="page-header-del-icon" src="../../images/deleteIcon.png"></image>
+      </view>
+      <view class="page-header-cancel-wrap" catchtap="getMealTimeData" wx:if="{{focus}}">
+        <text class="page-header-cancel-text">搜索</text>
+      </view>
+    </view>
   </view>
   <view class="content-wrap">
-    <view class="depart-item">
+    <view class="depart-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
       <view class="item-wrap">
         <view class="item-left">
-          <view>标题：早餐</view>
-        </view>
-        <view class="item-right">
-          <van-switch checked="{{ checked }}" size="48rpx" />
+          <view>标题：{{item.name}}</view>
+          <view>数量：{{item.count}}</view>
+          <view>开始时间：{{item.starttime}}</view>
+          <view>结束时间：{{item.endtime}}</view>
         </view>
       </view>
       <view class="item-btn">
-        <view>编辑</view>
-        <view class="del-btn">删除</view>
+        <view bindtap="toDetail" data-id="{{ item.id }}">编辑</view>
+        <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteSupplier">删除</view>
       </view>
     </view>
   </view>
 </view>
-<van-popup show="{{ show }}" closeable bind:close="onClose">
+<!-- <van-popup show="{{ show }}" closeable bind:close="onClose">
   <view class="add-form">
     <view class="form-input fl-s">
       <view>标题：</view>
@@ -41,7 +52,9 @@
       <view>报餐提醒：</view>
       <van-switch checked="{{ checked }}" size="48rpx" />
     </view>
-    <view class="item-btn"><view class="del-btn">保存</view></view>
+    <view class="item-btn">
+      <view class="del-btn">保存</view>
+    </view>
   </view>
-</van-popup>
+</van-popup> -->
 <loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

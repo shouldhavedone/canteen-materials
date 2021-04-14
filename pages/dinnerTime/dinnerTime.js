@@ -1,28 +1,104 @@
-// pages/dinnerTime/dinnerTime.js
+const vt = require("../../utils/vt.js")
+const apiAddress = require("../../api/lcy.js")
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    departName: '',
-    value: '',
+    mealTimeName: '',
     checked: true,
-    show: false,
-  },
-  showPopup() {
-    this.setData({ show: true });
+    noneData: false,
+    lists: [],
+    focus: false,
   },
 
-  onClose() {
-    this.setData({ show: false });
+  contentFocus(){
+    this.setData({
+      focus: true
+    })
   },
-  
-  onChange(event) {
-    // event.detail 为当前输入的值
-    console.log(event.detail);
+
+  searchName(e) {
+    this.setData({
+      mealTimeName: e.detail.value
+    })
   },
-  
+
+  clearSearchName() {
+    this.setData({
+      mealTimeName: '',
+      focus: false,
+    })
+    this.getMealTimeData()
+  },
+
+  showPopup() {
+    wx.navigateTo({
+      url: '../addMealTime/addMealTime'
+    })
+  },
+
+  toDetail(e) {
+    console.log(e.currentTarget.dataset.id)
+  },
+
+  getMealTimeData() {
+    this.setData({
+      focus: false,
+    })
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getMealTimeList}`,
+      data: {
+        queryName: that.data.mealTimeName
+      }
+    }).then(res => {
+      let total = res.total;
+      if (!total) {
+        that.setData({
+          noneData: true,
+        })
+      }
+      that.setData({
+        lists: res.data
+      })
+      wx.stopPullDownRefresh()
+    })
+  },
+
+  deleteMealTime(e) {
+    let that = this;
+    wx.showModal({
+      'content': '确定要删除该用餐时段吗？',
+      'cancelColor': '#0076FF',
+      'confirmColor': '#0076FF',
+      success: function (res) {
+        if (res.confirm) {
+          app.requestNoToken({
+            url: `${apiAddress.default.delMealTime}`,
+            data: {
+              ids: e.currentTarget.dataset.id
+            }
+          }).then(res => {
+            wx.showModal({
+              'showCancel': false,
+              'content': res.message,
+              'confirmColor': '#0076FF',
+              success: function () {
+                that.getMealTimeData();
+              }
+            })
+          })
+        }
+        
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -41,7 +117,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getMealTimeData()
   },
 
   /**

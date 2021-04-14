@@ -18,6 +18,7 @@
     "pages/foodDetail/foodDetail",
     "pages/noticeList/noticeList",
     "pages/dinnerTime/dinnerTime",
+    "pages/addMealTime/addMealTime",
     "pages/noticeContent/noticeContent",
     "pages/departmentSetup/departmentSetup",
     "pages/postSetup/postSetup",
@@ -25,10 +26,10 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "",
+    "navigationBarTitleText": "食堂物资管理",
     "navigationStyle": "default",
-    "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#488FF7",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#808080",
@@ -78,7 +79,8 @@
     "van-notice-bar": "@vant/weapp/notice-bar/index",
     "van-picker": "@vant/weapp/picker/index",
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
   },
   "sitemapLocation": "sitemap.json"
 }
