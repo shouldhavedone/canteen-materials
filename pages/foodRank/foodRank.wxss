@@ -31,12 +31,17 @@
 
 .nav-left {
   width: 170rpx;
+  position: fixed;
+  height: 100%;
 }
 
 .content-right {
   flex: 1;
   background-color: #f0f3f6;
   padding: 20rpx;
+  margin-left: 170rpx;
+  overflow: hidden;
+  height: 1076rpx;
 }
 
 .dishes-item {
@@ -48,6 +53,7 @@
   font-size: 28rpx;
   margin-bottom: 20rpx;
 }
+
 .dishes-item>view {
   margin-bottom: 16rpx;
 }

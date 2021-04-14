@@ -13,17 +13,25 @@ Page({
     checked: true,
     noneData: false,
     lists: [],
+    focus: false,
+  },
+
+  contentFocus(){
+    this.setData({
+      focus: true
+    })
   },
 
   searchName(e) {
     this.setData({
-      departName: e.detail
+      departName: e.detail.value
     })
   },
 
   clearSearchName() {
     this.setData({
       departName: '',
+      focus: false,
     })
     this.getDepartmentData()
   },
@@ -39,6 +47,9 @@ Page({
   },
 
   getDepartmentData() {
+    this.setData({
+      focus: false,
+    })
     app.showLoading('', '')
     let that = this
     app.requestNoToken({

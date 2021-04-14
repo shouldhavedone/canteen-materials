@@ -14,11 +14,18 @@ Page({
     show: false,
     noneData: false,
     lists: [],
+    focus: false,
+  },
+
+  contentFocus(){
+    this.setData({
+      focus: true
+    })
   },
 
   searchName(e) {
     this.setData({
-      postName: e.detail
+      postName: e.detail.value
     })
   },
   showPopup() {
@@ -30,11 +37,15 @@ Page({
   clearSearchName() {
     this.setData({
       postName: '',
+      focus: false,
     })
     this.getPositionData()
   },
 
   getPositionData() {
+    this.setData({
+      focus: false,
+    })
     app.showLoading('', '')
     let that = this
     app.requestNoToken({

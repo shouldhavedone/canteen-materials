@@ -14,11 +14,18 @@ Page({
     show: false,
     noneData: false,
     lists: [],
+    focus: false,
+  },
+
+  contentFocus(){
+    this.setData({
+      focus: true
+    })
   },
 
   searchName(e) {
     this.setData({
-      materialName: e.detail
+      materialName: e.detail.value
     })
   },
   showPopup() {
@@ -30,11 +37,15 @@ Page({
   clearSearchName() {
     this.setData({
       materialName: '',
+      focus: false,
     })
     this.getMaterialData()
   },
 
   getMaterialData() {
+    this.setData({
+      focus: false,
+    })
     app.showLoading('', '')
     let that = this
     app.requestNoToken({

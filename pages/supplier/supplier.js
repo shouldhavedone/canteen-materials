@@ -12,17 +12,25 @@ Page({
     checked: true,
     noneData: false,
     lists: [],
+    focus: false,
+  },
+
+  contentFocus(){
+    this.setData({
+      focus: true
+    })
   },
 
   searchName(e) {
     this.setData({
-      supplierName: e.detail
+      supplierName: e.detail.value
     })
   },
 
   clearSearchName() {
     this.setData({
       supplierName: '',
+      focus: false,
     })
     this.getSupplierData()
   },
@@ -38,6 +46,9 @@ Page({
   },
 
   getSupplierData() {
+    this.setData({
+      focus: false,
+    })
     app.showLoading('', '')
     let that = this
     app.requestNoToken({

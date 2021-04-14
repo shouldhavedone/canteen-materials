@@ -1,38 +1,7 @@
 /* pages/departmentSetup/departmentSetup.wxss */
-.container {
-  height: 100%;
-  padding: 8rpx 20rpx;
-  background-color: #fff;
-}
 
-.header-wrap {
-  width: 100%;
-  height: 100rpx;
-  border-radius: 20rpx;
-  border: 2rpx solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 24rpx;
-}
 
-.search-btn {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 30rpx;
-  margin-right: 24rpx;
-  width: 100rpx;
-}
 
-.add-depart {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 30rpx;
-  margin-right: 24rpx;
-  width: 180rpx;
-}
 
 .depart-item {
   width: 100%;
@@ -48,7 +17,7 @@
   justify-content: space-between;
 }
 
-.item-left view{
+.item-left view {
   margin-top: 10rpx;
 }
 
@@ -81,4 +50,3 @@
   height: 400rpx;
   padding: 74rpx 40rpx 0;
 }
-

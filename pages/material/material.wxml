@@ -1,11 +1,22 @@
 <!--pages/material/material.wxml-->
 <view class="container">
-  <view class="header-wrap">
-    <van-field value="{{ materialName }}" clearable placeholder="请输入物资名称" border="{{ false }}" bind:change="searchName" bind:clear="clearSearchName"/>
-    <view class="search-btn" catchtap="getMaterialData">
-      <van-icon name="search" />搜索</view>
-    <view class="add-post" bindtap="showPopup">
-      <van-icon name="plus" />添加物资</view>
+  <view class="page-header-search">
+    <view class="page-header-wrap {{focus?'page-header-wrap-changeWidth':'page-header-wrap-defautWidth'}}">
+      <image class="page-header-search-icon" src="../../images/search_icon@2x.png"></image>
+      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}" placeholder="搜索物资名称" value="{{materialName}}"
+        bindinput="searchName" bindfocus="contentFocus" bindconfirm="getMaterialData"
+        placeholder-class="page-header-input-placeholder" focus="{{focus}}" confirm-type="search"></input>
+      <view class="page-header-line" wx:if="{{!focus}}"></view>
+      <view class="page-header-add" wx:if="{{!focus}}" catchtap="showPopup">
+        <image class="page-header-add-icon" src="../../images/icon_add search@2x.png"></image>
+      </view>
+      <view class="page-header-del-icon-wrap" catchtap="clearSearchName" wx:if="{{focus}}">
+        <image class="page-header-del-icon" src="../../images/deleteIcon.png"></image>
+      </view>
+      <view class="page-header-cancel-wrap" catchtap="getMaterialData" wx:if="{{focus}}">
+        <text class="page-header-cancel-text">搜索</text>
+      </view>
+    </view>
   </view>
   <view class="content-wrap">
     <view class="post-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">

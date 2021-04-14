@@ -6,12 +6,43 @@ Page({
    */
   data: {
     activeKey: 0,
+    foodName: '',
+    noneData: false,
+    lists: [],
+    focus: false,
   },
 
-  toFoodDetail() {
+  contentFocus(){
+    this.setData({
+      focus: true
+    })
+  },
+
+  searchName(e) {
+    this.setData({
+      foodName: e.detail.value
+    })
+  },
+
+  clearSearchName() {
+    this.setData({
+      foodName: '',
+      focus: false,
+    })
+    this.getFoodData()
+  },
+
+  showPopup() {
     wx.navigateTo({
       url: '../foodDetail/foodDetail',
     })
+  },
+
+  getFoodData() {
+    this.setData({
+      focus: false,
+    })
+    console.log('---------')
   },
 
   /**
