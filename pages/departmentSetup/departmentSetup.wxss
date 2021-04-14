@@ -1,8 +1,4 @@
 /* pages/departmentSetup/departmentSetup.wxss */
-
-
-
-
 .depart-item {
   width: 100%;
   border-radius: 28rpx;

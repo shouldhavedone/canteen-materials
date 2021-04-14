@@ -27,5 +27,16 @@ let apiAddress = {
   getAllMealTime: '/back-sys/food-service/getAllMealTime',
   addOrUpdateMealTime: '/back-sys/food-service/addOrUpdateMealTime',
   delMealTime: '/back-sys/food-service/delMealTime',
+
+  getFoodTypeList: '/back-sys/food-service/getFoodtypeList',
+  getAllFoodType: '/back-sys/food-service/getAllFoodtype',
+  addOrUpdateFoodType: '/back-sys/food-service/addOrUpdateFoodtype',
+  delFoodType: '/back-sys/food-service/delFoodtype',
+
+  getFoodList: '/back-sys/food-service/getFoodList',
+  getAllFood: '/back-sys/food-service/getAllFood',
+  addOrUpdateFood: '/back-sys/food-service/addOrUpdateFood',
+  delFood: '/back-sys/food-service/delFood',
+
 }
 export default apiAddress

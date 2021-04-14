@@ -38,6 +38,12 @@ Page({
     })
   },
 
+  toFoodType() {
+    wx.navigateTo({
+      url: '../foodType/foodType',
+    })
+  },
+
   toUPostSetup() {
     wx.navigateTo({
       url: '../postSetup/postSetup',
@@ -78,7 +84,6 @@ Page({
   },
 
   onShow: function() {
-    console.log(vt.getStorage('userInfo'))
     if (vt.getStorage('userInfo')) {
       this.setData({
         userId: JSON.parse(vt.getStorage('userInfo')).id

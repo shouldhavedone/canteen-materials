@@ -1,0 +1,48 @@
+<!--pages/foodType/foodType.wxml-->
+<view class="page-container">
+  <view class="page-header-search">
+    <view class="page-header-wrap {{focus?'page-header-wrap-changeWidth':'page-header-wrap-defautWidth'}}">
+      <image class="page-header-search-icon" src="../../images/search_icon@2x.png"></image>
+      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}" placeholder="搜索类型"
+        value="{{foodTypeName}}" bindinput="searchName" bindfocus="contentFocus" bindconfirm="getFoodTypeData"
+        placeholder-class="page-header-input-placeholder" focus="{{focus}}" confirm-type="search"></input>
+      <view class="page-header-line" wx:if="{{!focus}}"></view>
+      <view class="page-header-add" wx:if="{{!focus}}" catchtap="showPopup">
+        <image class="page-header-add-icon" src="../../images/icon_add search@2x.png"></image>
+      </view>
+      <view class="page-header-del-icon-wrap" catchtap="clearSearchName" wx:if="{{focus}}">
+        <image class="page-header-del-icon" src="../../images/deleteIcon.png"></image>
+      </view>
+      <view class="page-header-cancel-wrap" catchtap="getFoodTypeData" wx:if="{{focus}}">
+        <text class="page-header-cancel-text">搜索</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="content-wrap">
+    <view class="depart-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
+      <view class="item-wrap">
+        <view class="item-left">
+          <view>类型：{{item.name}}</view>
+        </view>
+      </view>
+      <view class="item-btn">
+        <view bindtap="toDetail" data-id="{{ item.id }}">修改</view>
+        <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteFoodType">删除</view>
+      </view>
+    </view>
+  </view>
+  <van-dialog use-slot title="新增类型" show="{{dialogShow}}" confirmButtonText="新增" cancelButtonText="取消" bind:cancel="dialogOnClose" showCancelButton
+    bind:confirm="addFoodType">
+    <view class="phone-box">
+      <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+      <text class="label-text">类型名：</text>
+      <input class='phone-input' type="text" value="{{reqData.name}}" bindinput="inputName" placeholder='请输入菜品类型名称' placeholder-class='phone-tip' type="number"></input>
+      <view class="line"></view>
+      <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.name}}">
+        <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+      </view>
+    </view>
+  </van-dialog>
+</view>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

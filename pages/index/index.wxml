@@ -33,6 +33,14 @@
         <image src="../../images/model.png"></image>
         <view>物资管理</view>
       </view>
+      <view class="model-item" catchtap="toFoodType">
+        <image src="../../images/model.png"></image>
+        <view>菜类管理</view>
+      </view>
+      <view class="model-item" catchtap="toFoodRank">
+        <image src="../../images/model.png"></image>
+        <view>菜品库</view>
+      </view>
     </view>
   </view>
   <view wx:if="{{userId}}" class="funmodel-wrap">
@@ -46,10 +54,7 @@
         <image src="../../images/model.png"></image>
         <view>用餐时段</view>
       </view>
-      <view class="model-item" catchtap="toFoodRank">
-        <image src="../../images/model.png"></image>
-        <view>菜品库</view>
-      </view>
+      
       <view class="model-item" catchtap="toDailyMenu">
         <image src="../../images/model.png"></image>
         <view>每日菜谱</view>
