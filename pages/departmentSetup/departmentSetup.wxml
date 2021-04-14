@@ -1,7 +1,10 @@
 <!--pages/departmentSetup/departmentSetup.wxml-->
 <view class="container">
   <view class="header-wrap">
-    <van-field value="{{ departName }}" clearable placeholder="请输入部门名称" border="{{ false }}" bind:change="searchName" bind:clear="clearSearchName"/>
+    <view>
+      <van-field value="{{ departName }}" clearable placeholder="请输入部门名称" border="{{ false }}" bind:change="searchName"
+        bind:clear="clearSearchName" />
+    </view>
     <view class="search-btn" catchtap="getDepartmentData">
       <van-icon name="search" />搜索</view>
     <view class="add-depart" bindtap="showPopup">
