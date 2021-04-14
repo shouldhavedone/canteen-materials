@@ -1,2 +1,31 @@
 <!--pages/personalCenter/personalCenter.wxml-->
-<text>pages/personalCenter/personalCenter.wxml</text>
+<view class="mine">
+  <view class="header">
+    <!-- <image class="bg" src="../../images/bg_gerenzhongxin@2x.png"></image> -->
+    <!-- <image class="head-pic" src="{{headPic}}" mode='aspectFill' catchtap="{{isLogIn?'changeHeadPic':''}}"></image> -->
+    <image class="head-pic" src="../../images/img_default @2x.png" mode='aspectFill' catchtap="{{isLogIn?'changeHeadPic':''}}"></image>
+    <view catchtap="{{isLogIn?'':'toLogIn'}}">
+      <view class="user-name {{address?'':'down'}}">
+        <view class="line-hidden">{{name}}</view>
+        <image class="editeUserName" src="../../images/icon_bianji2@2x.png"
+          catchtap="{{isLogIn?'editeName':'toLogIn'}}"></image>
+      </view>
+      <view class="tip line-hidden">{{tel}}</view>
+    </view>
+  </view>
+  <view class="unLogIn" wx:if="{{!isLogIn}}">
+    <view class="version-tip">版本号1.1</view>
+  </view>
+  <view class="has-logIn" wx:if="{{isLogIn}}">
+    <view class="phones" catchtap="toModifyPwd">
+      <image class="policy-img" src="../../images/modify.png"></image>
+      <view class="phone policy">修改密码</view>
+      <view class="line"></view>
+    </view>
+    <view class="phones" catchtap="logout">
+      <image class="policy-img" src="../../images/logout.png"></image>
+      <view class="phone policy">退出登录</view>
+      <view class="line"></view>
+    </view>
+  </view>
+</view>

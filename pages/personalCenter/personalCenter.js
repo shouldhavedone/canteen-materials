@@ -1,11 +1,40 @@
 // pages/personalCenter/personalCenter.js
+const vt = require("../../utils/vt.js")
+const apiAddress = require("../../api/lcy.js")
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isLogIn: false,
+    name: '',
+    headPic: '',
+    isChangePic: false,
+    tel: ''
+  },
 
+  editeName() {
+    wx.navigateTo({
+      url: '../editeName/editeName',
+    })
+  },
+
+  toModifyPwd() {
+    wx.navigateTo({
+      url: '../modifyPwd/modifyPwd',
+    })
+  },
+
+  toLogIn() {
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
+
+  logout() {
+    
   },
 
   /**
@@ -26,21 +55,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (!vt.isEmpty(vt.getStorage('userInfo'))) {
+      this.setData({
+        isLogIn: true,
+        // headPic: this.data.$state.userInfo.headpicture,
+        name: JSON.parse(vt.getStorage('userInfo')).name,
+        tel: JSON.parse(vt.getStorage('userInfo')).tel,
+      })
+      if (!this.data.isChangePic) {
+        // this.getPhoneLists()
+      }
+    } else {
+      this.setData({
+        isLogIn: false,
+        headPic: '../../images/img_default @2x.png',
+        name: '未登录',
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    app.hiddLoading()
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.hiddLoading()
   },
 
   /**

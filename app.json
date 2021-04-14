@@ -1,7 +1,8 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/editeName/editeName",
+    "pages/modifyPwd/modifyPwd",
     "pages/foodType/foodType",
     "pages/material/material",
     "pages/addMaterial/addMaterial",
