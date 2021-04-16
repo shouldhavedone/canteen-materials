@@ -1,4 +1,5 @@
 /* pages/departmentSetup/departmentSetup.wxss */
+@import "../../templates/showNoneData/showNoneData.wxss";
 .depart-item {
   width: 100%;
   border-radius: 28rpx;

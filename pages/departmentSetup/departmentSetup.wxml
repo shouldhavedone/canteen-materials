@@ -1,10 +1,11 @@
 <!--pages/departmentSetup/departmentSetup.wxml-->
+<import src="../../templates/showNoneData/showNoneData.wxml" />
 <view class="page-container">
   <view class="page-header-search">
     <view class="page-header-wrap {{focus?'page-header-wrap-changeWidth':'page-header-wrap-defautWidth'}}">
       <image class="page-header-search-icon" src="../../images/search_icon@2x.png"></image>
-      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}" placeholder="搜索部门" value="{{departName}}"
-        bindinput="searchName" bindfocus="contentFocus" bindconfirm="getDepartmentData"
+      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}" placeholder="搜索部门"
+        value="{{departName}}" bindinput="searchName" bindfocus="contentFocus" bindconfirm="getDepartmentData"
         placeholder-class="page-header-input-placeholder" focus="{{focus}}" confirm-type="search"></input>
       <view class="page-header-line" wx:if="{{!focus}}"></view>
       <view class="page-header-add" wx:if="{{!focus}}" catchtap="showPopup">
@@ -35,6 +36,7 @@
         <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteDepart">删除</view>
       </view>
     </view>
+    <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
   </view>
 </view>
 <loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

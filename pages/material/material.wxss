@@ -1,4 +1,6 @@
 /* pages/material/material.wxss */
+@import "../../templates/showNoneData/showNoneData.wxss";
+
 .container {
   height: 100%;
   padding: 8rpx 20rpx;
@@ -48,7 +50,7 @@
   justify-content: space-between;
 }
 
-.item-left view{
+.item-left view {
   margin-top: 10rpx;
 }
 

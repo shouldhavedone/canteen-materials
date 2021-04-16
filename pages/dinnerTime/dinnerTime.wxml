@@ -1,11 +1,13 @@
 <!--pages/departmentSetup/departmentSetup.wxml-->
+<import src="../../templates/showNoneData/showNoneData.wxml" />
 <view class="container">
   <view class="page-header-search">
     <view class="page-header-wrap {{focus?'page-header-wrap-changeWidth':'page-header-wrap-defautWidth'}}">
       <image class="page-header-search-icon" src="../../images/search_icon@2x.png"></image>
-      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}" placeholder="搜索时段名称" value="{{mealTimeName}}"
-        bindinput="searchName" bindfocus="contentFocus" bindconfirm="getMealTimeData"
-        placeholder-class="page-header-input-placeholder" focus="{{focus}}" confirm-type="search"></input>
+      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}"
+        placeholder="搜索时段名称" value="{{mealTimeName}}" bindinput="searchName" bindfocus="contentFocus"
+        bindconfirm="getMealTimeData" placeholder-class="page-header-input-placeholder" focus="{{focus}}"
+        confirm-type="search"></input>
       <view class="page-header-line" wx:if="{{!focus}}"></view>
       <view class="page-header-add" wx:if="{{!focus}}" catchtap="showPopup">
         <image class="page-header-add-icon" src="../../images/icon_add search@2x.png"></image>
@@ -33,6 +35,7 @@
         <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteSupplier">删除</view>
       </view>
     </view>
+    <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
   </view>
 </view>
 <!-- <van-popup show="{{ show }}" closeable bind:close="onClose">

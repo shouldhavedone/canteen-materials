@@ -1,5 +1,6 @@
 /* pages/foodRank/foodRank.wxss */
 @import "../../templates/showNoneData/showNoneData.wxss";
+
 .food-rank {
   height: 100vh;
   background-color: #fff;

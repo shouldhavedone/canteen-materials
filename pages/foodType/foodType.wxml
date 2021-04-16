@@ -1,4 +1,5 @@
 <!--pages/foodType/foodType.wxml-->
+<import src="../../templates/showNoneData/showNoneData.wxml" />
 <view class="page-container">
   <view class="page-header-search">
     <view class="page-header-wrap {{focus?'page-header-wrap-changeWidth':'page-header-wrap-defautWidth'}}">
@@ -31,13 +32,15 @@
         <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteFoodType">删除</view>
       </view>
     </view>
+    <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
   </view>
-  <van-dialog use-slot title="新增类型" show="{{dialogShow}}" confirmButtonText="新增" cancelButtonText="取消" bind:cancel="dialogOnClose" showCancelButton
-    bind:confirm="addFoodType">
+  <van-dialog use-slot title="新增类型" show="{{dialogShow}}" confirmButtonText="新增" cancelButtonText="取消"
+    bind:cancel="dialogOnClose" showCancelButton bind:confirm="addFoodType">
     <view class="phone-box">
       <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
       <text class="label-text">类型名：</text>
-      <input class='phone-input' type="text" value="{{reqData.name}}" bindinput="inputName" placeholder='请输入菜品类型名称' placeholder-class='phone-tip' type="number"></input>
+      <input class='phone-input' type="text" value="{{reqData.name}}" bindinput="inputName" placeholder='请输入菜品类型名称'
+        placeholder-class='phone-tip' type="number"></input>
       <view class="line"></view>
       <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.name}}">
         <image class="icon-delete" src="../../images/deleteIcon.png"></image>

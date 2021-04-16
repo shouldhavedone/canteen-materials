@@ -13,9 +13,9 @@
 .wrap image {
   /* display: block;
   width: 580rpx; */
-  width: 100%;
+  max-width: 400rpx;
   margin-top: 140rpx;
-  height: 300rpx;
+  height: 400rpx;
 }
 
 .wrap view {
