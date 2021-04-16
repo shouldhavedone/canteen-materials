@@ -3,7 +3,7 @@
   <view class="tip">登录</view>
   <view class="bg-tip"></view>
   <input class='name-input' type="text" placeholder='请输入用户名' type='text' maxlength='11' auto-focus placeholder-class='place-style' bindinput='getName' value="{{name}}"></input>
-  <input class='pwd-input' type="password" placeholder='请输入密码' type='password' maxlength='11' auto-focus placeholder-class='place-style' bindinput='getPassword' value="{{password}}"></input>
+  <input class='pwd-input' type="password" placeholder='请输入密码' type='password' maxlength='16' auto-focus placeholder-class='place-style' bindinput='getPassword' value="{{password}}"></input>
   <view class="err-tip" wx:if="{{errTip}}">
     <image src="../../images/eret.png"></image>
     <view>{{errTip}}</view>

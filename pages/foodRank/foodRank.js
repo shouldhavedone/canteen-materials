@@ -1,4 +1,7 @@
 // pages/foodRank/foodRank.js
+const vt = require("../../utils/vt.js")
+const apiAddress = require("../../api/lcy.js")
+const app = getApp()
 Page({
 
   /**
@@ -10,6 +13,8 @@ Page({
     noneData: false,
     lists: [],
     focus: false,
+    foodTypeList: [],
+    foodType: '',
   },
 
   contentFocus(){
@@ -42,14 +47,64 @@ Page({
     this.setData({
       focus: false,
     })
-    console.log('---------')
+  },
+
+  getFoodTypeData() {
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getAllFoodType}`,
+    }).then(res => {
+      if(!that.data.foodType) {
+        this.setData({
+          foodType: res.data ? res.data[0].id : ''
+        })
+        this.getFoodByType()
+      }
+      that.setData({
+        foodTypeList: res.data
+      })
+      wx.stopPullDownRefresh()
+    })
+  },
+
+  changeType(e) {
+    let that = this
+    this.setData({
+      foodType: this.data.foodTypeList[e.detail].id,
+      noneData: false,
+    })
+    setTimeout(() => {
+      that.getFoodByType()
+    })
+  },
+
+  getFoodByType() {
+    app.showLoading('', '')
+    let that = this;
+    app.requestNoToken({
+      url: `${apiAddress.default.getFoodByType}`,
+      data: {
+        foodType: that.data.foodType,
+      }
+    }).then(res => {
+      let total =  res.total;
+      if(!total) {
+        that.setData({
+          noneData: true,
+        })
+      }
+      that.setData({
+        lists: res.data
+      })
+      wx.stopPullDownRefresh({})
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -63,7 +118,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getFoodTypeData()
   },
 
   /**

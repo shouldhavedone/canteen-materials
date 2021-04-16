@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/foodDetail/foodDetail",
     "pages/editeName/editeName",
     "pages/modifyPwd/modifyPwd",
     "pages/foodType/foodType",
@@ -17,7 +18,6 @@
     "pages/mealOpeningTime/mealOpeningTime",
     "pages/dailyMenu/dailyMenu",
     "pages/foodRank/foodRank",
-    "pages/foodDetail/foodDetail",
     "pages/noticeList/noticeList",
     "pages/dinnerTime/dinnerTime",
     "pages/addMealTime/addMealTime",

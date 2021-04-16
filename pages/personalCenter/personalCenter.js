@@ -34,7 +34,10 @@ Page({
   },
 
   logout() {
-    
+    vt.removeStorage('userInfo');
+    wx.navigateTo({
+      url: '../login/login'
+    })
   },
 
   /**

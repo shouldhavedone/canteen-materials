@@ -1,8 +1,9 @@
-const vt = require("../utils/vt.js")
-let url = vt.getStorage('offLineUrl') + '/api'
 let apiAddress = {
   getUserInfo: '/back-sys/back-auth/oauth/login',
   modifyUser: '/back-sys/back-auth/oauth/modifyUser',
+  modifyPwd: '/back-sys/back-auth/oauth/modifyPwd',
+
+  uploadToken: '/back-sys/back-auth/qiniu/uptoken',
 
   getDepartmentList: '/back-sys/food-service/getDepartmentList',
   getAllDepartment: '/back-sys/food-service/getAllDepartment',
@@ -38,6 +39,7 @@ let apiAddress = {
   getAllFood: '/back-sys/food-service/getAllFood',
   addOrUpdateFood: '/back-sys/food-service/addOrUpdateFood',
   delFood: '/back-sys/food-service/delFood',
+  getFoodByType: '/back-sys/food-service/getFoodByType',
 
 }
 export default apiAddress

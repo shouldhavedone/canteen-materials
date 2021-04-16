@@ -1,24 +1,44 @@
-<!--pages/foodDetail/foodDetail.wxml-->
+<!-- pages/foodDetail/foodDetail.wxml -->
 <view class="container">
   <view class="food-info">
     <view class="form-input fl-s">
       <view>菜品名称：</view>
-      <van-field class="input-field" clearable value="{{ foodName }}" placeholder="请输入菜品名称" border="{{ false }}" />
+      <van-field class="input-field" clearable value="{{ reqData.name }}" placeholder="请输入菜品名称" border="{{ false }}"
+        bind:input="inputName" />
+    </view>
+    <view class="form-input fl-s">
+      <view class="type-text">菜品类型：</view>
+      <view class="type-list" bindtap="chooseType">
+        <text wx:if="{{reqData.foodtype}}">{{reqData.foodtype}}</text>
+        <text wx:else class="placeholder">请选择菜品类型</text>
+        <image src="../../images/arrow.png" class="arrow-icon"></image>
+      </view>
+    </view>
+    <view class="form-input fl-s">
+      <view class="type-text">用餐时段：</view>
+      <view class="type-list" bindtap="chooseTime">
+        <text wx:if="{{reqData.mealtime}}">{{reqData.mealtime}}</text>
+        <text wx:else class="placeholder">请选择用餐时段</text>
+        <image src="../../images/arrow.png" class="arrow-icon"></image>
+      </view>
     </view>
     <view class="form-input fl-s">
       <view>菜品价格：</view>
-      <van-field class="input-field" clearable value="{{ foodPrice }}" placeholder="请输入菜品价格" border="{{ false }}" />
+      <van-field class="input-field" clearable value="{{ reqData.price }}" placeholder="请输入菜品价格" border="{{ false }}"
+        bind:input="inputPrice" />
     </view>
     <view class="form-input fl-s">
       <view>预设库存：</view>
-      <van-field class="input-field" clearable value="{{ foodStock }}" placeholder="请输入库存" border="{{ false }}" />
+      <van-field class="input-field" clearable value="{{ reqData.preCount }}" placeholder="请输入库存" border="{{ false }}"
+        bind:input="inputPreCount" />
     </view>
     <view class="form-input fl-s">
       <view>简介：</view>
-      <van-field class="input-field" clearable value="{{ foodName }}" placeholder="请输入菜品名称" border="{{ false }}" />
+      <van-field class="input-field" clearable value="{{ reqData.introduce }}" placeholder="请输入菜品简介"
+        border="{{ false }}" bind:input="inputIntroduce" />
     </view>
   </view>
-  <view class="limit-info">
+  <!-- <view class="limit-info">
     <van-collapse accordion value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item name="1">
         <view slot="title" class="collapse-title">开放部门<view catchtap="selectAll" wx:if="{{activeNames == '1'}}">全选
@@ -105,11 +125,28 @@
         </van-checkbox-group>
       </van-collapse-item>
     </van-collapse>
-  </view>
+  </view> -->
 
   <view class="form-input fl-s image-upload">
     <view>菜品图片：</view>
-    <van-uploader file-list="{{ fileList }}" max-count="1" bind:after-read="afterRead" />
+    <view class="reprot-img" wx:if="{{imageObject.fileURL}}">
+      <image src="{{imageObject.fileURL}}"></image>
+      <image class="delete-img" src="../../images/icon_delete@2x.png">
+      </image>
+    </view>
+    <view class="chooseImge" wx:if="{{!imageObject.fileURL}}" catchtap="didPressChooesImage">
+      <image src="../../images/app_icon_add@2x.png"></image>
+    </view>
   </view>
-  <view class="bottom-btn"><van-button type="info">新建</van-button></view>
+  <view class="bottom-btn">
+    <van-button type="info" disabled="{{disabled}}" bind:click="addFood">添加</van-button>
+  </view>
+  <picker isShowPicker="{{showAddrPciker}}" mode="selector" keyWordsOfShow="name" bindsure="typeSure"
+    bindcancle="typeCancel" scrollType="link" listData="{{foodtypeList}}" indicatorStyle="height:62px" maskStyle=""
+    titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
+    pickerHeaderStyle="background:#fff;" titleText="菜品类型" cancelText="取消" sureText="完成"></picker>
+  <picker isShowPicker="{{showTimePciker}}" mode="selector" keyWordsOfShow="name" bindsure="timeSure"
+    bindcancle="timeCancel" scrollType="link" listData="{{mealtimeList}}" indicatorStyle="height:62px" maskStyle=""
+    titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
+    pickerHeaderStyle="background:#fff;" titleText="菜品类型" cancelText="取消" sureText="完成"></picker>
 </view>

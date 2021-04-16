@@ -1,4 +1,42 @@
 // pages/foodDetail/foodDetail.js
+const vt = require("../../utils/vt.js")
+const apiAddress = require("../../api/lcy.js")
+const app = getApp()
+const qiniuUploader = require("../../utils/qiniuUploader");
+
+// 初始化七牛云相关配置
+function initQiniu() {
+  var options = {
+    region: 'SCN',
+    uptoken: '',
+    uptokenURL: `${vt.ip}${apiAddress.default.uploadToken}`,
+    uptokenFunc: function () {},
+    domain: 'http://qrldwoyz2.hn-bkt.clouddn.com',
+    shouldUseQiniuFileName: true
+  };
+  qiniuUploader.init(options);
+}
+
+function didPressChooesImage(that) {
+  initQiniu();
+  that.setData({
+    'imageObject': {},
+  });
+  wx.chooseImage({
+    count: 1,
+    success: function (res) {
+      var filePath = res.tempFilePaths[0];
+      qiniuUploader.upload(filePath, (res) => {
+        that.setData({
+          imageObject: res
+        });
+      }, (error) => {
+        console.error('error: ' + JSON.stringify(error));
+      }, );
+    }
+  })
+}
+
 Page({
 
   /**
@@ -6,30 +44,26 @@ Page({
    */
   data: {
     activeNames: '',
+    disabled: true,
     result: ['a', 'b'],
-    fileList: [
-      // {
-      //   url: 'https://img.yzcdn.cn/vant/leaf.jpg',
-      //   name: '图片1',
-      // },
-    ],
-  },
-
-  afterRead(event) {
-    const { file } = event.detail;
-    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
-      filePath: file.url,
-      name: 'file',
-      formData: { user: 'test' },
-      success(res) {
-        // 上传完成需要更新 fileList
-        const { fileList = [] } = this.data;
-        fileList.push({ ...file, url: res.data });
-        this.setData({ fileList });
-      },
-    });
+    imageObject: {},
+    reqData: {
+      id: '',
+      name: '',
+      price: 0,
+      preCount: 0,
+      introduce: '',
+      foodtype: '',
+      foodtype_id: '',
+      mealtime: '',
+      mealtime_id: '',
+    },
+    showAddrPciker: false,
+    showTimePciker: false,
+    hiddenAddDetail: false,
+    hiddenTimeDetail: false,
+    foodtypeList: [],
+    mealtimeList: [],
   },
 
   onChange(event) {
@@ -48,11 +82,154 @@ Page({
     console.log('111')
   },
 
+  didPressChooesImage: function () {
+    var that = this;
+    didPressChooesImage(that);
+  },
+
+  getFoodtypeData() {
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getAllFoodType}`,
+    }).then(res => {
+      that.setData({
+        foodtypeList: res.data
+      })
+    })
+  },
+
+  getMealTimeData() {
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getAllMealTime}`,
+    }).then(res => {
+      that.setData({
+        mealtimeList: res.data
+      })
+    })
+  },
+
+  chooseType: function () {
+    this.setData({
+      showAddrPciker: true,
+      hiddenAddDetail: true
+    })
+  },
+
+  chooseTime: function () {
+    this.setData({
+      showTimePciker: true,
+      hiddenTimeDetail: true
+    })
+  },
+
+  typeCancel: function () {
+    this.setData({
+      showAddrPciker: false
+    })
+    let that = this
+    setTimeout(function () {
+      that.setData({
+        hiddenAddDetail: false
+      })
+    }, 350)
+    this.checkData()
+  },
+  timeCancel: function () {
+    this.setData({
+      showTimePciker: false
+    })
+    let that = this
+    setTimeout(function () {
+      that.setData({
+        hiddenTimeDetail: false
+      })
+    }, 350)
+    this.checkData()
+  },
+
+  inputName(e) {
+    this.setData({
+      ["reqData.name"]: e.detail
+    })
+    this.checkData()
+  },
+  inputPrice(e) {
+    this.setData({
+      ["reqData.price"]: e.detail
+    })
+    this.checkData()
+  },
+  inputPreCount(e) {
+    this.setData({
+      ["reqData.preCount"]: e.detail
+    })
+    this.checkData()
+  },
+  inputIntroduce(e) {
+    this.setData({
+      ["reqData.introduce"]: e.detail
+    })
+    this.checkData()
+  },
+
+  typeSure: function (e) {
+    let choosedData = e.detail.choosedData
+    this.setData({
+      'reqData.foodtype': choosedData[0].name,
+      'reqData.foodtype_id': choosedData[0].id,
+      showAddrPciker: false
+    })
+    this.checkData()
+  },
+  timeSure: function (e) {
+    let choosedData = e.detail.choosedData
+    this.setData({
+      'reqData.mealtime': choosedData[0].name,
+      'reqData.mealtime_id': choosedData[0].id,
+      showTimePciker: false
+    })
+    this.checkData()
+  },
+
+  checkData() {
+    if (this.data.reqData.name && this.data.reqData.price && this.data.reqData.preCount && this.data.reqData.introduce && this.data.reqData.foodtype && this.data.reqData.mealtime) {
+      this.setData({
+        disabled: false,
+      })
+    } else {
+      this.setData({
+        disabled: true
+      })
+    }
+  },
+
+  addFood() {
+    app.showLoading('', '')
+    let that = this
+    const params = {
+      ...that.data.reqData,
+      image: that.data.imageObject.imageURL,
+    }
+    app.requestNoToken({
+      url: `${apiAddress.default.addOrUpdateFood}`,
+      data: params
+    }).then(res => {
+      if (res && res.isSucceed) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+      wx.stopPullDownRefresh()
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('onLoad');
+    console.log(vt.ip)
   },
 
   /**
@@ -66,7 +243,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getFoodtypeData()
+    this.getMealTimeData()
   },
 
   /**
