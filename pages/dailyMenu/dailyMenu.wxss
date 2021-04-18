@@ -1,24 +1,25 @@
 /* pages/dailyMenu/dailyMenu.wxss */
-.daily-menu {
-  height: 100vh;
-  background-color: #fff;
-  width: 100%;
-}
-
-.heaer-wrap {
+@import "../../templates/showNoneData/showNoneData.wxss";
+.header-wrap {
   height: 64rpx;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 20rpx;
   font-size: 28rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .next-date {
   width: 160rpx;
   text-align: center;
-  color: rgb(255, 204, 119);
+  color: #ff9900;
   font-weight: 600;
 }
+
 .select-date {
   flex: 1;
   display: flex;
@@ -26,13 +27,41 @@
   justify-content: center;
 }
 
-.content-box {
+.foodtype-wrap {
   display: flex;
-  height: 1054rpx;
+  position: fixed;
+  left: 0;
+  top: 80rpx;
+  height: 64rpx;
+  width: 100%;
+  font-size: 30rpx;
+  padding: 0 20rpx;
+  color: #333;
+}
+
+.foodtype-wrap view {
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 64rpx;
+  text-align: center;
+  margin: 0 30rpx;
+}
+
+.fondtype-active {
+  font-weight: 600;
+  border-bottom: 6rpx solid #ff9900;
+  color: #ff9900;
+}
+
+.content-wrap {
+  height: calc(100% - 64rpx);
+  display: flex;
+  margin-top: 146rpx;
 }
 
 .nav-left {
-  width: 170rpx;
+  width: 140rpx;
+  height: 1038rpx;
 }
 
 .content-right {
@@ -85,7 +114,7 @@
   text-align: center;
   border-radius: 25rpx;
   color: #fff;
-  background-color: rgb(218, 87, 12);
+  background-color: #ff9900;
 }
 
 .item-btn {

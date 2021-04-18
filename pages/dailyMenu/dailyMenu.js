@@ -1,4 +1,8 @@
 // pages/dailyMenu/dailyMenu.js
+const vt = require("../../utils/vt.js")
+const apiAddress = require("../../api/lcy.js")
+const app = getApp()
+
 Page({
 
   /**
@@ -6,13 +10,13 @@ Page({
    */
   data: {
     active: 0,
-  },
+    typeActive: 0,
+    foodTypeList: [],
+    foodType: '',
+    noneData: false,
+    mealtimeList: [],
+    mealtime: '',
 
-  onChange(event) {
-    wx.showToast({
-      title: `切换到标签 ${event.detail.name}`,
-      icon: 'none',
-    });
   },
 
   onClickLeft() {
@@ -21,12 +25,64 @@ Page({
       icon: 'none'
     });
   },
+
   onClickRight() {
     wx.showToast({
       title: '后一天',
       icon: 'none'
     });
   },
+
+  getFoodTypeData() {
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getAllFoodType}`,
+    }).then(res => {
+      if(!that.data.foodType) {
+        that.setData({
+          foodType: res.data ? res.data[0].id : ''
+        })
+      }
+      that.setData({
+        foodTypeList: res.data
+      })
+      wx.stopPullDownRefresh()
+    })
+  },
+
+  getMealTimeData() {
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getAllMealTime}`,
+    }).then(res => {
+      if(!that.data.mealtime) {
+        that.setData({
+          mealtime: res.data ? res.data[0].id : ''
+        })
+      }
+      that.setData({
+        mealtimeList: res.data
+      })
+    })
+  },
+
+  changeType(e) {
+    this.setData({
+      foodType: this.data.foodTypeList[e.detail].id,
+      noneData: false,
+    })
+    // setTimeout(() => {
+    //   that.getFoodByType()
+    // })
+  },
+
+  changeMealtime(e) {
+    this.setData({
+      mealtime: e.currentTarget.dataset.item,
+      noneData: false,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -45,7 +101,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getFoodTypeData()
+    this.getMealTimeData()
   },
 
   /**

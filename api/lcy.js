@@ -1,5 +1,7 @@
 let apiAddress = {
   getUserInfo: '/back-sys/back-auth/oauth/login',
+  
+  register: '/back-sys/back-auth/oauth/register',
   modifyUser: '/back-sys/back-auth/oauth/modifyUser',
   modifyPwd: '/back-sys/back-auth/oauth/modifyPwd',
 

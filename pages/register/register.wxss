@@ -1,4 +1,3 @@
-/* pages/login/login.wxss */
 page, .code-logIn {
   width: 100%;
   height: 100%;
@@ -36,7 +35,7 @@ input {
 }
 
 .name-input {
-  margin-top: 186rpx;
+  margin-top: 100rpx;
   border-bottom: 2rpx solid #ccd5ea;
 }
 
@@ -137,4 +136,27 @@ input {
   margin-top: 36rpx;
   cursor: pointer;
   font-size: 28rpx;
+}
+
+.phone-box {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 96rpx;
+  background: rgba(254, 254, 254, 1);
+  border-bottom: 2rpx solid #ccd5ea;
+}
+
+.placeholder {
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(128, 128, 128, 1);
+}
+
+.arrow-icon {
+  width: 26rpx;
+  height: 20rpx;
 }

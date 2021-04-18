@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/register/register",
     "pages/foodDetail/foodDetail",
     "pages/editeName/editeName",
     "pages/modifyPwd/modifyPwd",

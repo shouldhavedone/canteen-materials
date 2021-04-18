@@ -25,6 +25,12 @@ Page({
     })
   },
 
+  toRegister() {
+    wx.navigateTo({
+      url: '../register/register',
+    })
+  },
+
   // 登录接口
   logInInterFace() {
     app.requestNoToken({

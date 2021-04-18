@@ -1,31 +1,6 @@
 /* pages/foodRank/foodRank.wxss */
 @import "../../templates/showNoneData/showNoneData.wxss";
 
-.food-rank {
-  height: 100vh;
-  background-color: #fff;
-  width: 100%;
-}
-
-.header-wrap {
-  margin: 0 20rpx 20rpx;
-  height: 100rpx;
-  border-radius: 20rpx;
-  border: 2rpx solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 24rpx;
-}
-
-.add-post {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 30rpx;
-  margin-right: 24rpx;
-}
-
 .content-wrap {
   display: flex;
   height: calc(100% - 120rpx);
