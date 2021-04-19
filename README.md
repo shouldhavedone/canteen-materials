@@ -20,3 +20,5 @@
 > 控制台  cd server  
 > npm i  
 > npm run dev
+
+4、数据库文件 ./server/canteen-material.sql
