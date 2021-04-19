@@ -17,6 +17,6 @@
 
 3、开启后台
 
-> 控制台  cd server \n
-> npm i \n
+> 控制台  cd server  
+> npm i  
 > npm run dev
