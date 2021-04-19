@@ -99,7 +99,8 @@ Page({
     const params = that.data.reqData
     app.requestNoToken({
       url: `${apiAddress.default.addOrUpdateSupplier}`,
-      data: params
+      data: params,
+      method: 'post'
     }).then(res => {
       if (res && res.isSucceed) {
         wx.navigateBack({

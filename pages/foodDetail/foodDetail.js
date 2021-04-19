@@ -213,7 +213,8 @@ Page({
     }
     app.requestNoToken({
       url: `${apiAddress.default.addOrUpdateFood}`,
-      data: params
+      data: params,
+      method: 'post'
     }).then(res => {
       if (res && res.isSucceed) {
         wx.navigateBack({

@@ -32,7 +32,7 @@
       </view>
       <view class="item-btn">
         <view bindtap="toDetail" data-id="{{ item.id }}">编辑</view>
-        <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteSupplier">删除</view>
+        <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteMealTime">删除</view>
       </view>
     </view>
     <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />

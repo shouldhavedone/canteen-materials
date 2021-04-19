@@ -82,7 +82,8 @@ Page({
             url: `${apiAddress.default.delMealTime}`,
             data: {
               ids: e.currentTarget.dataset.id
-            }
+            },
+            method: 'post'
           }).then(res => {
             wx.showModal({
               'showCancel': false,

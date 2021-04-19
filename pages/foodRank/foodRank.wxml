@@ -26,32 +26,6 @@
       </van-sidebar>
     </view>
     <scroll-view scroll-y="true" class="content-right">
-      <!-- <view class="dishes-item">
-        <view class="dishes-image">
-          <image src="../../images/dished.jpg"></image>
-        </view>
-        <view>名称：早餐：5元早餐</view>
-        <view>价格：5</view>
-        <view>已上架：早餐</view>
-        <view>循环周期：日 一 二 三 四 五 六</view>
-        <view class="item-btn">
-          <view>编辑菜品</view>
-          <view class="del-btn">删除菜品</view>
-        </view>
-      </view>
-      <view class="dishes-item">
-        <view class="dishes-image">
-          <image src="../../images/dished.jpg"></image>
-        </view>
-        <view>名称：早餐：5元早餐</view>
-        <view>价格：5</view>
-        <view>已上架：早餐</view>
-        <view>循环周期：日 一 二 三 四 五 六</view>
-        <view class="item-btn">
-          <view>编辑菜品</view>
-          <view class="del-btn">删除菜品</view>
-        </view>
-      </view> -->
       <view class="dishes-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
         <view class="dishes-image">
           <image src="{{item.image}}"></image>
@@ -63,7 +37,7 @@
         <view>库存：{{item.preCount}}</view>
         <view class="item-btn">
           <view>编辑菜品</view>
-          <view class="del-btn">删除菜品</view>
+          <view class="del-btn" catchtap="deleteFood">删除菜品</view>
         </view>
       </view>
       <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />

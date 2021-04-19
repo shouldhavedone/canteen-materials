@@ -94,7 +94,8 @@ Page({
     const params = that.data.reqData
     app.requestNoToken({
       url: `${apiAddress.default.addOrUpdateFoodType}`,
-      data: params
+      data: params,
+      method: 'post'
     }).then(res => {
       this.setData({
         dialogShow: false,
@@ -120,7 +121,8 @@ Page({
             url: `${apiAddress.default.delFoodType}`,
             data: {
               ids: e.currentTarget.dataset.id
-            }
+            },
+            method: 'post'
           }).then(res => {
             wx.showModal({
               'showCancel': false,

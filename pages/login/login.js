@@ -39,6 +39,7 @@ Page({
         name: this.data.name,
         password: this.data.password,
       },
+      method: "post"
     }).then(res => {
       vt.setStorage('userInfo', JSON.stringify(res.data))
       wx.navigateBack({

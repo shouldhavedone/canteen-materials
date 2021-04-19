@@ -100,6 +100,36 @@ Page({
     })
   },
 
+  deleteFood(e) {
+    let that = this;
+    wx.showModal({
+      'content': '确定要删除该菜品吗？',
+      'cancelColor': '#0076FF',
+      'confirmColor': '#0076FF',
+      success: function (res) {
+        if (res.confirm) {
+          app.requestNoToken({
+            url: `${apiAddress.default.delFood}`,
+            data: {
+              ids: e.currentTarget.dataset.id
+            },
+            method: 'post'
+          }).then(res => {
+            wx.showModal({
+              'showCancel': false,
+              'content': res.message,
+              'confirmColor': '#0076FF',
+              success: function () {
+                that.getFoodByType();
+              }
+            })
+          })
+        }
+        
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
