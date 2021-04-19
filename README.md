@@ -11,4 +11,12 @@
 
 ## 运行
 
-1、git clone 
+1、git clone https://github.com/shouldhavedone/canteen-materials.git
+
+2、微信开发者工具打开文件
+
+3、开启后台
+
+> 控制台  cd server
+> npm i
+> npm run dev
