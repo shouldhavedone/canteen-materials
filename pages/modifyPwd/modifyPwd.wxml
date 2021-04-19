@@ -1,0 +1,24 @@
+<view id="changeName">
+  <view class="content">
+    <input type="password" maxlength='20' placeholder='请输入旧密码' bindinput="changeOldPwd" value="{{oldPwd}}"
+      focus="{{focus}}"></input>
+    <view class="del-box" wx:if="{{oldPwd}}">
+      <button class="del-icon" catchtap="clearOldPwd">×</button>
+    </view>
+  </view>
+  <view class="content">
+    <input type="password" maxlength='20' placeholder='请输入新密码' bindinput="changeNewPwd" value="{{newPwd}}"></input>
+    <view class="del-box" wx:if="{{newPwd}}">
+      <button class="del-icon" catchtap="clearNewPwd">×</button>
+    </view>
+  </view>
+  <view class="content">
+    <input type="password" maxlength='20' placeholder='确认新密码' bindinput="changeRePwd" value="{{reNewPwd}}"></input>
+    <view class="del-box" wx:if="{{reNewPwd}}">
+      <button class="del-icon" catchtap="clearRePwd">×</button>
+    </view>
+  </view>
+  <text class="{{color?'gray':'red'}}">新密码必须至少包含1个数字、2个小写字母、2个大写字母、1个特殊字符，可以使用特殊字符，长度在8-16之间，不能有空格、表情</text>
+  <button class="btn" catchtap="savePwd" disabled="{{disabled}}">保存修改</button>
+</view>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

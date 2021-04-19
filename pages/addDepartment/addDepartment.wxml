@@ -1,0 +1,22 @@
+<!--pages/addDepartment/addDepartment.wxml-->
+<view class="searchEvents">
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">部门名称：</text>
+    <input class='phone-input' type="text" value="{{name}}" bindinput="inputName" placeholder='请输入部门名称'
+      focus="{{focus}}" placeholder-class='phone-tip' type="number"></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{name}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">排序：</text>
+    <input class='phone-input' maxlength="2" value="{{sort}}" bindinput="inputSort" type="number" placeholder='请输入排序'
+      placeholder-class='phone-tip'></input>
+  </view>
+  <view class="confirm-btn">
+    <button class="btn-search" catchtap="addDepartment" disabled="{{disabled}}">添加</button>
+  </view>
+</view>

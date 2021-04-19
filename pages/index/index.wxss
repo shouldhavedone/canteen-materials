@@ -1,8 +1,6 @@
 /**index.wxss**/
 .container {
-  width: 100%;
   height: 100vh;
-  background: rgba(239, 244, 248, 1);
   padding: 20rpx;
 }
 
@@ -13,18 +11,32 @@
   border-radius: 10rpx;
   font-size: 28rpx;
   padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.notice-wrap image {
+  height: 32rpx;
+  width: 32rpx;
+  margin-right: 16rpx;
+}
+
+.notice-wrap view {
+  width: 100%;
+  padding-right: 12rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .easyfun-wrap {
-  height: 200rpx;
   border-radius: 10rpx;
-  padding: 20rpx;
+  padding: 20rpx 20rpx 0;
   background: #fff;
   margin: 20rpx 0;
 }
 
 .funmodel-wrap {
-  height: 300rpx;
   border-radius: 10rpx;
   padding: 20rpx;
   background-color: #fff;
@@ -34,5 +46,93 @@
   font-weight: 600;
   font-size: 30rpx;
   font-family: 'DIN Condensed';
-  margin-bottom: 20rpx;
+  margin-bottom: 16rpx;
+  border-left: 8rpx solid #ff9900;
+  line-height: 36rpx;
+  height: 32rpx;
+  padding-left: 10rpx;
+}
+
+.model-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20rpx;
+  justify-content: space-between;
+}
+
+.odd-item {
+  margin-right: 10rpx;
+  position: relative;
+}
+
+.odd-item::after {
+  content: '';
+  height: 54rpx;
+  width: 6rpx;
+  background-color: #ccc;
+  position: absolute;
+  right: 0;
+}
+
+.model-item {
+  height: 120rpx;
+  width: 49%;
+  font-size: 24rpx;
+  text-align: center;
+  color: #555;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.image-box {
+  height: 64rpx;
+  width: 64rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  background-color: #ff9900;
+  padding: 10rpx;
+}
+
+.model-item image {
+  height: 100%;
+  width: 100%;
+}
+
+.no-logIn {
+  width: 100%;
+  height: 80%;
+  margin-top: 40rpx;
+  background: #fff;
+  box-shadow: 0px 2rpx 0px 0px #ededed;
+}
+
+.no-log-img {
+  width: 668rpx;
+  height: 352rpx;
+  margin-top: 32rpx;
+}
+
+.log-tip {
+  padding-top: 60rpx;
+  justify-content: center;
+}
+
+.log-tip text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  color: #a1acb8;
+  line-height: 40rpx;
+}
+
+.log-blue {
+  color: #426fec !important;
+}
+
+.line {
+  height: 2rpx;
+  width: 100%;
+  background-color: #ccc;
 }

@@ -1,0 +1,6 @@
+<template name="showNoneData">
+  <view class='wrap'>
+    <image src="{{img}}"></image>
+    <view>{{text}}</view>
+  </view>
+</template>

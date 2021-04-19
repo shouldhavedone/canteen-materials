@@ -1,23 +1,45 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
+    "pages/register/register",
+    "pages/foodDetail/foodDetail",
+    "pages/editeName/editeName",
+    "pages/modifyPwd/modifyPwd",
+    "pages/foodType/foodType",
+    "pages/material/material",
+    "pages/addMaterial/addMaterial",
+    "pages/supplier/supplier",
+    "pages/addSupplier/addSupplier",
+    "pages/login/login",
+    "pages/addDepartment/addDepartment",
+    "pages/addPost/addPost",
     "pages/news/news",
-    "pages/personalCenter/personalCenter"
+    "pages/personalCenter/personalCenter",
+    "pages/userMag/userMag",
+    "pages/mealOpeningTime/mealOpeningTime",
+    "pages/dailyMenu/dailyMenu",
+    "pages/foodRank/foodRank",
+    "pages/noticeList/noticeList",
+    "pages/dinnerTime/dinnerTime",
+    "pages/addMealTime/addMealTime",
+    "pages/noticeContent/noticeContent",
+    "pages/departmentSetup/departmentSetup",
+    "pages/postSetup/postSetup",
+    "pages/mealDate/mealDate"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "",
+    "navigationBarTitleText": "食堂物资管理",
     "navigationStyle": "default",
-    "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#488FF7",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#808080",
     "selectedColor": "#3A62FD",
     "backgroundColor": "#fff",
     "borderStyle": "black",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/tabbar_icon_vitoselected@2x.png",
@@ -42,6 +64,27 @@
       "desc": "获取当前位置"
     }
   },
-  "style": "v2",
+  "usingComponents": {
+    "loading": "./components/loading/loading",
+    "backHome": "./components/backHome/backHome",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-sidebar": "@vant/weapp/sidebar/index",
+    "van-sidebar-item": "@vant/weapp/sidebar-item/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-dialog": "@vant/weapp/dialog/index"
+  },
   "sitemapLocation": "sitemap.json"
 }

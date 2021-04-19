@@ -1,0 +1,77 @@
+page, #changeName {
+  width: 100%;
+  height: 100%;
+}
+
+#changeName {
+  background: #f5f6fa;
+  border-top: 1rpx solid rgba(175, 180, 191, 0.3);
+  /* font-size: 36rpx; */
+}
+
+.content {
+  position: relative;
+  height: 120rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content input {
+  width: 650rpx;
+  padding-left: 36rpx;
+  font-size:28rpx;
+}
+
+.content .del-box {
+  width: 100rpx;
+  height: 120rpx;
+  position: absolute;
+  right: 36rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* background: red; */
+}
+
+button.del-icon {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: #b0b4be;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.btn,.btn:active {
+  width: 688rpx;
+  height: 88rpx;
+  margin: 96rpx auto 0 auto;
+  background: rgba(72, 143, 247, 1) !important;
+  border-radius: 4rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1) !important;
+  line-height: 88rpx;
+}
+
+text {
+  display: block;
+  height: 24rpx;
+  font-size: 24rpx;
+  margin: 36rpx auto auto 36rpx;
+}
+
+.gray {
+  color: rgba(151, 154, 162, 1);
+}
+
+.red {
+  color: rgba(244, 79, 79, 1);
+}

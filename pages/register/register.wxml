@@ -1,0 +1,31 @@
+<view class="code-logIn">
+  <view class="tip">注册</view>
+  <view class="bg-tip"></view>
+  <input class='name-input' type="text" placeholder='请输入用户名' type='text' maxlength='20' auto-focus
+    placeholder-class='place-style' bindinput='getName' value="{{name}}"></input>
+  <input class='pwd-input' type="password" placeholder='请输入密码' type='password' maxlength='20' auto-focus
+    placeholder-class='place-style' bindinput='getPassword' value="{{password}}"></input>
+  <input class='pwd-input' type="password" placeholder='请再次输入密码' type='password' maxlength='20' auto-focus
+    placeholder-class='place-style' bindinput='getRePwd' value="{{rePwd}}"></input>
+  <input class='pwd-input' type="text" placeholder='请输入电话' type='text' maxlength='11' minlength="11" auto-focus
+    placeholder-class='place-style' bindinput='getTel' value="{{tel}}"></input>
+  <view class="phone-box" bindtap="chooseDepart">
+    <!-- <view class="departInfo" bindtap="chooseDepart"> -->
+      <text wx:if="{{department}}">{{department}}</text>
+      <text wx:else class="placeholder">请选择所属部门</text>
+      <image src="../../images/arrow.png" class="arrow-icon"></image>
+    <!-- </view> -->
+  </view>
+  <view class="err-tip" wx:if="{{errTip}}">
+    <image src="../../images/eret.png"></image>
+    <view>{{errTip}}</view>
+  </view>
+  <view class="btn {{errTip?'btn-gap':''}} {{name&&password&&rePwd?'deepBlue':''}}" catchtap="submit">注册</view>
+  <view class="regbtn" catchtap="toLogin">已有帐号？去登录 》</view>
+
+  <picker isShowPicker="{{showDepartPciker}}" mode="selector" keyWordsOfShow="name" bindsure="departSure"
+    bindcancle="departCancel" scrollType="link" listData="{{departList}}" indicatorStyle="height:62px" maskStyle=""
+    titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
+    pickerHeaderStyle="background:#fff;" titleText="所属部门" cancelText="取消" sureText="完成"></picker>
+</view>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

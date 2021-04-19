@@ -1,0 +1,48 @@
+<view class="searchEvents">
+  <view class="phone-box">
+    <image src="../../images/app_icon_bitian@2x.png" class=phone-img"></image>
+    <text class="label-text">所属供应商：</text>
+    <view class="departInfo" bindtap="chooseDepart">
+      <text wx:if="{{reqData.supplier}}">{{reqData.supplier}}</text>
+      <text wx:else class="placeholder">请选择所属供应商</text>
+      <image src="../../images/arrow.png" class="arrow-icon"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">物资名称：</text>
+    <input class='phone-input' type="text" value="{{reqData.name}}" bindinput="inputName" placeholder='请输入物资名称'
+      focus="{{focus}}" placeholder-class='phone-tip' type="number"></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.name}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">库存：</text>
+    <input class='phone-input' type="text" value="{{reqData.count}}" bindinput="inputCount" placeholder='请输入物资库存'
+      focus="{{focus}}" placeholder-class='phone-tip' type="number"></input>
+    <view class="line"></view>
+    <!-- <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.count}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view> -->
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">物资价格：</text>
+    <input class='phone-input' type="text" value="{{reqData.price}}" bindinput="inputPrice" placeholder='请输入物资价格'
+      focus="{{focus}}" placeholder-class='phone-tip' type="number"></input>
+    <view class="line"></view>
+    <!-- <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.price}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view> -->
+  </view>
+  <view class="confirm-btn">
+    <button class="btn-search" catchtap="addMaterial" disabled="{{disabled}}">添加</button>
+  </view>
+  <picker isShowPicker="{{showAddrPciker}}" mode="selector" keyWordsOfShow="name" bindsure="supplierSure"
+    bindcancle="supplierCancel" scrollType="link" listData="{{supplierList}}" indicatorStyle="height:62px" maskStyle=""
+    titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
+    pickerHeaderStyle="background:#fff;" titleText="所属供应商" cancelText="取消" sureText="完成"></picker>
+</view>

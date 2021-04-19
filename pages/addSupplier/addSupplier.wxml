@@ -1,0 +1,46 @@
+<!--pages/addSupplier/addSupplier.wxml-->
+<view class="searchEvents">
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">供应商：</text>
+    <input class='phone-input' type="text" value="{{reqData.name}}" bindinput="inputName" placeholder='请输入供应商名称'
+      focus="{{focus}}" placeholder-class='phone-tip'></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.name}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">商人：</text>
+    <input class='phone-input' type="text" value="{{reqData.user}}" bindinput="inputUser" placeholder='请输入商人名称'
+      focus="{{focus}}" placeholder-class='phone-tip' type="text"></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.user}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">电话：</text>
+    <input class='phone-input' placeholder='请输入手机号码' type='number' maxlength='11' auto-focus
+      placeholder-class='phone-tip' value='{{reqData.tel}}' bindinput="inputTel"></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.address}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">地址：</text>
+    <input class='phone-input' type="text" value="{{reqData.address}}" bindinput="inputAddr" placeholder='请输入地址'
+      focus="{{focus}}" placeholder-class='phone-tip' type="text"></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.address}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="confirm-btn">
+    <button class="btn-search" catchtap="confirmAdd" disabled="{{disabled}}">添加</button>
+  </view>
+</view>

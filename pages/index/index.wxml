@@ -1,10 +1,99 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="notice-wrap">信息通知</view>
-  <view class="easyfun-wrap">
-    <view class="model-title">快捷功能</view>
+  <van-notice-bar left-icon="volume-o" background="#fff" mode="link" bindtap="toNoticeList"
+    text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。" />
+  <view wx:if="{{userId}}" class="easyfun-wrap">
+    <view class="model-title">人员管理</view>
+    <view class="line"></view>
+    <view class="model-list">
+      <view class="model-item odd-item" catchtap="toDeptSetup">
+        <view class="image-box">
+          <image src="../../images/department.png"></image>
+        </view>
+        <view>部门设置</view>
+      </view>
+      <view class="model-item" catchtap="toUPostSetup">
+        <view class="image-box">
+          <image src="../../images/position.png"></image>
+        </view>
+        <view>职位设置</view>
+      </view>
+      <view class="line"></view>
+      <view class="model-item odd-item" catchtap="toUserMag">
+        <view class="image-box">
+          <image src="../../images/user.png"></image>
+        </view>
+        <view>人员管理</view>
+      </view>
+      <!-- <view class="model-item">
+        <view class="image-box">
+          <image src="../../images/model.png"></image>
+        </view>
+        <view>关于我们</view>2
+      </view> -->
+    </view>
   </view>
-  <view class="funmodel-wrap">
-    <view class="model-title">功能模块</view>
+  <view wx:if="{{userId}}" class="easyfun-wrap">
+    <view class="model-title">供应管理</view>
+    <view class="line"></view>
+    <view class="model-list">
+      <view class="model-item odd-item" catchtap="toSupplier">
+        <view class="image-box">
+          <image src="../../images/supplier.png"></image>
+        </view>
+        <view>供应商管理</view>
+      </view>
+      <view class="model-item" catchtap="toMaterial">
+        <view class="image-box">
+          <image src="../../images/material.png"></image>
+        </view>
+        <view>物资管理</view>
+      </view>
+      <view class="line"></view>
+      <view class="model-item odd-item" catchtap="toFoodType">
+        <view class="image-box">
+          <image src="../../images/type.png"></image>
+        </view>
+        <view>菜类管理</view>
+      </view>
+      <view class="model-item" catchtap="toFoodRank">
+        <view class="image-box">
+          <image src="../../images/menu.png"></image>
+        </view>
+        <view>菜品库</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{userId}}" class="funmodel-wrap">
+    <view class="model-title">用餐管理</view>
+    <view class="line"></view>
+    <view class="model-list">
+      <!-- <view class="model-item" catchtap="toMealOpenTime">
+        <image src="../../images/model.png"></image>
+        <view>开餐日期</view>
+      </view> -->
+      <view class="model-item odd-item" catchtap="toDinnerTime">
+        <view class="image-box">
+          <image src="../../images/mealtime.png"></image>
+        </view>
+        <view>用餐时段</view>
+      </view>
+
+      <view class="model-item" catchtap="toDailyMenu">
+        <view class="image-box">
+          <image src="../../images/dailymenu.png"></image>
+        </view>
+        <view>每日菜谱</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="no-logIn" wx:if="{{!userId}}">
+    <image class="no-log-img" src="../../images/asd@2x.png"></image>
+    <view class="log-tip fl-s" catchtap="toLogIn">
+      <text>你还未登录，请</text>
+      <text class="log-blue">登录</text>
+      <text>后查看相关动态</text>
+    </view>
   </view>
 </view>

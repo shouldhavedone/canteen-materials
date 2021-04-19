@@ -1,0 +1,98 @@
+/* pages/foodType/foodType.wxss */
+@import "../../templates/showNoneData/showNoneData.wxss";
+
+.depart-item {
+  width: 100%;
+  border-radius: 28rpx;
+  margin-top: 16rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  box-shadow: 2rpx 2rpx 6rpx 2rpx #ccc;
+}
+
+.item-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-left view {
+  margin-top: 10rpx;
+}
+
+.item-btn {
+  width: 100%;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.item-btn view {
+  display: inline-block;
+  width: 152rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  font-size: 24rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 32rpx;
+}
+
+.del-btn {
+  background-color: #ee0a24;
+  color: #fff;
+  border: 1px solid #ee0a24;
+}
+
+.add-form {
+  width: 706rpx;
+  height: 400rpx;
+  padding: 74rpx 40rpx 0;
+}
+
+.phone-box {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 96rpx;
+  padding: 0 0 0 32rpx;
+  background: rgba(254, 254, 254, 1);
+}
+
+.phone-img {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 12rpx;
+}
+
+.phone-tip {
+  font-size: 28rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 40rpx;
+}
+
+.label-text {
+  width: 170rpx;
+  font-size: 28rpx;
+}
+
+.phone-input {
+  width: 500rpx;
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.delete-box {
+  width: 104rpx;
+  height: 120rpx;
+  padding-top: 40rpx;
+}
+
+.icon-delete {
+  display: block;
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 auto;
+}

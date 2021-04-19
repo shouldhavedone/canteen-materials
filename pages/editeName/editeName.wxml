@@ -1,0 +1,12 @@
+<!--pages/editeName/editeName.wxml-->
+<view id="changeName">
+  <form class="content" bindreset="clearInput">
+    <input maxlength='20' placeholder='请输入用户名' bindinput="changeName" value="{{inputVal}}" focus="{{focus}}"></input>
+    <view class="del-box" wx:if="{{inputVal}}">
+      <button class="del-icon" form-type="reset">×</button>
+    </view>
+  </form>
+  <text class="{{color?'gray':'red'}}">2-20个字符,不能有空格,不能有表情等特殊字符</text>
+  <button class="btn" bindtap='saveName'>保存修改</button>
+</view>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

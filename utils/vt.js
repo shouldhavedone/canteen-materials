@@ -4,10 +4,10 @@ let VT = {};
 VT = {
   tokenName: 'token',
   ip: null, // api的ip地址
-  setIp: function (httpNUm) {
+  setIp: function (httpNum) {
     switch (httpNum) {
       case 0: // 开发接口
-        this.ip = '';
+        this.ip = 'http://127.0.0.1:7001';
         break;
       case 1: // 测试接口
         this.ip = '';
@@ -46,12 +46,11 @@ VT = {
     })
   },
 
-  setStorgage: function (key, data) {
-    wx.setStorageSync('key', data);
+  setStorage: function(key, data) {
+    wx.setStorageSync(key, data);
   },
-
-  getStorage: function (key) {
-    wx.getStorageSync('key');
+  getStorage: function(key) {
+    return wx.getStorageSync(key);
   },
 
   isSkipUrl: false,
@@ -385,7 +384,7 @@ VT = {
     return result  
   }
 }
-VT.setIP(httpNum); // 服务器ip地址
+VT.setIp(httpNum); // 服务器ip地址
 VT.setAppId(); // 设置appid
 
 module.exports = {

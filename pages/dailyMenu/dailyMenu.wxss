@@ -1,0 +1,143 @@
+/* pages/dailyMenu/dailyMenu.wxss */
+@import "../../templates/showNoneData/showNoneData.wxss";
+.header-wrap {
+  height: 64rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.next-date {
+  width: 160rpx;
+  text-align: center;
+  color: #ff9900;
+  font-weight: 600;
+}
+
+.select-date {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foodtype-wrap {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 80rpx;
+  height: 64rpx;
+  width: 100%;
+  font-size: 30rpx;
+  padding: 0 20rpx;
+  color: #333;
+}
+
+.foodtype-wrap view {
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 64rpx;
+  text-align: center;
+  margin: 0 30rpx;
+}
+
+.fondtype-active {
+  font-weight: 600;
+  border-bottom: 6rpx solid #ff9900;
+  color: #ff9900;
+}
+
+.content-wrap {
+  height: calc(100% - 64rpx);
+  display: flex;
+  margin-top: 146rpx;
+}
+
+.nav-left {
+  width: 140rpx;
+  height: 1038rpx;
+}
+
+.content-right {
+  flex: 1;
+  background-color: #f0f3f6;
+  padding: 20rpx;
+}
+
+.dishes-item {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 2rpx 2rpx 2rpx #ddd;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.dishes-box {
+  display: flex;
+}
+
+.dishes-image {
+  margin-right: 20rpx;
+}
+
+.dished-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dishes-image image {
+  height: 120rpx;
+  width: 130rpx;
+  border-radius: 16rpx;
+}
+
+.add-dishes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.add-dishes view {
+  width: 260rpx;
+  height: 50rpx;
+  font-size: 24rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 25rpx;
+  color: #fff;
+  background-color: #ff9900;
+}
+
+.item-btn {
+  width: 100%;
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-btn view {
+  display: inline-block;
+  width: 200rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 24rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 32rpx;
+}
+
+.del-btn {
+  background-color: #ee0a24;
+  color: #fff;
+  border: 1px solid #ee0a24;
+}

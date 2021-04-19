@@ -1,0 +1,70 @@
+/* pages/foodRank/foodRank.wxss */
+@import "../../templates/showNoneData/showNoneData.wxss";
+
+.content-wrap {
+  display: flex;
+  height: calc(100% - 120rpx);
+}
+
+.nav-left {
+  width: 170rpx;
+  position: fixed;
+  height: 100%;
+}
+
+.content-right {
+  flex: 1;
+  background-color: #f0f3f6;
+  padding: 20rpx;
+  margin-left: 170rpx;
+  overflow: hidden;
+  height: 1076rpx;
+}
+
+.dishes-item {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 2rpx 2rpx 2rpx #ddd;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.dishes-item>view {
+  margin-bottom: 16rpx;
+}
+
+.dishes-image {
+  text-align: center;
+}
+
+.dishes-image image {
+  height: 120rpx;
+  width: 160rpx;
+}
+
+.item-btn {
+  width: 100%;
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-btn view {
+  display: inline-block;
+  width: 200rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 24rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 32rpx;
+}
+
+.del-btn {
+  background-color: #ee0a24;
+  color: #fff;
+  border: 1px solid #ee0a24;
+}

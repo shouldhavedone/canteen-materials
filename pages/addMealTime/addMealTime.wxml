@@ -1,0 +1,55 @@
+<view class="searchEvents">
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">标题：</text>
+    <input class='phone-input' type="text" value="{{reqData.name}}" bindinput="inputName" placeholder='请输入时段标题'
+      focus="{{focus}}" placeholder-class='phone-tip'></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.name}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">份数：</text>
+    <input class='phone-input' type="text" value="{{reqData.count}}" bindinput="inputCount" placeholder='请输入份数'
+      placeholder-class='phone-tip' type="text"></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.count}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image src="../../images/app_icon_bitian@2x.png" class=phone-img"></image>
+    <text class="label-text">开始时间：</text>
+    <view class="departInfo" bindtap="starttimeHShow">
+      <text wx:if="{{reqData.starttime}}">{{reqData.starttime}}</text>
+      <text wx:else class="placeholder">请选择开始时间</text>
+      <image src="../../images/arrow.png" class="arrow-icon"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image src="../../images/app_icon_bitian@2x.png" class=phone-img"></image>
+    <text class="label-text">结束时间：</text>
+    <view class="departInfo" bindtap="endtimeHShow">
+      <text wx:if="{{reqData.endtime}}">{{reqData.endtime}}</text>
+      <text wx:else class="placeholder">请选择结束时间</text>
+      <image src="../../images/arrow.png" class="arrow-icon"></image>
+    </view>
+  </view>
+  <view class="confirm-btn">
+    <button class="btn-search" catchtap="addMealTime" disabled="{{disabled}}">添加</button>
+  </view>
+
+  <van-popup show="{{ starttimeShow }}" position="bottom" custom-style="height: 60%;">
+    <van-datetime-picker type="time" value="{{ reqData.starttime }}" min-hour="{{ minHour }}" max-hour="{{ maxHour }}"
+      bind:input="inputStarttime" bind:confirm="starttimeClose" />
+  </van-popup>
+  <van-popup show="{{ endtimeShow }}" position="bottom" custom-style="height: 60%;">
+    <van-datetime-picker type="time" value="{{ reqData.endtime }}" min-hour="{{ minHour }}" max-hour="{{ maxHour }}"
+      bind:input="inputEndTime" bind:confirm="endtimeClose" />
+  </van-popup>
+
+
+
+</view>

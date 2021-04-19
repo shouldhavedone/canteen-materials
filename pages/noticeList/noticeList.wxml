@@ -1,0 +1,12 @@
+<!--pages/noticeList/noticeList.wxml-->
+<view class="container">
+  <view class="notice-item" wx:for="{{noticeList}}" wx:key="index" data-item="{{item}}" catchtap="toNoticeContent">
+    <view class="notice-wrap">
+      <view class="title">【{{item.title}}】{{item.endtime}}</view>
+      <view class="createtime">{{item.createtime}}</view>
+    </view>
+    <image class="image" src="../../images/right.png"></image>
+  </view>
+  <backHome></backHome>
+</view>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

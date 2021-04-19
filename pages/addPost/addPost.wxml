@@ -1,0 +1,34 @@
+<view class="searchEvents">
+  <view class="phone-box">
+    <image src="../../images/app_icon_bitian@2x.png" class=phone-img"></image>
+    <text class="label-text">所属部门：</text>
+    <view class="departInfo" bindtap="chooseDepart">
+      <text wx:if="{{reqData.department}}">{{reqData.department}}</text>
+      <text wx:else class="placeholder">请选择所属部门</text>
+      <image src="../../images/arrow.png" class="arrow-icon"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">职位名称：</text>
+    <input class='phone-input' type="text" value="{{reqData.name}}" bindinput="inputName" placeholder='请输入部门名称'
+      focus="{{focus}}" placeholder-class='phone-tip' type="number"></input>
+    <view class="line"></view>
+    <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.name}}">
+      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
+    </view>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">排序：</text>
+    <input class='phone-input' maxlength="2" value="{{reqData.sort}}" bindinput="inputSort" type="number"
+      placeholder='请输入排序' placeholder-class='phone-tip'></input>
+  </view>
+  <view class="confirm-btn">
+    <button class="btn-search" catchtap="addPost" disabled="{{disabled}}">添加</button>
+  </view>
+  <picker isShowPicker="{{showAddrPciker}}" mode="selector" keyWordsOfShow="name" bindsure="departSure"
+    bindcancle="departCancel" scrollType="link" listData="{{departList}}" indicatorStyle="height:62px" maskStyle=""
+    titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
+    pickerHeaderStyle="background:#fff;" titleText="所属部门" cancelText="取消" sureText="完成"></picker>
+</view>
