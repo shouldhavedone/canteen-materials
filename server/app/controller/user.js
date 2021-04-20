@@ -105,6 +105,7 @@ class UserController extends Controller {
         isSucceed: true,
       }
     } else {
+      params.createtime = new Date()
       const [res, created] = await ctx.model.User.findOrCreate({
         where: {
           name: params.name,

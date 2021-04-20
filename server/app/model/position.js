@@ -39,7 +39,9 @@ module.exports = app => {
 
   Position.associate = function () {
     app.model.Position.belongsTo(app.model.Department)
+    app.model.Position.hasMany(app.model.User, {
+      foreignKey: 'position_id',
+    })
   }
-
   return Position
 }

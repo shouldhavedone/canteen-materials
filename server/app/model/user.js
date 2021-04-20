@@ -35,7 +35,13 @@ module.exports = app => {
       references: {
         model: 'Department',
       }
-    }
+    },
+    position_id: {
+      type: INTEGER(8),
+      references: {
+        model: 'Position',
+      }
+    },
   }, {
     freezeTableName: true,
     timestamps: false,
@@ -44,6 +50,7 @@ module.exports = app => {
 
   User.associate = function () {
     app.model.User.belongsTo(app.model.Department)
+    app.model.User.belongsTo(app.model.Position)
   }
 
   return User
