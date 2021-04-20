@@ -1,4 +1,6 @@
 /* pages/userMag/userMag.wxss */
+@import "../../templates/showNoneData/showNoneData.wxss";
+
 .container {
   height: 100%;
   padding: 8rpx 20rpx;
@@ -40,8 +42,16 @@
   justify-content: space-between;
 }
 
+.item-left {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .item-left view{
   margin-top: 10rpx;
+  width: 49%;
 }
 
 .item-btn {
@@ -91,3 +101,24 @@
 .sure-btn {
   color: #058de9;
 }
+
+.select-btn {
+  width: 72rpx;
+  color: #666;
+  font-size: 28rpx;
+  margin-left: 14rpx;
+}
+
+.page-header-search-icon {
+  margin: 0;
+}
+
+.page-header-input {
+  left: 138rpx;
+}
+
+.page-header-line {
+  right: auto;
+  left: 120rpx;
+}
+

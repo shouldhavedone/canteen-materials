@@ -6,6 +6,8 @@
 module.exports = app => {
   const { router, controller } = app;
   router.post('/back-sys/back-auth/oauth/login', controller.user.getUserInfo);
+  router.get('/back-sys/back-auth/oauth/getUserList', controller.user.getUserList);
+  router.post('/back-sys/back-auth/oauth/delUser', controller.user.delUser);
   router.post('/back-sys/back-auth/oauth/register', controller.user.addOrUpdateUser);
   router.post('/back-sys/back-auth/oauth/modifyUser', controller.user.addOrUpdateUser);
   router.post('/back-sys/back-auth/oauth/modifyPwd', controller.user.modifyPwd);

@@ -224,7 +224,6 @@ Page({
   },
 
   submit() {
-    console.log('1')
     if (this.data.nameCheck && this.data.pwdCheck) {
       this.registerInterface()
     }
