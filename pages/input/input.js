@@ -1,3 +1,4 @@
+// pages/materialSetup/materialSetup.js
 const vt = require("../../utils/vt.js")
 const apiAddress = require("../../api/lcy.js")
 const app = getApp()
@@ -8,19 +9,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    foodTypeName: '',
+    orderName: '',
     checked: true,
+    show: false,
     noneData: false,
     lists: [],
     focus: false,
-    dialogShow: false,
-    reqData: {
-      id: '',
-      name: '',
-    }
   },
 
-  contentFocus() {
+  contentFocus(){
     this.setData({
       focus: true
     })
@@ -28,51 +25,28 @@ Page({
 
   searchName(e) {
     this.setData({
-      foodTypeName: e.detail.value
+      orderName: e.detail.value
     })
   },
 
   clearSearchName() {
     this.setData({
-      foodTypeName: '',
+      orderName: '',
       focus: false,
     })
-    this.getFoodTypeData()
+    this.getOrderData()
   },
 
-  showPopup() {
-    this.setData({
-      dialogShow: true,
-    })
-  },
-
-  dialogOnClose() {
-    this.setData({
-      dialogShow: false,
-    })
-  },
-
-  toDetail(e) {
-    console.log(e.currentTarget.dataset.id)
-  },
-
-  inputName(e) {
-    let str = "reqData.name"
-    this.setData({
-      [str]: e.detail.value
-    })
-  },
-
-  getFoodTypeData() {
+  getOrderData() {
     this.setData({
       focus: false,
     })
     app.showLoading('', '')
     let that = this
     app.requestNoToken({
-      url: `${apiAddress.default.getFoodTypeList}`,
+      url: `${apiAddress.default.getOrderList}`,
       data: {
-        queryName: that.data.foodTypeName
+        queryName: that.data.orderName
       }
     }).then(res => {
       let total = res.total;
@@ -85,6 +59,9 @@ Page({
           noneData: false
         })
       }
+      for (let item of res.data) {
+        item.createtime = vt.dateFormat(new Date(item.createtime), 'yy-MM-dd mm:ss:qq')
+      }
       that.setData({
         lists: res.data
       })
@@ -92,37 +69,16 @@ Page({
     })
   },
 
-  addFoodType() {
-    app.showLoading('', '')
-    let that = this
-    const params = that.data.reqData
-    app.requestNoToken({
-      url: `${apiAddress.default.addOrUpdateFoodType}`,
-      data: params,
-      method: 'post'
-    }).then(res => {
-      this.setData({
-        dialogShow: false,
-        reqData: {
-          id: '',
-          name: ''
-        }
-      })
-      this.getFoodTypeData()  
-      wx.stopPullDownRefresh()
-    })
-  },
-
-  deleteFoodType(e) {
+  deleteOrder(e) {
     let that = this;
     wx.showModal({
-      'content': '确定要删除该类型吗？',
+      'content': '确定要删除该物资吗？',
       'cancelColor': '#0076FF',
       'confirmColor': '#0076FF',
       success: function (res) {
         if (res.confirm) {
           app.requestNoToken({
-            url: `${apiAddress.default.delFoodType}`,
+            url: `${apiAddress.default.delOrder}`,
             data: {
               ids: e.currentTarget.dataset.id
             },
@@ -133,7 +89,7 @@ Page({
               'content': res.message,
               'confirmColor': '#0076FF',
               success: function () {
-                that.getFoodTypeData();
+                that.getOrderData();
               }
             })
           })
@@ -143,6 +99,15 @@ Page({
     })
   },
 
+  onClose() {
+    this.setData({
+      show: false
+    });
+  },
+
+  onChange(event) {
+    
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -161,7 +126,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getFoodTypeData()
+    this.getOrderData();
   },
 
   /**

@@ -73,6 +73,7 @@ Page({
         isLogIn: false,
         headPic: '../../images/img_default @2x.png',
         name: '未登录',
+        tel: '',
       })
     }
   },

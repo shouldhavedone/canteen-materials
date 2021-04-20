@@ -20,16 +20,6 @@
   </view>
   <view class="phone-box">
     <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
-    <text class="label-text">库存：</text>
-    <input class='phone-input' type="text" value="{{reqData.count}}" bindinput="inputCount" placeholder='请输入物资库存'
-      focus="{{focus}}" placeholder-class='phone-tip' type="number"></input>
-    <view class="line"></view>
-    <!-- <view class="delete-box" catchtap="deleteNumber" wx:if="{{reqData.count}}">
-      <image class="icon-delete" src="../../images/deleteIcon.png"></image>
-    </view> -->
-  </view>
-  <view class="phone-box">
-    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
     <text class="label-text">物资价格：</text>
     <input class='phone-input' type="text" value="{{reqData.price}}" bindinput="inputPrice" placeholder='请输入物资价格'
       focus="{{focus}}" placeholder-class='phone-tip' type="number"></input>

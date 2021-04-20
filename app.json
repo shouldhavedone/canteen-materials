@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/addStock/addStock",
+    "pages/stock/stock",
+    "pages/input/input",
     "pages/register/register",
     "pages/foodDetail/foodDetail",
     "pages/editeName/editeName",

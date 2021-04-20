@@ -49,6 +49,24 @@
         </view>
         <view>物资管理</view>
       </view>
+    </view>
+  </view>
+  <view wx:if="{{userId}}" class="easyfun-wrap">
+    <view class="model-title">库存管理</view>
+    <view class="line"></view>
+    <view class="model-list">
+      <view class="model-item odd-item" catchtap="toStock">
+        <view class="image-box">
+          <image src="../../images/menu.png"></image>
+        </view>
+        <view>库存管理</view>
+      </view>
+      <view class="model-item" catchtap="toInput">
+        <view class="image-box">
+          <image src="../../images/menu.png"></image>
+        </view>
+        <view>订单管理</view>
+      </view>
       <view class="line"></view>
       <view class="model-item odd-item" catchtap="toFoodType">
         <view class="image-box">

@@ -63,6 +63,10 @@ Page({
         that.setData({
           noneData: true,
         })
+      } else {
+        that.setData({
+          noneData: false
+        })
       }
       that.setData({
         lists: res.data

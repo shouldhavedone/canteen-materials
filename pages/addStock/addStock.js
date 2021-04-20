@@ -1,3 +1,4 @@
+// pages/materialSetup/materialSetup.js
 const vt = require("../../utils/vt.js")
 const apiAddress = require("../../api/lcy.js")
 const app = getApp()
@@ -8,16 +9,59 @@ Page({
    * 页面的初始数据
    */
   data: {
-    foodTypeName: '',
+    materialName: '',
     checked: true,
+    show: false,
     noneData: false,
     lists: [],
     focus: false,
     dialogShow: false,
     reqData: {
-      id: '',
-      name: '',
+      supplier: '',
+      material: '',
+      material_id: '',
+      price: 0,
+      total_price: 0,
+      count: 0,
     }
+  },
+
+  showMaterial(e) {
+    this.resetData();
+    const record = e.currentTarget.dataset.item;
+    this.setData({
+      dialogShow: true,
+      'reqData.supplier': record.Supplier.name,
+      'reqData.material': record.name,
+      'reqData.price': record.price,
+      'reqData.material_id': record.id,
+    })
+  },
+
+  dialogOnClose() {
+    this.setData({
+      dialogShow: false,
+    })
+  },
+
+  resetData() {
+    this.setData({
+      reqData: {
+        supplier: '',
+        material: '',
+        material_id: '',
+        price: 0,
+        total_price: 0,
+        count: '',
+      }
+    })
+  },
+
+  inputCount(e) {
+    this.setData({
+      'reqData.count': e.detail.value,
+      'reqData.total_price': e.detail.value * this.data.reqData.price
+    })
   },
 
   contentFocus() {
@@ -28,51 +72,33 @@ Page({
 
   searchName(e) {
     this.setData({
-      foodTypeName: e.detail.value
+      materialName: e.detail.value
+    })
+  },
+  showPopup() {
+    wx.navigateTo({
+      url: '../addMaterial/addMaterial'
     })
   },
 
   clearSearchName() {
     this.setData({
-      foodTypeName: '',
+      materialName: '',
       focus: false,
     })
-    this.getFoodTypeData()
+    this.getMaterialData()
   },
 
-  showPopup() {
-    this.setData({
-      dialogShow: true,
-    })
-  },
-
-  dialogOnClose() {
-    this.setData({
-      dialogShow: false,
-    })
-  },
-
-  toDetail(e) {
-    console.log(e.currentTarget.dataset.id)
-  },
-
-  inputName(e) {
-    let str = "reqData.name"
-    this.setData({
-      [str]: e.detail.value
-    })
-  },
-
-  getFoodTypeData() {
+  getMaterialData() {
     this.setData({
       focus: false,
     })
     app.showLoading('', '')
     let that = this
     app.requestNoToken({
-      url: `${apiAddress.default.getFoodTypeList}`,
+      url: `${apiAddress.default.getMaterialList}`,
       data: {
-        queryName: that.data.foodTypeName
+        queryName: that.data.materialName
       }
     }).then(res => {
       let total = res.total;
@@ -92,37 +118,16 @@ Page({
     })
   },
 
-  addFoodType() {
-    app.showLoading('', '')
-    let that = this
-    const params = that.data.reqData
-    app.requestNoToken({
-      url: `${apiAddress.default.addOrUpdateFoodType}`,
-      data: params,
-      method: 'post'
-    }).then(res => {
-      this.setData({
-        dialogShow: false,
-        reqData: {
-          id: '',
-          name: ''
-        }
-      })
-      this.getFoodTypeData()  
-      wx.stopPullDownRefresh()
-    })
-  },
-
-  deleteFoodType(e) {
+  deleteMaterial(e) {
     let that = this;
     wx.showModal({
-      'content': '确定要删除该类型吗？',
+      'content': '确定要删除该物资吗？',
       'cancelColor': '#0076FF',
       'confirmColor': '#0076FF',
       success: function (res) {
         if (res.confirm) {
           app.requestNoToken({
-            url: `${apiAddress.default.delFoodType}`,
+            url: `${apiAddress.default.delMaterial}`,
             data: {
               ids: e.currentTarget.dataset.id
             },
@@ -133,7 +138,7 @@ Page({
               'content': res.message,
               'confirmColor': '#0076FF',
               success: function () {
-                that.getFoodTypeData();
+                that.getMaterialData();
               }
             })
           })
@@ -143,6 +148,33 @@ Page({
     })
   },
 
+  onClose() {
+    this.setData({
+      show: false
+    });
+  },
+
+  addMaterial() {
+    const params = {
+      ...this.data.reqData
+    }
+    console.log(params)
+
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.addStock}`,
+      data: params,
+      method: 'post'
+    }).then(res => {
+      console.log(res)
+    })
+  },
+
+  onChange(event) {
+    // event.detail 为当前输入的值
+    console.log(event.detail);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -161,7 +193,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getFoodTypeData()
+    this.getMaterialData();
   },
 
   /**

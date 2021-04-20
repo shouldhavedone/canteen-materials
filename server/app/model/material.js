@@ -39,6 +39,13 @@ module.exports = app => {
 
   Material.associate = function () {
     app.model.Material.belongsTo(app.model.Supplier)
+    app.model.Material.hasMany(app.model.Order, {
+      foreignKey: 'material_id',
+    })
+    app.model.Material.hasMany(app.model.Stock, {
+      foreignKey: 'material_id',
+    })
+
   }
 
   return Material

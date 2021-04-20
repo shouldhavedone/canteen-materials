@@ -7,21 +7,10 @@ class DepartmentController extends Controller {
     const { Op } = app.Sequelize;
     const params = ctx.request.query
     const option = {
-      // limit: parseInt(params.rows),
-      // offset: (parseInt(params.page) - 1) * parseInt(params.rows),
-      // include: [
-      //   { 
-      //     model: ctx.model.Department, 
-      //     attributes: ['name'],
-      //   }
-      // ],
       where: {
         name: {
           [Op.like]: '%' + params.queryName + '%'
         },
-        // Department_id: {
-        //   [Op.like]: '%' + params.Department_id + '%'
-        // },
       }
     }
     const res = await ctx.model.Department.findAndCountAll(option)
@@ -79,12 +68,9 @@ class DepartmentController extends Controller {
     const { ctx, app } = this;
     const { Op } = app.Sequelize;
     const params = ctx.request.body;
-    // const ids = params.ids.split(',').map(c => +c);
+    console.log(params)
     const res = await ctx.model.Department.destroy({
       where: {
-        // id: {
-        //   [Op.in]: ids
-        // }
         id: params.ids
       }
     })

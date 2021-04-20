@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    disabled: false,
+    disabled: true,
     focus: true,
     reqData: {
       name: '',
