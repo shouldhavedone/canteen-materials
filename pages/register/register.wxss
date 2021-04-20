@@ -147,6 +147,7 @@ input {
   height: 96rpx;
   background: rgba(254, 254, 254, 1);
   border-bottom: 2rpx solid #ccd5ea;
+  padding: 0;
 }
 
 .placeholder {

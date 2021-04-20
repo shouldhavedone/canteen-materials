@@ -17,7 +17,7 @@ Page({
     focus: false,
   },
 
-  contentFocus(){
+  contentFocus() {
     this.setData({
       focus: true
     })
@@ -59,6 +59,10 @@ Page({
         that.setData({
           noneData: true,
         })
+      } else {
+        that.setData({
+          noneData: false
+        })
       }
       that.setData({
         lists: res.data
@@ -79,7 +83,8 @@ Page({
             url: `${apiAddress.default.delPosition}`,
             data: {
               ids: e.currentTarget.dataset.id
-            }
+            },
+            method: 'post'
           }).then(res => {
             wx.showModal({
               'showCancel': false,
@@ -91,7 +96,6 @@ Page({
             })
           })
         }
-
       }
     })
   },
