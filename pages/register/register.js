@@ -152,9 +152,15 @@ Page({
         wx.navigateBack({
           delta: 1
         })
-        // app.showLoading('success', '注册成功，请登录！')
+        wx.showToast({
+          title: '注册成功，请登录',
+          icon: 'none'
+        });
       } else {
-        app.showLoading('error', '注册失败，请稍后重试')
+        wx.showToast({
+          title: '注册失败，请稍后重试',
+          icon: 'none'
+        });
       }
     })
   },
