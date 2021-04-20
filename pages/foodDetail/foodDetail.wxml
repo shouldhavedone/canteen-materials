@@ -23,6 +23,14 @@
       </view>
     </view>
     <view class="form-input fl-s">
+      <view class="type-text">所需物资：</view>
+      <view class="type-list" bindtap="showMaterialList">
+        <text wx:if="{{stockResult.length}}">已选物资</text>
+        <text wx:else class="placeholder">请选择所需物资</text>
+        <image src="../../images/arrow.png" class="arrow-icon"></image>
+      </view>
+    </view>
+    <view class="form-input fl-s">
       <view>菜品价格：</view>
       <van-field class="input-field" clearable value="{{ reqData.price }}" placeholder="请输入菜品价格" border="{{ false }}"
         bind:input="inputPrice" />
@@ -38,95 +46,6 @@
         border="{{ false }}" bind:input="inputIntroduce" />
     </view>
   </view>
-  <!-- <view class="limit-info">
-    <van-collapse accordion value="{{ activeNames }}" bind:change="onChange">
-      <van-collapse-item name="1">
-        <view slot="title" class="collapse-title">开放部门<view catchtap="selectAll" wx:if="{{activeNames == '1'}}">全选
-          </view>
-        </view>
-        <van-checkbox-group value="{{ result }}" bind:change="onCheckChange">
-          <view class="check-wrap">
-            <view class="check-group">
-              <van-checkbox name="a">财务部</van-checkbox>
-            </view>
-            <view class="check-group">
-              <van-checkbox name="b">办公司</van-checkbox>
-            </view>
-            <view class="check-group">
-              <van-checkbox name="c">市场部</van-checkbox>
-            </view>
-          </view>
-        </van-checkbox-group>
-      </van-collapse-item>
-      <van-collapse-item name="2">
-        <view slot="title" class="collapse-title">开放职位<view catchtap="selectAll" wx:if="{{activeNames == '2'}}">全选
-          </view>
-        </view>
-        <van-checkbox-group value="{{ result }}" bind:change="onCheckChange">
-          <view class="check-wrap">
-            <view class="check-group">
-              <van-checkbox name="a">财务部</van-checkbox>
-            </view>
-            <view class="check-group">
-              <van-checkbox name="b">办公司</van-checkbox>
-            </view>
-            <view class="check-group">
-              <van-checkbox name="c">市场部</van-checkbox>
-            </view>
-          </view>
-        </van-checkbox-group>
-      </van-collapse-item>
-      <van-collapse-item name="3">
-        <view slot="title" class="collapse-title">就餐时段<view catchtap="selectAll" wx:if="{{activeNames == '3'}}">全选
-          </view>
-        </view>
-        <van-checkbox-group value="{{ result }}" bind:change="onCheckChange">
-          <view class="check-wrap">
-            <view class="check-group">
-              <van-checkbox name="a">财务部</van-checkbox>
-            </view>
-            <view class="check-group">
-              <van-checkbox name="b">办公司</van-checkbox>
-            </view>
-            <view class="check-group">
-              <van-checkbox name="c">市场部</van-checkbox>
-            </view>
-          </view>
-        </van-checkbox-group>
-      </van-collapse-item>
-      <van-collapse-item name="4">
-        <view slot="title" class="collapse-title">菜品循环周期<view catchtap="selectAll" wx:if="{{activeNames == '4'}}">全选
-          </view>
-        </view>
-        <van-checkbox-group value="{{ result }}" bind:change="onCheckChange">
-          <view class="check-wrap">
-            <view class="check-week">
-              <van-checkbox name="a">周一</van-checkbox>
-            </view>
-            <view class="check-week">
-              <van-checkbox name="b">周二</van-checkbox>
-            </view>
-            <view class="check-week">
-              <van-checkbox name="c">周三</van-checkbox>
-            </view>
-            <view class="check-week">
-              <van-checkbox name="d">周四</van-checkbox>
-            </view>
-            <view class="check-week">
-              <van-checkbox name="e">周五</van-checkbox>
-            </view>
-            <view class="check-week">
-              <van-checkbox name="f">周六</van-checkbox>
-            </view>
-            <view class="check-week">
-              <van-checkbox name="g">周天</van-checkbox>
-            </view>
-          </view>
-        </van-checkbox-group>
-      </van-collapse-item>
-    </van-collapse>
-  </view> -->
-
   <view class="form-input fl-s image-upload">
     <view>菜品图片：</view>
     <view class="reprot-img" wx:if="{{imageObject.fileURL}}">
@@ -149,4 +68,16 @@
     bindcancle="timeCancel" scrollType="link" listData="{{mealtimeList}}" indicatorStyle="height:62px" maskStyle=""
     titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
     pickerHeaderStyle="background:#fff;" titleText="菜品类型" cancelText="取消" sureText="完成"></picker>
+
+  <van-popup show="{{ showMaterial }}" round position="bottom" custom-style="height: 50%;" bind:close="closeMaterial">
+    <van-checkbox-group value="{{ stockResult }}" bind:change="onChange">
+      <van-cell-group>
+        <van-cell wx:for="{{ stockList }}" wx:key="index" title="{{ item.Material.name }}" value-class="value-class" clickable
+          data-index="{{ index }}" bind:click="toggle">
+          <van-checkbox class="checkboxes-{{ index }}" name="{{ item.id }}" />
+        </van-cell>
+      </van-cell-group>
+    </van-checkbox-group>
+  </van-popup>
+
 </view>

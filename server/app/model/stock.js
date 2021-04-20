@@ -34,6 +34,8 @@ module.exports = app => {
 
   Stock.associate = function () {
     app.model.Stock.belongsTo(app.model.Material)
+    app.model.Stock.belongsToMany(app.model.Food, { through: 'FoodStock' });
+
   }
 
   return Stock

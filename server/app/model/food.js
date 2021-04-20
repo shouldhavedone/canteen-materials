@@ -58,6 +58,7 @@ module.exports = app => {
   Food.associate = function () {
     app.model.Food.belongsTo(app.model.Foodtype)
     app.model.Food.belongsTo(app.model.Mealtime)
+    app.model.Food.belongsToMany(app.model.Stock, { through: 'FoodStock' });
   }
 
   return Food
