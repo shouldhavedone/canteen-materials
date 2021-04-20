@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    disabled: false,
+    disabled: true,
     focus: true,
     hiddenAddDetail: false,
     showAddrPciker: false,
@@ -15,7 +15,6 @@ Page({
     reqData: {
       id: '',
       name: '',
-      count: 0,
       price: 0,
       supplier_id: '',
       supplier: '',
@@ -48,7 +47,6 @@ Page({
       reqData: {
         id: '',
         name: '',
-        count: 0,
         price: 0,
         supplier_id: '',
         supplier: '',
@@ -64,14 +62,6 @@ Page({
 
   inputName(e) {
     let str = "reqData.name"
-    this.setData({
-      [str]: e.detail.value
-    })
-    this.isInput()
-  },
-
-  inputCount(e) {
-    let str = "reqData.count"
     this.setData({
       [str]: e.detail.value
     })
@@ -99,7 +89,7 @@ Page({
 
   // 判断是否填写内容
   isInput() {
-    if (this.data.reqData.name && this.data.reqData.count && this.data.reqData.price && this.data.reqData.name) {
+    if (this.data.reqData.name && this.data.reqData.price && this.data.reqData.name) {
       this.setData({
         disabled: false
       })

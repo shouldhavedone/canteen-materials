@@ -205,5 +205,52 @@ button::after {
 
 .content-wrap {
   margin-top: 114rpx;
-  
+}
+
+.phone-box {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 96rpx;
+  padding: 0 0 0 32rpx;
+  background: rgba(254, 254, 254, 1);
+}
+
+.phone-img {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 12rpx;
+}
+
+.phone-tip {
+  font-size: 28rpx;
+  color: rgba(153, 153, 153, 1);
+  line-height: 40rpx;
+}
+
+.label-text {
+  width: 170rpx;
+  font-size: 28rpx;
+}
+
+.phone-input {
+  width: 500rpx;
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40rpx;
+}
+
+.delete-box {
+  width: 104rpx;
+  height: 120rpx;
+  padding-top: 40rpx;
+}
+
+.icon-delete {
+  display: block;
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 auto;
 }

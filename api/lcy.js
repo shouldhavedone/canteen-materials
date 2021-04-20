@@ -43,5 +43,10 @@ let apiAddress = {
   delFood: '/back-sys/food-service/delFood',
   getFoodByType: '/back-sys/food-service/getFoodByType',
 
+  getStockList: '/back-sys/food-service/getStockList',
+  addStock: '/back-sys/food-service/addStock',
+
+  getOrderList: '/back-sys/food-service/getOrderList',
+
 }
 export default apiAddress

@@ -1,0 +1,61 @@
+<!--pages/material/material.wxml-->
+<import src="../../templates/showNoneData/showNoneData.wxml" />
+<view class="container">
+  <view class="page-header-search">
+    <view class="page-header-wrap page-header-wrap-changeWidth">
+      <image class="page-header-search-icon" src="../../images/search_icon@2x.png"></image>
+      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}"
+        placeholder="搜索物资名称" value="{{materialName}}" bindinput="searchName" bindfocus="contentFocus"
+        bindconfirm="getMaterialData" placeholder-class="page-header-input-placeholder" focus="{{focus}}"
+        confirm-type="search"></input>
+      <view class="page-header-del-icon-wrap" catchtap="clearSearchName" wx:if="{{focus}}">
+        <image class="page-header-del-icon" src="../../images/deleteIcon.png"></image>
+      </view>
+      <view class="page-header-cancel-wrap" catchtap="getMaterialData" >
+        <text class="page-header-cancel-text">搜索</text>
+      </view>
+    </view>
+  </view>
+  <view class="content-wrap">
+    <view class="post-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
+      <view class="item-wrap">
+        <view class="item-left">
+          <view>供应商：{{item.Supplier ? item.Supplier.name : ''}}</view>
+          <view>物资：{{item.name}}</view>
+          <view>价格：{{item.price}}</view>
+        </view>
+        <van-button type="info" size="small" data-item="{{ item }}" bindtap="showMaterial">加购</van-button>
+      </view>
+    </view>
+    <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
+  </view>
+</view>
+<van-dialog use-slot title="加购物资" show="{{dialogShow}}" confirmButtonText="新增" cancelButtonText="取消"
+  bind:cancel="dialogOnClose" showCancelButton bind:confirm="addMaterial">
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">供应商：</text>
+    <input class='phone-input' disabled="true" type="text" value="{{reqData.supplier}}"></input>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">物资：</text>
+    <input class='phone-input' disabled="true" type="text" value="{{reqData.material}}"></input>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">价格：</text>
+    <input class='phone-input' disabled="true" type="number" value="{{reqData.price}}"></input>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">入库数量：</text>
+    <input class='phone-input' placeholder="请输入加购数量" type="number" value="{{reqData.count}}" bindinput="inputCount"></input>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">总价：</text>
+    <input class='phone-input' disabled="true" type="number" value="{{reqData.total_price}}"></input>
+  </view>
+</van-dialog>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

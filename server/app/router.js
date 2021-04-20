@@ -47,5 +47,9 @@ module.exports = app => {
   router.post('/back-sys/food-service/delFood', controller.food.delFood);
   router.get('/back-sys/food-service/getAllFood', controller.food.getAllFood);
   router.get('/back-sys/food-service/getFoodByType', controller.food.getFoodByType);
+
+  router.get('/back-sys/food-service/getStockList', controller.stock.getStockList);
+  router.post('/back-sys/food-service/addStock', controller.stock.addStock);
   
+  router.get('/back-sys/food-service/getOrderList', controller.order.getOrderList);
 };

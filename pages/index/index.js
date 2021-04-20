@@ -32,6 +32,18 @@ Page({
     })
   },
 
+  toInput() {
+    wx.navigateTo({
+      url: '../input/input',
+    })
+  },
+
+  toStock() {
+    wx.navigateTo({
+      url: '../stock/stock',
+    })
+  },
+
   toMaterial() {
     wx.navigateTo({
       url: '../material/material',

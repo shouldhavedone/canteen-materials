@@ -1,0 +1,33 @@
+<!--pages/material/material.wxml-->
+<import src="../../templates/showNoneData/showNoneData.wxml" />
+<view class="container">
+  <view class="page-header-search">
+    <view class="page-header-wrap page-header-wrap-changeWidth">
+      <image class="page-header-search-icon" src="../../images/search_icon@2x.png"></image>
+      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}"
+        placeholder="搜索物资名称" value="{{orderName}}" bindinput="searchName" bindfocus="contentFocus"
+        bindconfirm="getOrderData" placeholder-class="page-header-input-placeholder" focus="{{focus}}"
+        confirm-type="search"></input>
+      <view class="page-header-del-icon-wrap" catchtap="clearSearchName" wx:if="{{focus}}">
+        <image class="page-header-del-icon" src="../../images/deleteIcon.png"></image>
+      </view>
+      <view class="page-header-cancel-wrap" catchtap="getOrderData">
+        <text class="page-header-cancel-text">搜索</text>
+      </view>
+    </view>
+  </view>
+  <view class="content-wrap">
+    <view class="post-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
+      <view class="item-wrap">
+        <view class="item-title">{{item.name}}</view>
+        <view class="item-box">
+          <view>数量：{{item.count}}</view>
+          <view>总价：{{item.total_price}} 元</view>
+        </view>
+        <view class="item-time">{{item.createtime}}</view>
+      </view>
+    </view>
+    <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
+  </view>
+</view>
+<loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

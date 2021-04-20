@@ -1,79 +1,86 @@
-// pages/addDepartment/addDepartment.js
+// pages/materialSetup/materialSetup.js
 const vt = require("../../utils/vt.js")
 const apiAddress = require("../../api/lcy.js")
 const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    name: '',
-    sort: 1,
-    disabled: true,
-    focus: true,
+    materialName: '',
+    checked: true,
+    show: false,
+    noneData: false,
+    lists: [],
+    focus: false,
   },
 
-  deleteNumber() {
+  contentFocus(){
     this.setData({
-      name: '',
-      sort: 1,
-      disabled: false,
+      focus: true
     })
-    setTimeout(function () {
-      that.setData({
-        focus: true
-      })
-    }, 1)
   },
 
-  inputName(e) {
+  searchName(e) {
     this.setData({
-      name: e.detail.value
+      materialName: e.detail.value
     })
-    this.isInput()
   },
-  inputSort(e) {
+  showPopup() {
+    wx.navigateTo({
+      url: '../addStock/addStock'
+    })
+  },
+
+  clearSearchName() {
     this.setData({
-      sort: e.detail.value
+      materialName: '',
+      focus: false,
     })
-    this.isInput()
+    this.getOrderData()
   },
 
-  // 判断是否填写内容
-  isInput() {
-    if (this.data.name && this.data.sort) {
-      this.setData({
-        disabled: false
-      })
-    } else {
-      this.setData({
-        disabled: true
-      })
-    }
-  },
-
-  addDepartment() {
+  getOrderData() {
+    this.setData({
+      focus: false,
+    })
     app.showLoading('', '')
     let that = this
-    const params = {
-      name: that.data.name,
-      sort: that.data.sort,
-    }
     app.requestNoToken({
-      url: `${apiAddress.default.addOrUpdateDepartment}`,
-      data: params,
-      method: 'post'
+      url: `${apiAddress.default.getStockList}`,
+      // data: {
+      //   queryName: that.data.materialName
+      // }
     }).then(res => {
-      if (res && res.isSucceed) {
-        wx.navigateBack({
-          delta: 1
+      let total = res.total;
+      if (!total) {
+        that.setData({
+          noneData: true,
+        })
+      } else {
+        that.setData({
+          noneData: false,
         })
       }
+      that.setData({
+        lists: res.data,
+      })
       wx.stopPullDownRefresh()
     })
   },
 
+  onClose() {
+    this.setData({
+      show: false
+    });
+  },
+
+  onChange(event) {
+    // event.detail 为当前输入的值
+    console.log(event.detail);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -92,7 +99,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getOrderData();
   },
 
   /**

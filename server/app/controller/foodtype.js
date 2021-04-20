@@ -7,21 +7,10 @@ class FoodtypeController extends Controller {
     const { Op } = app.Sequelize;
     const params = ctx.request.query
     const option = {
-      // limit: parseInt(params.rows),
-      // offset: (parseInt(params.page) - 1) * parseInt(params.rows),
-      // include: [
-      //   { 
-      //     model: ctx.model.Foodtype, 
-      //     attributes: ['name'],
-      //   }
-      // ],
       where: {
         name: {
           [Op.like]: '%' + params.queryName + '%'
         },
-        // Foodtype_id: {
-        //   [Op.like]: '%' + params.Foodtype_id + '%'
-        // },
       }
     }
     const res = await ctx.model.Foodtype.findAndCountAll(option)
