@@ -54,6 +54,6 @@ let apiAddress = {
 
   addDailyMenu: '/back-sys/food-service/addDailyMenu',
   getDailyMenuList: '/back-sys/food-service/getDailyMenuList',
-
+  delFoodOnMenu: '/back-sys/food-service/delFoodOnMenu',
 }
 export default apiAddress

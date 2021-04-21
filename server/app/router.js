@@ -58,4 +58,5 @@ module.exports = app => {
 
   router.get('/back-sys/food-service/getDailyMenuList', controller.dailymenu.getDailyMenuList);
   router.post('/back-sys/food-service/addDailyMenu', controller.dailymenu.addDailyMenu);
+  router.post('/back-sys/food-service/delFoodOnMenu', controller.dailymenu.delFoodOnMenu);
 };

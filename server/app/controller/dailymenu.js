@@ -98,5 +98,30 @@ class DailyMenuController extends Controller {
       }
     }
   }
+
+  async delFoodOnMenu() {
+    const { ctx } = this;
+    const params = ctx.request.body;
+    const res = await ctx.model.Menufood.destroy({
+      where: {
+        id: params.id
+      }
+    })
+    if(res) {
+      ctx.body = {
+        total: 0,
+        message: '删除成功',
+        code: 200,
+        isSucceed: true,
+      }
+    } else {
+      ctx.body = {
+        total: 0,
+        message: '删除失败',
+        code: 250,
+        isSucceed: false,
+      }
+    }
+  }
 }
 module.exports = DailyMenuController;

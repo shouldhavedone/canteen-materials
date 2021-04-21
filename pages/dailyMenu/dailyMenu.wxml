@@ -32,7 +32,7 @@
         </view>
         <view class="item-btn">
           <view>编辑菜品</view>
-          <view class="del-btn">移除菜品</view>
+          <view class="del-btn" data-id="{{item.MenuFood.id}}" catchtap="delFood">移除菜品</view>
         </view>
       </view>
       <view class='wrap' wx:if="{{!lists.Food.length}}">
