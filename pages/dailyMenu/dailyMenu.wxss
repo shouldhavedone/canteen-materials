@@ -57,6 +57,7 @@
   height: calc(100% - 64rpx);
   display: flex;
   margin-top: 146rpx;
+  height: 1044rpx;
 }
 
 .nav-left {
@@ -140,4 +141,8 @@
   background-color: #ee0a24;
   color: #fff;
   border: 1px solid #ee0a24;
+}
+
+.wrap {
+  height: 50%;
 }

@@ -55,4 +55,7 @@ module.exports = app => {
   router.get('/back-sys/food-service/getAllStock', controller.stock.getAllStock);
   
   router.get('/back-sys/food-service/getOrderList', controller.order.getOrderList);
+
+  router.get('/back-sys/food-service/getDailyMenuList', controller.dailymenu.getDailyMenuList);
+  router.post('/back-sys/food-service/addDailyMenu', controller.dailymenu.addDailyMenu);
 };
