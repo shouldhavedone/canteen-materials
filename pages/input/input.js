@@ -60,7 +60,7 @@ Page({
         })
       }
       for (let item of res.data) {
-        item.createtime = vt.dateFormat(new Date(item.createtime), 'yy-MM-dd mm:ss:qq')
+        item.createtime = vt.dateFormat(new Date(item.createtime), 'yy-MM-dd hh:mm:ss')
       }
       that.setData({
         lists: res.data

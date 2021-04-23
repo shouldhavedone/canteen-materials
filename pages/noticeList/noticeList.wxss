@@ -1,17 +1,18 @@
 /* pages/noticeList/noticeList.wxss */
+@import "../../templates/showNoneData/showNoneData.wxss";
+
 .container {
   height: 100vh;
   padding: 20rpx;
 }
 
 .notice-item {
-  height: 110rpx;
   width: 100%;
   border-radius: 16rpx;
   background-color: #fff;
   display: flex;
   align-items: center;
-  padding: 0 32rpx;
+  padding: 24rpx 32rpx;
   box-shadow: 4rpx 2rpx 6rpx #ccc;
   margin-bottom: 20rpx;
 }
@@ -33,4 +34,8 @@
 .notice-item .image {
   height: 24rpx;
   width: 24rpx;
+}
+
+.createtime {
+  text-align: right;
 }
