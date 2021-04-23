@@ -3,7 +3,7 @@
 <view class="container">
   <view class="notice-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}" >
     <view class="notice-wrap">
-      <view class="title">【库存不足】{{item.text}}库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足库存不足</view>
+      <view class="title">【库存不足】{{item.text}}库存不足</view>
       <view class="createtime">{{item.createtime}}</view>
     </view>
     <!-- <image class="image" src="../../images/right.png"></image> -->
