@@ -98,9 +98,11 @@ Page({
     app.requestNoToken({
       url: `${apiAddress.default.getNoticeOne}`,
     }).then(res => {
-      that.setData({
-        text: res.data.text
-      })
+      if (res && res.isSucceed && res.data) {
+        that.setData({
+          text: res.data.text
+        })
+      }
     })
   },
 
@@ -115,6 +117,6 @@ Page({
       })
       this.getNoticeData()
     }
-    
+
   },
 })
