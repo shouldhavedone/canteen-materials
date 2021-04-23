@@ -6,6 +6,8 @@
 module.exports = app => {
   const { router, controller } = app;
   router.post('/back-sys/back-auth/oauth/login', controller.user.getUserInfo);
+  router.get('/back-sys/back-auth/oauth/getUserList', controller.user.getUserList);
+  router.post('/back-sys/back-auth/oauth/delUser', controller.user.delUser);
   router.post('/back-sys/back-auth/oauth/register', controller.user.addOrUpdateUser);
   router.post('/back-sys/back-auth/oauth/modifyUser', controller.user.addOrUpdateUser);
   router.post('/back-sys/back-auth/oauth/modifyPwd', controller.user.modifyPwd);
@@ -50,6 +52,15 @@ module.exports = app => {
 
   router.get('/back-sys/food-service/getStockList', controller.stock.getStockList);
   router.post('/back-sys/food-service/addStock', controller.stock.addStock);
+  router.get('/back-sys/food-service/getAllStock', controller.stock.getAllStock);
   
   router.get('/back-sys/food-service/getOrderList', controller.order.getOrderList);
+
+  router.get('/back-sys/food-service/getDailyMenuList', controller.dailymenu.getDailyMenuList);
+  router.post('/back-sys/food-service/addDailyMenu', controller.dailymenu.addDailyMenu);
+  router.post('/back-sys/food-service/delFoodOnMenu', controller.dailymenu.delFoodOnMenu);
+
+  router.get('/back-sys/food-service/getAllNotice', controller.notice.getAllNotice);
+  router.get('/back-sys/food-service/getNoticeOne', controller.notice.getNoticeOne);
+  router.post('/back-sys/food-service/updateNotice', controller.notice.updateNotice);
 };

@@ -2,20 +2,14 @@
 
 module.exports = app => {
   const { INTEGER, STRING, DATE } = app.Sequelize
-  const DailyMenu = app.model.define('DailyMenu', {
+  const Dailymenu = app.model.define('Dailymenu', {
     id: {
       type: INTEGER(8),
       primaryKey: true,
       autoIncrement: true
     },
-    food_id: {
-      type: INTEGER(8),
-      references: {
-        model: 'Food',
-      }
-    },
     time: {
-      type: DATE,
+      type: STRING(10),
       allowNull: false
     },
   }, {
@@ -23,5 +17,10 @@ module.exports = app => {
     timestamps: false,
     tableName: 'dailymenu'
   })
-  return DailyMenu
+
+  Dailymenu.associate = function () {
+    app.model.Dailymenu.belongsToMany(app.model.Food, { through: 'MenuFood' });
+  }
+
+  return Dailymenu
 }

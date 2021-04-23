@@ -48,21 +48,41 @@ class UserController extends Controller {
     } = app.Sequelize;
     const params = ctx.request.query
     const option = {
-      // limit: parseInt(params.rows),
-      // offset: (parseInt(params.page) - 1) * parseInt(params.rows),
-      // include: [
-      //   { 
-      //     model: ctx.model.Role, 
-      //     attributes: ['name'],
-      //   },
-      // ],
+      include: [{
+          model: ctx.model.Department,
+          attributes: ['name'],
+        },
+        {
+          model: ctx.model.Position,
+          attributes: ['name'],
+        },
+      ],
       where: {
+        // department_id: params.department_id,
+        // position_id: params.position_id,
         name: {
           [Op.like]: '%' + params.name + '%'
         },
         tel: {
           [Op.like]: '%' + params.tel + '%'
         },
+        // [Op.or]: [{
+        //     department_id: params.department_id
+        //   },
+        //   {
+        //     position_id: params.position_id
+        //   },
+        //   {
+        //     name: {
+        //       [Op.like]: '%' + params.name + '%'
+        //     },
+        //   },
+        //   {
+        //     tel: {
+        //       [Op.like]: '%' + params.tel + '%'
+        //     },
+        //   }
+        // ],
       }
     }
     const res = await ctx.model.User.findAndCountAll(option)
@@ -105,6 +125,7 @@ class UserController extends Controller {
         isSucceed: true,
       }
     } else {
+      params.createtime = new Date()
       const [res, created] = await ctx.model.User.findOrCreate({
         where: {
           name: params.name,
@@ -139,12 +160,9 @@ class UserController extends Controller {
       Op
     } = app.Sequelize;
     const params = ctx.request.body;
-    const ids = params.ids.split(',').map(c => +c);
     const res = ctx.model.User.destroy({
       where: {
-        id: {
-          [Op.in]: ids
-        }
+        id: params.ids
       }
     })
     if (res) {
@@ -165,7 +183,9 @@ class UserController extends Controller {
   }
 
   async modifyPwd() {
-    const { ctx } = this;
+    const {
+      ctx
+    } = this;
     const params = ctx.request.body;
     console.log(params)
     const user = await ctx.model.User.findOne({
@@ -173,7 +193,7 @@ class UserController extends Controller {
         id: params.id
       }
     })
-    if(user.password !== params.oldPwd) {
+    if (user.password !== params.oldPwd) {
       ctx.body = {
         total: 0,
         message: "原始密码错误，无法修改",

@@ -12,13 +12,18 @@ Page({
     tel: '',
     department: '',
     department_id: '',
+    position: '',
+    position_id: '',
     departList: [],
+    positionList: [],
     nameCheck: false,
     pwdCheck: false,
     rePwd: '',
     errTip: '',
     showDepartPciker: false,
     hiddenDepartDetail: false,
+    showPostPciker: false,
+    hiddenPostDetail: false,
   },
 
   departCancel: function () {
@@ -35,11 +40,32 @@ Page({
 
   departSure: function (e) {
     let choosedData = e.detail.choosedData
-    let str = "department"
     this.setData({
-      [str]: choosedData[0].name,
+      'department': choosedData[0].name,
       'department_id': choosedData[0].id,
       showDepartPciker: false
+    })
+    this.getPositionData();
+  },
+
+  postCancel: function () {
+    this.setData({
+      showPostPciker: false
+    })
+    let that = this
+    setTimeout(function () {
+      that.setData({
+        hiddenPostDetail: false
+      })
+    }, 350)
+  },
+
+  postSure: function (e) {
+    let choosedData = e.detail.choosedData
+    this.setData({
+      'position': choosedData[0].name,
+      'position_id': choosedData[0].id,
+      showPostPciker: false
     })
   },
 
@@ -54,10 +80,28 @@ Page({
     })
   },
 
+  getPositionData() {
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getAllPosition}`,
+    }).then(res => {
+      that.setData({
+        positionList: res.data
+      })
+    })
+  },
+
   chooseDepart: function () {
     this.setData({
       showDepartPciker: true,
       hiddenDepartDetail: true,
+    })
+  },
+
+  choosePost: function () {
+    this.setData({
+      showPostPciker: true,
+      hiddenPostDetail: true,
     })
   },
 
@@ -92,7 +136,6 @@ Page({
       url: '../login/login',
     })
   },
-
   registerInterface() {
     app.requestNoToken({
       url: `${apiAddress.default.register}`,
@@ -101,6 +144,7 @@ Page({
         password: this.data.password,
         tel: this.data.tel,
         department_id: this.data.department_id,
+        position_id: this.data.position_id,
       },
       method: "POST",
     }).then(res => {
@@ -108,9 +152,15 @@ Page({
         wx.navigateBack({
           delta: 1
         })
-        app.showLoading('success', '注册成功，请登录！')
+        wx.showToast({
+          title: '注册成功，请登录',
+          icon: 'none'
+        });
       } else {
-        app.showLoading('error', '注册失败，请稍后重试')
+        wx.showToast({
+          title: '注册失败，请稍后重试',
+          icon: 'none'
+        });
       }
     })
   },
@@ -180,7 +230,6 @@ Page({
   },
 
   submit() {
-    console.log('1')
     if (this.data.nameCheck && this.data.pwdCheck) {
       this.registerInterface()
     }

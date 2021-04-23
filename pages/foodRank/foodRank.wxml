@@ -34,7 +34,7 @@
         <view>价格：{{item.price}}</view>
         <view>就餐时段：{{item.Mealtime.name}}</view>
         <view>状态：{{item.state ? '已上架' : '已下架'}}</view>
-        <view>库存：{{item.preCount}}</view>
+        <view>库存：{{item.pre_count}}</view>
         <view class="item-btn">
           <view>编辑菜品</view>
           <view class="del-btn" catchtap="deleteFood">删除菜品</view>

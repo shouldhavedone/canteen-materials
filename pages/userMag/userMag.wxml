@@ -1,46 +1,48 @@
 <!--pages/userMag/userMag.wxml-->
-<view class="container">
-  <view class="header-wrap">
-    <view class="add-post" catchtap="showSearchPicker">
-      姓名
-      <van-icon name="arrow" />
+<import src="../../templates/showNoneData/showNoneData.wxml" />
+<view class="page-container">
+  <view class="page-header-search">
+    <view class="page-header-wrap page-header-wrap-changeWidth fl-s">
+      <view class="select-btn" bindtap="showPick">{{selectItem.name}}</view>
+      <view class="page-header-line"></view>
+      <input class="page-header-input {{focus?'page-header-changeWidth':'page-header-defautWidth'}}"
+        placeholder="请输入{{selectItem.name}}" value="{{searchValue}}" bindinput="searchInput" bindfocus="contentFocus"
+        bindconfirm="getUserData" placeholder-class="page-header-input-placeholder" focus="{{focus}}"
+        confirm-type="search"></input>
+      <view class="page-header-line" wx:if="{{!focus}}"></view>
+      <view class="page-header-add" wx:if="{{!focus}}" catchtap="showPopup">
+        <image class="page-header-add-icon" src="../../images/icon_add search@2x.png"></image>
+      </view>
+      <view class="page-header-del-icon-wrap" catchtap="clearSearch" wx:if="{{focus}}">
+        <image class="page-header-del-icon" src="../../images/deleteIcon.png"></image>
+      </view>
+      <view class="page-header-cancel-wrap" catchtap="getUserData">
+        <text class="page-header-cancel-text">搜索</text>
+      </view>
     </view>
-    <view class="search-input">
-      <van-field value="{{ searchValue }}" clearable placeholder="姓名、手机号" border="{{ false }}" />
-    </view>
-    <view class="add-post">
-      <van-icon name="search" />搜索</view>
-    <view class="add-post" bindtap="showScreenPicker">
-      <van-icon name="apps-o" />更多</view>
   </view>
   <view class="content-wrap">
-    <view class="post-item">
+    <view class="post-item" wx:for="{{lists}}" wx:key="index" data-item="{{item}}">
       <view class="item-wrap">
         <view class="item-left">
-          <view>姓名：测试</view>
-          <view>部门：测试</view>
-          <view>职务：测试</view>
-          <view>状态：测试</view>
-          <view>手机：15182161727</view>
+          <view>部门：{{item.Department.name}}</view>
+          <view>职务：{{item.Position.name}}</view>
+          <view>姓名：{{item.name}}</view>
+          <view>手机：{{item.tel}}</view>
         </view>
       </view>
       <view class="item-btn">
         <view>编辑</view>
-        <view class="del-btn">删除</view>
+        <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteUser">删除</view>
       </view>
     </view>
+    <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
   </view>
 </view>
-<van-popup show="{{ screenPicker }}" closeable position="right" custom-style="width: 95%;height: 100%"
-  bind:close="closeScreenPicker">
-</van-popup>
 
-<van-popup show="{{ searchPicker }}" position="bottom" custom-style="height: 50%;" bind:close="closeSearchPicker">
-  <view class="popup-header">
-    <view catchtap="closeSearchPicker">取消</view>
-    <view catchtap="closeSearchPicker" class="sure-btn">确认</view>
-  </view>
-  <van-picker default-index="{{ 1 }}" columns="{{ searchColumns }}" bind:change="onSearchChange" />
-</van-popup>
+<picker isShowPicker="{{showSelectPicker}}" mode="selector" keyWordsOfShow="name" bindsure="selectSure"
+  bindcancle="selectCancel" scrollType="link" listData="{{selectList}}" indicatorStyle="height:62px" maskStyle=""
+  titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
+  pickerHeaderStyle="background:#fff;" titleText="搜索项" cancelText="取消" sureText="完成"></picker>
 
 <loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

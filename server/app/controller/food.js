@@ -3,16 +3,22 @@ const Controller = require('egg').Controller;
 
 class FoodController extends Controller {
   async getFoodList() {
-    const { ctx, app } = this;
-    const { Op } = app.Sequelize;
+    const {
+      ctx,
+      app
+    } = this;
+    const {
+      Op
+    } = app.Sequelize;
     const params = ctx.request.query
     const option = {
-      include: [
-        { 
-          model: ctx.model.Foodtype, 
-          attributes: ['name'],
-        }
-      ],
+      include: [{
+        model: ctx.model.Foodtype,
+        attributes: ['name'],
+      }, {
+        model: ctx.model.Mealtime,
+        attributes: ['name'],
+      }],
       where: {
         name: {
           [Op.like]: '%' + params.queryName + '%'
@@ -29,16 +35,22 @@ class FoodController extends Controller {
   }
 
   async getFoodByType() {
-    const { ctx, app } = this;
-    const { Op } = app.Sequelize;
+    const {
+      ctx,
+      app
+    } = this;
+    const {
+      Op
+    } = app.Sequelize;
     const params = ctx.request.query
     const option = {
-      include: [
-        { 
-          model: ctx.model.Foodtype, 
-          attributes: ['name'],
-        }
-      ],
+      include: [{
+        model: ctx.model.Foodtype,
+        attributes: ['name'],
+      }, {
+        model: ctx.model.Mealtime,
+        attributes: ['name'],
+      }],
       where: {
         foodtype_id: params.foodType
       }
@@ -53,7 +65,13 @@ class FoodController extends Controller {
   }
 
   async addOrUpdateFood() {
-    const { ctx } = this;
+    const {
+      ctx,
+      app
+    } = this;
+    const {
+      Op
+    } = app.Sequelize;
     const params = ctx.request.body;
     params.createtime = new Date();
     if (params.id) {
@@ -69,34 +87,55 @@ class FoodController extends Controller {
         isSucceed: true,
       }
     } else {
-      const [res, created] = await ctx.model.Food.findOrCreate({
+      const food = await ctx.model.Food.create(params)
+      const stock = await ctx.model.Stock.findAll({
         where: {
-          name: params.name,
-        },
-        defaults: params
+          id: {
+            [Op.in]: params.stock.split(',')
+          }
+        }
       })
+      await food.addStock(stock);
 
-      if (created) {
-        ctx.body = {
-          total: 0,
-          message: '新增成功',
-          code: 200,
-          isSucceed: true,
-        }
-      } else {
-        ctx.body = {
-          total: 0,
-          message: "失败",
-          code: 250,
-          isSucceed: false,
-        }
+      ctx.body = {
+        total: 0,
+        message: '新增成功',
+        code: 200,
+        isSucceed: true,
       }
+      // const [res, created] = await ctx.model.Food.findOrCreate({
+      //   where: {
+      //     name: params.name,
+      //   },
+      //   defaults: params
+      // })
+
+      // if (created) {
+      //   ctx.body = {
+      //     total: 0,
+      //     message: '新增成功',
+      //     code: 200,
+      //     isSucceed: true,
+      //   }
+      // } else {
+      //   ctx.body = {
+      //     total: 0,
+      //     message: "失败",
+      //     code: 250,
+      //     isSucceed: false,
+      //   }
+      // }
     }
   }
 
   async delFood() {
-    const { ctx, app } = this;
-    const { Op } = app.Sequelize;
+    const {
+      ctx,
+      app
+    } = this;
+    const {
+      Op
+    } = app.Sequelize;
     const params = ctx.request.body;
     const res = await ctx.model.Food.destroy({
       where: {
@@ -121,7 +160,9 @@ class FoodController extends Controller {
   }
 
   async getAllFood() {
-    const { ctx } = this;
+    const {
+      ctx
+    } = this;
     const res = await ctx.model.Food.findAndCountAll()
     ctx.body = {
       total: res.count,

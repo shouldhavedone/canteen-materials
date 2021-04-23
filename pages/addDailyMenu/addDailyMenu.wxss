@@ -1,4 +1,4 @@
-/* pages/userMag/userMag.wxss */
+/* pages/material/material.wxss */
 @import "../../templates/showNoneData/showNoneData.wxss";
 
 .container {
@@ -14,18 +14,26 @@
   border: 2rpx solid #ccc;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   padding-left: 24rpx;
 }
-.search-input {
-  flex: 1;
+
+.search-btn {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  margin-right: 24rpx;
+  width: 100rpx;
 }
+
 .add-post {
   height: 100%;
   display: flex;
   align-items: center;
   font-size: 30rpx;
-  margin-right: 16rpx;
+  margin-right: 24rpx;
+  width: 180rpx;
 }
 
 .post-item {
@@ -40,18 +48,20 @@
 .item-wrap {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-
 .item-left {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  height: 160rpx;
+  width: 160rpx;
 }
 
-.item-left view{
-  margin-top: 10rpx;
-  width: 49%;
+.item-left image {
+  height: 100%;
+  width: 100%;
+}
+
+.item-right {
+  margin-left: -72rpx;
 }
 
 .item-btn {
@@ -88,37 +98,3 @@
   font-size: 28rpx;
 
 }
-
-.popup-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20rpx;
-  margin: 20rpx;
-  font-size: 30rpx;
-}
-
-.sure-btn {
-  color: #058de9;
-}
-
-.select-btn {
-  width: 72rpx;
-  color: #666;
-  font-size: 28rpx;
-  margin-left: 14rpx;
-}
-
-.page-header-search-icon {
-  margin: 0;
-}
-
-.page-header-input {
-  left: 138rpx;
-}
-
-.page-header-line {
-  right: auto;
-  left: 120rpx;
-}
-

@@ -71,5 +71,21 @@ class StockController extends Controller {
       total: 0,
     }
   }
+
+  async getAllStock() {
+    const { ctx } = this;
+    const res = await ctx.model.Stock.findAndCountAll({
+      include: [{
+        model: ctx.model.Material,
+        attributes: ['name'],
+      }],
+    })
+    ctx.body = {
+      total: res.count,
+      data: res.rows,
+      code: 200,
+      isSucceed: true,
+    }
+  }
 }
 module.exports = StockController;

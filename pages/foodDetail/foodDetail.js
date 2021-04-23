@@ -43,9 +43,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activeNames: '',
     disabled: true,
-    result: ['a', 'b'],
     imageObject: {},
     reqData: {
       id: '',
@@ -64,22 +62,10 @@ Page({
     hiddenTimeDetail: false,
     foodtypeList: [],
     mealtimeList: [],
-  },
-
-  onChange(event) {
-    this.setData({
-      activeNames: event.detail,
-    });
-  },
-
-  onCheckChange(event) {
-    this.setData({
-      result: event.detail,
-    });
-  },
-
-  selectAll() {
-    console.log('111')
+    showMaterial: false,
+    materialList: [],
+    stockList: [],
+    stockResult: []
   },
 
   didPressChooesImage: function () {
@@ -135,6 +121,7 @@ Page({
     }, 350)
     this.checkData()
   },
+
   timeCancel: function () {
     this.setData({
       showTimePciker: false
@@ -154,18 +141,21 @@ Page({
     })
     this.checkData()
   },
+
   inputPrice(e) {
     this.setData({
       ["reqData.price"]: e.detail
     })
     this.checkData()
   },
+
   inputPreCount(e) {
     this.setData({
       ["reqData.preCount"]: e.detail
     })
     this.checkData()
   },
+
   inputIntroduce(e) {
     this.setData({
       ["reqData.introduce"]: e.detail
@@ -182,6 +172,7 @@ Page({
     })
     this.checkData()
   },
+
   timeSure: function (e) {
     let choosedData = e.detail.choosedData
     this.setData({
@@ -210,6 +201,7 @@ Page({
     const params = {
       ...that.data.reqData,
       image: that.data.imageObject.imageURL,
+      stock: that.data.stockResult.join(',')
     }
     app.requestNoToken({
       url: `${apiAddress.default.addOrUpdateFood}`,
@@ -224,6 +216,57 @@ Page({
       wx.stopPullDownRefresh()
     })
   },
+
+  showMaterialList() {
+    this.setData({
+      showMaterial: true,
+    })
+  },
+
+  closeMaterial() {
+    this.setData({
+      showMaterial: false,
+    })
+  },
+
+  onChange(event) {
+    this.setData({
+      stockResult: event.detail
+    });
+  },
+
+  toggle(event) {
+    const { index } = event.currentTarget.dataset;
+    const checkbox = this.selectComponent(`.checkboxes-${index}`);
+    checkbox.toggle();
+  },
+
+  getStockData() {
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getAllStock}`,
+    }).then(res => {
+      that.setData({
+        stockList: res.data
+      })
+    })
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -246,6 +289,7 @@ Page({
   onShow: function () {
     this.getFoodtypeData()
     this.getMealTimeData()
+    this.getStockData()
   },
 
   /**

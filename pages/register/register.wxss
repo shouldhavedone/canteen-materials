@@ -35,7 +35,7 @@ input {
 }
 
 .name-input {
-  margin-top: 100rpx;
+  margin-top: 52rpx;
   border-bottom: 2rpx solid #ccd5ea;
 }
 
@@ -81,7 +81,7 @@ input {
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
   line-height: 80rpx;
-  margin-top: 128rpx;
+  margin-top: 80rpx;
   border-radius: 44rpx;
 }
 

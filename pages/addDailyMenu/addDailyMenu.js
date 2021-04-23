@@ -9,15 +9,54 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderName: '',
+    foodName: '',
     checked: true,
     show: false,
     noneData: false,
     lists: [],
     focus: false,
+    dialogShow: false,
+    count: 0,
+    reqData: {
+      food_id: '',
+      count: 0,
+    },
+    time: '',
   },
 
-  contentFocus(){
+  showFood(e) {
+    this.resetData();
+    const record = e.currentTarget.dataset.item;
+    console.log(record)
+    this.setData({
+      dialogShow: true,
+      'reqData.food_id': record.id
+    })
+  },
+
+  dialogOnClose() {
+    this.setData({
+      dialogShow: false,
+    })
+  },
+
+  resetData() {
+    this.setData({
+      reqData: {
+        id: '',
+        food_id: '',
+        count: 0,
+      }
+    })
+  },
+
+  inputCount(e) {
+    this.setData({
+      'reqData.count': e.detail.value,
+    })
+  },
+
+  contentFocus() {
     this.setData({
       focus: true
     })
@@ -25,28 +64,28 @@ Page({
 
   searchName(e) {
     this.setData({
-      orderName: e.detail.value
+      foodName: e.detail.value
     })
   },
 
   clearSearchName() {
     this.setData({
-      orderName: '',
+      foodName: '',
       focus: false,
     })
-    this.getOrderData()
+    this.getFoodData()
   },
 
-  getOrderData() {
+  getFoodData() {
     this.setData({
       focus: false,
     })
     app.showLoading('', '')
     let that = this
     app.requestNoToken({
-      url: `${apiAddress.default.getOrderList}`,
+      url: `${apiAddress.default.getFoodList}`,
       data: {
-        queryName: that.data.orderName
+        queryName: that.data.foodName
       }
     }).then(res => {
       let total = res.total;
@@ -59,43 +98,10 @@ Page({
           noneData: false
         })
       }
-      for (let item of res.data) {
-        item.createtime = vt.dateFormat(new Date(item.createtime), 'yy-MM-dd hh:mm:ss')
-      }
       that.setData({
         lists: res.data
       })
       wx.stopPullDownRefresh()
-    })
-  },
-
-  deleteOrder(e) {
-    let that = this;
-    wx.showModal({
-      'content': '确定要删除该物资吗？',
-      'cancelColor': '#0076FF',
-      'confirmColor': '#0076FF',
-      success: function (res) {
-        if (res.confirm) {
-          app.requestNoToken({
-            url: `${apiAddress.default.delOrder}`,
-            data: {
-              ids: e.currentTarget.dataset.id
-            },
-            method: 'post'
-          }).then(res => {
-            wx.showModal({
-              'showCancel': false,
-              'content': res.message,
-              'confirmColor': '#0076FF',
-              success: function () {
-                that.getOrderData();
-              }
-            })
-          })
-        }
-
-      }
     })
   },
 
@@ -105,14 +111,34 @@ Page({
     });
   },
 
-  onChange(event) {
-    
+  addFood() {
+    const params = {
+      ...this.data.reqData,
+      time: this.data.time,
+    }
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.addDailyMenu}`,
+      data: params,
+      method: 'post'
+    }).then(res => {
+      if (res && res.isSucceed) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+      wx.stopPullDownRefresh()
+    })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      time: options.time
+    })
   },
 
   /**
@@ -126,7 +152,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getOrderData();
+    this.getFoodData();
   },
 
   /**

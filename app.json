@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/addDailyMenu/addDailyMenu",
     "pages/addStock/addStock",
     "pages/stock/stock",
     "pages/input/input",
@@ -87,7 +88,9 @@
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   },
   "sitemapLocation": "sitemap.json"
 }

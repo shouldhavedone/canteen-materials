@@ -7,6 +7,7 @@ const app = getApp()
 Page({
   data: {
     userId: '',
+    text: '',
   },
   toLogIn() {
     wx.navigateTo({
@@ -91,15 +92,31 @@ Page({
       url: '../mealOpeningTime/mealOpeningTime',
     })
   },
-  onLoad: function() {
-    
+
+  getNoticeData() {
+    const that = this;
+    app.requestNoToken({
+      url: `${apiAddress.default.getNoticeOne}`,
+    }).then(res => {
+      if (res && res.isSucceed && res.data) {
+        that.setData({
+          text: res.data.text
+        })
+      }
+    })
   },
 
-  onShow: function() {
+  onLoad: function () {
+
+  },
+
+  onShow: function () {
     if (vt.getStorage('userInfo')) {
       this.setData({
         userId: JSON.parse(vt.getStorage('userInfo')).id
       })
+      this.getNoticeData()
     }
+
   },
 })

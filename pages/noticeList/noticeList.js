@@ -1,35 +1,47 @@
 // pages/noticeList/noticeList.js
+const vt = require("../../utils/vt.js")
+const apiAddress = require("../../api/lcy.js")
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    noticeList: [
-      {
-        id: '1',
-        title: '充值提醒',
-        endtime: '2021/1/31',
-        createtime: '2021-01-31 10:00:00',
-      },
-      {
-        id: '2',
-        title: '充值提醒',
-        endtime: '2021/1/31',
-        createtime: '2021-01-31 10:00:00',
-      },
-      {
-        id: '3',
-        title: '充值提醒',
-        endtime: '2021/1/31',
-        createtime: '2021-01-31 10:00:00',
-      },
-    ]
+    noneData: false,
+    lists: [],
   },
 
-  toNoticeContent(event) {
-    wx.navigateTo({
-      url: '../noticeContent/noticeContent?id=' +  event.currentTarget.dataset.item.id,
+  // toNoticeContent(event) {
+  //   wx.navigateTo({
+  //     url: '../noticeContent/noticeContent?id=' + event.currentTarget.dataset.item.id,
+  //   })
+  // },
+
+  getNoticeData() {
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.getAllNotice}`,
+    }).then(res => {
+      let total = res.total;
+      if (!total) {
+        that.setData({
+          noneData: true,
+        })
+      } else {
+        that.setData({
+          noneData: false
+        })
+      }
+      for (let item of res.data) {
+        item.createtime = vt.dateFormat(new Date(item.createtime), 'yy-MM-dd hh:mm:ss')
+      }
+      that.setData({
+        lists: res.data
+      })
+      wx.stopPullDownRefresh()
     })
   },
 
@@ -51,7 +63,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getNoticeData()
   },
 
   /**

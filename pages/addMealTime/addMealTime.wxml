@@ -43,13 +43,10 @@
 
   <van-popup show="{{ starttimeShow }}" position="bottom" custom-style="height: 60%;">
     <van-datetime-picker type="time" value="{{ reqData.starttime }}" min-hour="{{ minHour }}" max-hour="{{ maxHour }}"
-      bind:input="inputStarttime" bind:confirm="starttimeClose" />
+      bind:input="inputStarttime" bind:confirm="starttimeClose" bind:cancel="starttimeClose"/>
   </van-popup>
   <van-popup show="{{ endtimeShow }}" position="bottom" custom-style="height: 60%;">
     <van-datetime-picker type="time" value="{{ reqData.endtime }}" min-hour="{{ minHour }}" max-hour="{{ maxHour }}"
-      bind:input="inputEndTime" bind:confirm="endtimeClose" />
+      bind:input="inputEndTime" bind:confirm="endtimeClose" bind:cancel="endtimeClose"/>
   </van-popup>
-
-
-
 </view>

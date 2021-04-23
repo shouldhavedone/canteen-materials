@@ -2,14 +2,15 @@
 <import src="../../templates/showNoneData/showNoneData.wxml" />
 <view class="page-container">
   <view class="header-wrap">
-    <view class="next-date" catchtap="onClickLeft">前一天</view>
-    <view class="select-date">2021-02-06 星期六
+    <view class="next-date" catchtap="previousday">前一天</view>
+    <view class="select-date" bindtap="datePiclerShow">{{date}}
       <van-icon name="arrow" />
     </view>
-    <view class="next-date" catchtap="onClickRight">后一天</view>
+    <view class="next-date" catchtap="nextDay">后一天</view>
   </view>
   <view class="foodtype-wrap">
-    <view wx:for="{{mealtimeList}}" wx:key="index" data-item="{{item.id}}" class="{{mealtime == item.id ? 'fondtype-active' : ''}}" catchtap="changeMealtime">{{item.name}}</view>
+    <view wx:for="{{mealtimeList}}" wx:key="index" data-item="{{item.id}}"
+      class="{{mealtime_id == item.id ? 'fondtype-active' : ''}}" catchtap="changeMealtime">{{item.name}}</view>
   </view>
   <view class="content-wrap">
     <view class="nav-left">
@@ -18,26 +19,33 @@
       </van-sidebar>
     </view>
     <scroll-view scroll-y="true" class="content-right">
-      <view class="dishes-item">
+      <view class="dishes-item" wx:for="{{lists.Food}}" wx:key="index" data-item="{{item}}">
         <view class="dishes-box">
           <view class="dishes-image">
-            <image src="../../images/dished.jpg"></image>
+            <image src="{{item.image}}"></image>
           </view>
           <view class="dished-info">
-            <view>菜品名称：早餐：五元早餐</view>
-            <view>价格：5</view>
-            <view>库存：9999</view>
+            <view>菜品名称：{{item.name}}</view>
+            <view>价格：{{item.price}}</view>
+            <view>库存：{{item.MenuFood.count}}</view>
           </view>
         </view>
         <view class="item-btn">
           <view>编辑菜品</view>
-          <view class="del-btn">移除菜品</view>
+          <view class="del-btn" data-id="{{item.MenuFood.id}}" catchtap="delFood">移除菜品</view>
         </view>
       </view>
-      <view class="add-dishes">
+      <view class='wrap' wx:if="{{!lists.Food.length}}">
+        <image src="../../images/empty.png"></image>
+      </view>
+      <view class="add-dishes" catchtap="addDailyMenu">
         <view>添加菜品</view>
       </view>
     </scroll-view>
     <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
   </view>
-</view> 
+  <van-popup show="{{ dataShow }}" position="bottom" custom-style="height: 60%;">
+    <van-datetime-picker type="date" value="{{ time }}" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+      bind:input="inputTime" bind:cancel="datePickerClose" bind:confirm="datePickerSure"/>
+  </van-popup>
+</view>

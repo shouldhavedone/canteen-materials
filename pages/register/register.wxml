@@ -10,11 +10,14 @@
   <input class='pwd-input' type="text" placeholder='请输入电话' type='text' maxlength='11' minlength="11" auto-focus
     placeholder-class='place-style' bindinput='getTel' value="{{tel}}"></input>
   <view class="phone-box" bindtap="chooseDepart">
-    <!-- <view class="departInfo" bindtap="chooseDepart"> -->
-      <text wx:if="{{department}}">{{department}}</text>
-      <text wx:else class="placeholder">请选择所属部门</text>
-      <image src="../../images/arrow.png" class="arrow-icon"></image>
-    <!-- </view> -->
+    <text wx:if="{{department}}">{{department}}</text>
+    <text wx:else class="placeholder">请选择所属部门</text>
+    <image src="../../images/arrow.png" class="arrow-icon"></image>
+  </view>
+  <view class="phone-box" bindtap="choosePost">
+    <text wx:if="{{position}}">{{position}}</text>
+    <text wx:else class="placeholder">请选择职位</text>
+    <image src="../../images/arrow.png" class="arrow-icon"></image>
   </view>
   <view class="err-tip" wx:if="{{errTip}}">
     <image src="../../images/eret.png"></image>
@@ -27,5 +30,9 @@
     bindcancle="departCancel" scrollType="link" listData="{{departList}}" indicatorStyle="height:62px" maskStyle=""
     titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
     pickerHeaderStyle="background:#fff;" titleText="所属部门" cancelText="取消" sureText="完成"></picker>
+  <picker isShowPicker="{{showPostPciker}}" mode="selector" keyWordsOfShow="name" bindsure="postSure"
+    bindcancle="postCancel" scrollType="link" listData="{{positionList}}" indicatorStyle="height:62px" maskStyle=""
+    titleStyle="" sureStyle="color:#5398FD;font-size:16px;" cancelStyle="color:#999999;font-size:16px;"
+    pickerHeaderStyle="background:#fff;" titleText="职位" cancelText="取消" sureText="完成"></picker>
 </view>
 <loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

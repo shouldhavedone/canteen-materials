@@ -1,5 +1,8 @@
 let apiAddress = {
   getUserInfo: '/back-sys/back-auth/oauth/login',
+
+  getUserList: '/back-sys/back-auth/oauth/getUserList',
+  delUser: '/back-sys/back-auth/oauth/delUser',
   
   register: '/back-sys/back-auth/oauth/register',
   modifyUser: '/back-sys/back-auth/oauth/modifyUser',
@@ -45,8 +48,17 @@ let apiAddress = {
 
   getStockList: '/back-sys/food-service/getStockList',
   addStock: '/back-sys/food-service/addStock',
+  getAllStock: '/back-sys/food-service/getAllStock',
 
   getOrderList: '/back-sys/food-service/getOrderList',
+
+  addDailyMenu: '/back-sys/food-service/addDailyMenu',
+  getDailyMenuList: '/back-sys/food-service/getDailyMenuList',
+  delFoodOnMenu: '/back-sys/food-service/delFoodOnMenu',
+
+  getAllNotice: '/back-sys/food-service/getAllNotice',
+  getNoticeOne: '/back-sys/food-service/getNoticeOne',
+  updateNotice: '/back-sys/food-service/updateNotice',
 
 }
 export default apiAddress
