@@ -11,7 +11,6 @@ Page({
   data: {
     postName: '',
     checked: true,
-    show: false,
     noneData: false,
     lists: [],
     focus: false,
@@ -98,12 +97,6 @@ Page({
         }
       }
     })
-  },
-
-  onClose() {
-    this.setData({
-      show: false
-    });
   },
 
   onChange(event) {

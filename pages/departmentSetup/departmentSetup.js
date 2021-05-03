@@ -14,9 +14,69 @@ Page({
     noneData: false,
     lists: [],
     focus: false,
+    dialogShow: false,
+    reqData: {
+      id: '',
+      name: '',
+      sort: 0,
+    },
   },
 
-  contentFocus(){
+  showDialog(e) {
+    this.resetData();
+    const record = e.currentTarget.dataset.item;
+    this.setData({
+      dialogShow: true,
+      'reqData.id': record.id,
+      'reqData.name': record.name,
+      'reqData.sort': record.sort,
+    })
+  },
+
+  dialogOnClose() {
+    this.setData({
+      dialogShow: false,
+    })
+  },
+
+  resetData() {
+    this.setData({
+      reqData: {
+        id: '',
+        name: '',
+        sort: 0,
+      }
+    })
+  },
+
+  inputName(e) {
+    this.setData({
+      'reqData.name': e.detail.value,
+    })
+  },
+
+  inputSort(e) {
+    this.setData({
+      'reqData.sort': e.detail.value,
+    })
+  },
+
+  modifyDepart() {
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.addOrUpdateDepartment}`,
+      data: that.data.reqData,
+      method: 'post'
+    }).then(res => {
+      wx.showToast({
+        title: res.message,
+      })
+      this.getDepartmentData()
+    })
+  },
+
+  contentFocus() {
     this.setData({
       focus: true
     })
@@ -40,10 +100,6 @@ Page({
     wx.navigateTo({
       url: '../addDepartment/addDepartment'
     })
-  },
-
-  toDetail(e) {
-    console.log(e.currentTarget.dataset.id)
   },
 
   getDepartmentData() {
@@ -100,7 +156,7 @@ Page({
             })
           })
         }
-        
+
       }
     })
   },

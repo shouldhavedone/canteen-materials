@@ -14,6 +14,7 @@ Page({
     lists: [],
     focus: false,
     dialogShow: false,
+    isEdit: false,
     reqData: {
       id: '',
       name: '',
@@ -43,17 +44,62 @@ Page({
   showPopup() {
     this.setData({
       dialogShow: true,
+      isEdit: false,
     })
+    this.resetData()
+  },
+
+  showDialog(e) {
+    this.resetData();
+    const record = e.currentTarget.dataset.item;
+    this.setData({
+      isEdit: true,
+      dialogShow: true,
+      'reqData.id': record.id,
+      'reqData.name': record.name,
+    })
+  },
+
+  resetData() {
+    this.setData({
+      reqData: {
+        id: '',
+        name: '',
+      }
+    })
+  },
+
+  midifyType() {
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.addOrUpdateFoodType}`,
+      data: that.data.reqData,
+      method: 'post'
+    }).then(res => {
+      wx.showToast({
+        title: res.message,
+      })
+      this.setData({
+        isEdit: false,
+      })
+      this.getFoodTypeData()
+      this.resetData()
+    })
+  },
+
+  addOrUpdateData() {
+    if(this.data.isEdit) {
+      this.midifyType()
+    } else {
+      this.addFoodType()
+    }
   },
 
   dialogOnClose() {
     this.setData({
       dialogShow: false,
     })
-  },
-
-  toDetail(e) {
-    console.log(e.currentTarget.dataset.id)
   },
 
   inputName(e) {
@@ -108,7 +154,7 @@ Page({
           name: ''
         }
       })
-      this.getFoodTypeData()  
+      this.getFoodTypeData()
       wx.stopPullDownRefresh()
     })
   },

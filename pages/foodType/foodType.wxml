@@ -28,14 +28,14 @@
         </view>
       </view>
       <view class="item-btn">
-        <view bindtap="toDetail" data-id="{{ item.id }}">修改</view>
+        <view bindtap="showDialog" data-item="{{ item }}">修改</view>
         <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteFoodType">删除</view>
       </view>
     </view>
     <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
   </view>
-  <van-dialog use-slot title="新增类型" show="{{dialogShow}}" confirmButtonText="新增" cancelButtonText="取消"
-    bind:cancel="dialogOnClose" showCancelButton bind:confirm="addFoodType">
+  <van-dialog use-slot title="{{isEdit ? '修改类型' : '新增类型'}}" show="{{dialogShow}}" confirmButtonText="{{isEdit ? '修改' : '新增'}}" cancelButtonText="取消"
+    bind:cancel="dialogOnClose" showCancelButton bind:confirm="addOrUpdateData">
     <view class="phone-box">
       <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
       <text class="label-text">类型名：</text>
