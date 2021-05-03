@@ -25,7 +25,7 @@
         <view class="item-left">
           <view>部门：{{item.Department ? item.Department.name : ''}}</view>
           <view>职位：{{item.name}}</view>
-          <view>排序：1</view>
+          <view>排序：{{item.sort}}</view>
         </view>
         <view class="item-right">
           <van-switch checked="{{ item.state ? true : false }}" size="48rpx" />

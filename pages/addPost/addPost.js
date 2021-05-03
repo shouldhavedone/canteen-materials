@@ -9,6 +9,7 @@ Page({
   data: {
     disabled: true,
     focus: true,
+    isEdit: false,
     hiddenAddDetail: false,
     showAddrPciker: false,
     departList: [],
@@ -128,11 +129,35 @@ Page({
     })
   },
 
+  getPositionDetail(id) {
+    app.requestNoToken({
+      url: `${apiAddress.default.getPositionDetail}`,
+      data: {
+        id
+      },
+      method: 'post'
+    }).then(res => {
+      this.setData({
+        disabled: false,
+        'reqData.id': res.data.id,
+        'reqData.name': res.data.name,
+        'reqData.sort': res.data.sort,
+        'reqData.department_id': res.data.Department.id,
+        'reqData.department': res.data.Department.name,
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options.id) {
+      this.setData({
+        isEdit: true,
+      })
+      this.getPositionDetail(options.id)
+    }
   },
 
   /**

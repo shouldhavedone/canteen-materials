@@ -19,6 +19,7 @@ let apiAddress = {
   getAllPosition: '/back-sys/food-service/getAllPosition',
   addOrUpdatePosition: '/back-sys/food-service/addOrUpdatePosition',
   delPosition: '/back-sys/food-service/delPosition',
+  getPositionDetail: '/back-sys/food-service/getPositionDetail',
 
   getSupplierList: '/back-sys/food-service/getSupplierList',
   getAllSupplier: '/back-sys/food-service/getAllSupplier',
@@ -29,11 +30,13 @@ let apiAddress = {
   getAllMaterial: '/back-sys/food-service/getAllMaterial',
   addOrUpdateMaterial: '/back-sys/food-service/addOrUpdateMaterial',
   delMaterial: '/back-sys/food-service/delMaterial',
+  getMaterialDetail: '/back-sys/food-service/getMaterialDetail',
 
   getMealTimeList: '/back-sys/food-service/getMealTimeList',
   getAllMealTime: '/back-sys/food-service/getAllMealTime',
   addOrUpdateMealTime: '/back-sys/food-service/addOrUpdateMealTime',
   delMealTime: '/back-sys/food-service/delMealTime',
+  getMealtimeDetail: '/back-sys/food-service/getMealtimeDetail',
 
   getFoodTypeList: '/back-sys/food-service/getFoodtypeList',
   getAllFoodType: '/back-sys/food-service/getAllFoodtype',
@@ -46,7 +49,6 @@ let apiAddress = {
   delFood: '/back-sys/food-service/delFood',
   getFoodByType: '/back-sys/food-service/getFoodByType',
   getFoodDetail: '/back-sys/food-service/getFoodDetail',
-  
 
   getStockList: '/back-sys/food-service/getStockList',
   addStock: '/back-sys/food-service/addStock',

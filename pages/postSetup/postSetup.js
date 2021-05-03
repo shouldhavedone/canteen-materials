@@ -27,6 +27,13 @@ Page({
       postName: e.detail.value
     })
   },
+
+  toDetail(e) {
+    wx.navigateTo({
+      url: '../addPost/addPost?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   showPopup() {
     wx.navigateTo({
       url: '../addPost/addPost'

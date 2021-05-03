@@ -29,7 +29,7 @@
     </view> -->
   </view>
   <view class="confirm-btn">
-    <button class="btn-search" catchtap="addMaterial" disabled="{{disabled}}">添加</button>
+    <button class="btn-search" catchtap="addMaterial" disabled="{{disabled}}">{{isEdit ? "修改" : "添加"}}</button>
   </view>
   <picker isShowPicker="{{showAddrPciker}}" mode="selector" keyWordsOfShow="name" bindsure="supplierSure"
     bindcancle="supplierCancel" scrollType="link" listData="{{supplierList}}" indicatorStyle="height:62px" maskStyle=""

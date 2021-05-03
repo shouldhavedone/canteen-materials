@@ -27,6 +27,12 @@ Page({
     })
   },
 
+  toDetail(e) {
+    wx.navigateTo({
+      url: '../addMealTime/addMealTime?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   clearSearchName() {
     this.setData({
       mealTimeName: '',
@@ -39,10 +45,6 @@ Page({
     wx.navigateTo({
       url: '../addMealTime/addMealTime'
     })
-  },
-
-  toDetail(e) {
-    console.log(e.currentTarget.dataset.id)
   },
 
   getMealTimeData() {

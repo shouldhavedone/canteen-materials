@@ -115,6 +115,29 @@ class MaterialController extends Controller {
       isSucceed: true,
     }
   }
+
+  async getMaterialDetail() {
+    const {
+      ctx
+    } = this;
+    const params = ctx.request.body;
+    const res = await ctx.model.Material
+      .findOne({
+        include: [{ 
+          model: ctx.model.Supplier, 
+          attributes: ['id', 'name'],
+        }],
+        where: {
+          id: params.id
+        }
+      })
+    ctx.body = {
+      total: 1,
+      data: res,
+      code: 200,
+      isSucceed: true,
+    }
+  }
 }
 
 module.exports = MaterialController;

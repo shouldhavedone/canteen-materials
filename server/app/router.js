@@ -22,11 +22,13 @@ module.exports = app => {
   router.get('/back-sys/food-service/getPositionList', controller.position.getPositionList);
   router.post('/back-sys/food-service/addOrUpdatePosition', controller.position.addOrUpdatePosition);
   router.post('/back-sys/food-service/delPosition', controller.position.delPosition);
+  router.post('/back-sys/food-service/getPositionDetail', controller.position.getPositionDetail);
   router.get('/back-sys/food-service/getAllPosition', controller.position.getAllPosition);
   
   router.get('/back-sys/food-service/getMealTimeList', controller.mealtime.getMealtimeList);
   router.post('/back-sys/food-service/addOrUpdateMealTime', controller.mealtime.addOrUpdateMealtime);
   router.post('/back-sys/food-service/delMealTime', controller.mealtime.delMealtime);
+  router.post('/back-sys/food-service/getMealtimeDetail', controller.mealtime.getMealtimeDetail);
   router.get('/back-sys/food-service/getAllMealTime', controller.mealtime.getAllMealtime);
 
   router.get('/back-sys/food-service/getSupplierList', controller.supplier.getSupplierList);
@@ -37,6 +39,7 @@ module.exports = app => {
   router.get('/back-sys/food-service/getMaterialList', controller.material.getMaterialList);
   router.post('/back-sys/food-service/addOrUpdateMaterial', controller.material.addOrUpdateMaterial);
   router.post('/back-sys/food-service/delMaterial', controller.material.delMaterial);
+  router.post('/back-sys/food-service/getMaterialDetail', controller.material.getMaterialDetail);
   router.get('/back-sys/food-service/getAllMaterial', controller.material.getAllMaterial);
 
   router.get('/back-sys/food-service/getFoodtypeList', controller.foodtype.getFoodtypeList);

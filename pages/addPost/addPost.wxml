@@ -25,7 +25,7 @@
       placeholder='请输入排序' placeholder-class='phone-tip'></input>
   </view>
   <view class="confirm-btn">
-    <button class="btn-search" catchtap="addPost" disabled="{{disabled}}">添加</button>
+    <button class="btn-search" catchtap="addPost" disabled="{{disabled}}">{{isEdit ? "修改" : "添加"}}</button>
   </view>
   <picker isShowPicker="{{showAddrPciker}}" mode="selector" keyWordsOfShow="name" bindsure="departSure"
     bindcancle="departCancel" scrollType="link" listData="{{departList}}" indicatorStyle="height:62px" maskStyle=""
