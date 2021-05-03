@@ -58,7 +58,7 @@
     </view>
   </view>
   <view class="bottom-btn">
-    <van-button type="info" disabled="{{disabled}}" bind:click="addFood">添加</van-button>
+    <van-button type="info" disabled="{{disabled}}" bind:click="addFood">{{isEdit ? "修改" : "添加"}}</van-button>
   </view>
   <picker isShowPicker="{{showAddrPciker}}" mode="selector" keyWordsOfShow="name" bindsure="typeSure"
     bindcancle="typeCancel" scrollType="link" listData="{{foodtypeList}}" indicatorStyle="height:62px" maskStyle=""

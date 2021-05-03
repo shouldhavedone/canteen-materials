@@ -47,6 +47,7 @@ module.exports = app => {
   router.get('/back-sys/food-service/getFoodList', controller.food.getFoodList);
   router.post('/back-sys/food-service/addOrUpdateFood', controller.food.addOrUpdateFood);
   router.post('/back-sys/food-service/delFood', controller.food.delFood);
+  router.post('/back-sys/food-service/getFoodDetail', controller.food.getFoodDetail);
   router.get('/back-sys/food-service/getAllFood', controller.food.getAllFood);
   router.get('/back-sys/food-service/getFoodByType', controller.food.getFoodByType);
 

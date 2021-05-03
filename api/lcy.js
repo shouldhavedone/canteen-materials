@@ -45,6 +45,8 @@ let apiAddress = {
   addOrUpdateFood: '/back-sys/food-service/addOrUpdateFood',
   delFood: '/back-sys/food-service/delFood',
   getFoodByType: '/back-sys/food-service/getFoodByType',
+  getFoodDetail: '/back-sys/food-service/getFoodDetail',
+  
 
   getStockList: '/back-sys/food-service/getStockList',
   addStock: '/back-sys/food-service/addStock',

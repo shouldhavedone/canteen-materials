@@ -56,6 +56,7 @@ Page({
       mealtime: '',
       mealtime_id: '',
     },
+    isEdit: false,
     showAddrPciker: false,
     showTimePciker: false,
     hiddenAddDetail: false,
@@ -252,28 +253,40 @@ Page({
     })
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  getFoodDetail(id) {
+    app.requestNoToken({
+      url: `${apiAddress.default.getFoodDetail}`,
+      data: {
+        id
+      },
+      method: 'post'
+    }).then(res => {
+      this.setData({
+        disabled: false,
+        'reqData.id': res.data.id,
+        'reqData.name': res.data.name,
+        'reqData.price': res.data.price,
+        'reqData.preCount': res.data.pre_count,
+        'reqData.introduce': res.data.introduce,
+        'reqData.foodtype': res.data.Foodtype.name,
+        'reqData.foodtype_id': res.data.Foodtype.id,
+        'reqData.mealtime': res.data.Mealtime.name,
+        'reqData.mealtime_id': res.data.Mealtime.id,
+        'imageObject.fileURL': res.data.image,
+      })
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('onLoad');
-    console.log(vt.ip)
+    if(options.id) {
+      this.setData({
+        isEdit: true,
+      })
+      this.getFoodDetail(options.id)
+    }
   },
 
   /**

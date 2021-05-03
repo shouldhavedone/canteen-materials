@@ -171,6 +171,32 @@ class FoodController extends Controller {
       isSucceed: true,
     }
   }
+
+  async getFoodDetail() {
+    const {
+      ctx
+    } = this;
+    const params = ctx.request.body;
+    const res = await ctx.model.Food
+      .findOne({
+        include: [{
+          model: ctx.model.Foodtype,
+          attributes: ['id', 'name'],
+        }, {
+          model: ctx.model.Mealtime,
+          attributes: ['id', 'name'],
+        }],
+        where: {
+          id: params.id
+        }
+      })
+    ctx.body = {
+      total: 1,
+      data: res,
+      code: 200,
+      isSucceed: true,
+    }
+  }
 }
 
 module.exports = FoodController;
