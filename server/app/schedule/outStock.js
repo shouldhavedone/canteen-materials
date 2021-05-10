@@ -36,21 +36,23 @@ class OutStock extends Substription {
     // 统计物资数量
     const map = [];
     menu.dataValues.Food.forEach(f => {
+      let count = f.MenuFood.count;
       f.dataValues.Stocks.forEach(s => {
         let id = s.dataValues.id
         let name = s.dataValues.Material.dataValues.name;
         let obj = map.find(i => i.name == name)
         if (obj) {
           let index = map.findIndex(val => val.name == obj.name)
-          map[index].count++;
+          map[index].count += count;
         } else {
           map.push({
             id,
             name,
-            count: 1,
+            count: count,
           })
         }
       })
+      // map.forEach(item => item.count *= count)
     })
     // 出库操作
     map.forEach(async item => {
