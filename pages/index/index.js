@@ -116,7 +116,10 @@ Page({
         userId: JSON.parse(vt.getStorage('userInfo')).id
       })
       this.getNoticeData()
+    } else {
+      this.setData({
+        userId: ''
+      })
     }
-
   },
 })
