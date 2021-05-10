@@ -37,7 +37,7 @@
     </view>
     <view class="form-input fl-s">
       <view>预设库存：</view>
-      <van-field class="input-field" clearable value="{{ reqData.preCount }}" placeholder="请输入库存" border="{{ false }}"
+      <van-field class="input-field" clearable value="{{ reqData.pre_count }}" placeholder="请输入库存" border="{{ false }}"
         bind:input="inputPreCount" />
     </view>
     <view class="form-input fl-s">
@@ -58,7 +58,7 @@
     </view>
   </view>
   <view class="bottom-btn">
-    <van-button type="info" disabled="{{disabled}}" bind:click="addFood">添加</van-button>
+    <van-button type="info" disabled="{{disabled}}" bind:click="addFood">{{isEdit ? "修改" : "添加"}}</van-button>
   </view>
   <picker isShowPicker="{{showAddrPciker}}" mode="selector" keyWordsOfShow="name" bindsure="typeSure"
     bindcancle="typeCancel" scrollType="link" listData="{{foodtypeList}}" indicatorStyle="height:62px" maskStyle=""

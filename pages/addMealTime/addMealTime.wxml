@@ -38,7 +38,7 @@
     </view>
   </view>
   <view class="confirm-btn">
-    <button class="btn-search" catchtap="addMealTime" disabled="{{disabled}}">添加</button>
+    <button class="btn-search" catchtap="addMealTime" disabled="{{disabled}}">{{isEdit ? "修改" : "添加"}}</button>
   </view>
 
   <van-popup show="{{ starttimeShow }}" position="bottom" custom-style="height: 60%;">

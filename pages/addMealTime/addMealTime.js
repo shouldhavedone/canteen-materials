@@ -9,12 +9,13 @@ Page({
   data: {
     disabled: true,
     focus: true,
+    isEdit: false,
     reqData: {
+      id: '',
       name: '',
       starttime: '12:00',
       endtime: '12:00',
       count: 0,
-      id: '',
     },
     minHour: 0,
     maxHour: 23,
@@ -117,11 +118,35 @@ Page({
     })
   },
 
+  getMealtimeDetail(id) {
+    app.requestNoToken({
+      url: `${apiAddress.default.getMealtimeDetail}`,
+      data: {
+        id
+      },
+      method: 'post'
+    }).then(res => {
+      this.setData({
+        disabled: false,
+        'reqData.id': res.data.id,
+        'reqData.name': res.data.name,
+        // 'reqData.starttime': res.data.starttime,
+        // 'reqData.endtime': res.data.endtime,
+        'reqData.count': res.data.count,
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options.id) {
+      this.setData({
+        isEdit: true,
+      })
+      this.getMealtimeDetail(options.id)
+    }
   },
 
   /**

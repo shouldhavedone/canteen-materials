@@ -11,7 +11,6 @@ Page({
   data: {
     postName: '',
     checked: true,
-    show: false,
     noneData: false,
     lists: [],
     focus: false,
@@ -28,6 +27,13 @@ Page({
       postName: e.detail.value
     })
   },
+
+  toDetail(e) {
+    wx.navigateTo({
+      url: '../addPost/addPost?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   showPopup() {
     wx.navigateTo({
       url: '../addPost/addPost'
@@ -98,12 +104,6 @@ Page({
         }
       }
     })
-  },
-
-  onClose() {
-    this.setData({
-      show: false
-    });
   },
 
   onChange(event) {

@@ -43,6 +43,12 @@ Page({
     })
   },
 
+  editFood(e) {
+    wx.navigateTo({
+      url: '../foodDetail/foodDetail?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   getFoodData() {
     this.setData({
       focus: false,

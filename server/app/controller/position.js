@@ -115,6 +115,29 @@ class PositionController extends Controller {
       isSucceed: true,
     }
   }
+
+  async getPositionDetail() {
+    const {
+      ctx
+    } = this;
+    const params = ctx.request.body;
+    const res = await ctx.model.Position
+      .findOne({
+        include: [{ 
+          model: ctx.model.Department, 
+          attributes: ['id', 'name'],
+        }],
+        where: {
+          id: params.id
+        }
+      })
+    ctx.body = {
+      total: 1,
+      data: res,
+      code: 200,
+      isSucceed: true,
+    }
+  }
 }
 
 module.exports = PositionController;

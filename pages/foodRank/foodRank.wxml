@@ -36,8 +36,8 @@
         <view>状态：{{item.state ? '已上架' : '已下架'}}</view>
         <view>库存：{{item.pre_count}}</view>
         <view class="item-btn">
-          <view>编辑菜品</view>
-          <view class="del-btn" catchtap="deleteFood">删除菜品</view>
+          <view data-id="{{item.id}}" catchtap="editFood">编辑菜品</view>
+          <view data-id="{{item.id}}" class="del-btn" catchtap="deleteFood">删除菜品</view>
         </view>
       </view>
       <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />

@@ -9,6 +9,7 @@ Page({
   data: {
     disabled: true,
     focus: true,
+    isEdit: false,
     hiddenAddDetail: false,
     showAddrPciker: false,
     supplierList: [],
@@ -129,11 +130,35 @@ Page({
     })
   },
 
+  getMaterialDetail(id) {
+    app.requestNoToken({
+      url: `${apiAddress.default.getMaterialDetail}`,
+      data: {
+        id
+      },
+      method: 'post'
+    }).then(res => {
+      this.setData({
+        disabled: false,
+        'reqData.id': res.data.id,
+        'reqData.name': res.data.name,
+        'reqData.price': res.data.price,
+        'reqData.supplier_id': res.data.Supplier.id,
+        'reqData.supplier': res.data.Supplier.name,
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options.id) {
+      this.setData({
+        isEdit: true,
+      })
+      this.getMaterialDetail(options.id)
+    }
   },
 
   /**

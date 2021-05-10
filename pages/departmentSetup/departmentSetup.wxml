@@ -32,11 +32,26 @@
         </view>
       </view>
       <view class="item-btn">
-        <view bindtap="toDetail" data-id="{{ item.id }}">编辑</view>
+        <view bindtap="showDialog" data-item="{{ item }}">编辑</view>
         <view class="del-btn" data-id="{{ item.id }}" bindtap="deleteDepart">删除</view>
       </view>
     </view>
     <template is="showNoneData" data="{{text:'暂无数据',img:'../../images/empty.png'}}" wx:if="{{noneData}}" />
   </view>
 </view>
+<van-dialog use-slot title="修改部门" show="{{dialogShow}}" confirmButtonText="确定" cancelButtonText="取消"
+  bind:cancel="dialogOnClose" showCancelButton bind:confirm="modifyDepart">
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">部门名字：</text>
+    <input class='phone-input' placeholder="请输入部门名称" type="text" value="{{reqData.name}}"
+      bindinput="inputName"></input>
+  </view>
+  <view class="phone-box">
+    <image class="phone-img" src="../../images/app_icon_bitian@2x.png"></image>
+    <text class="label-text">排序：</text>
+    <input class='phone-input' placeholder="请输入顺序" type="number" value="{{reqData.sort}}"
+      bindinput="inputSort"></input>
+  </view>
+</van-dialog>
 <loading wx:if="{{$state.isShowLoading}}" iconType="{{$state.loadingIcon}}" content='{{$state.loadingText}}'></loading>

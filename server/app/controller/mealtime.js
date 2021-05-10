@@ -115,6 +115,25 @@ class MealtimeController extends Controller {
       isSucceed: true,
     }
   }
+
+  async getMealtimeDetail() {
+    const {
+      ctx
+    } = this;
+    const params = ctx.request.body;
+    const res = await ctx.model.Mealtime
+      .findOne({
+        where: {
+          id: params.id
+        }
+      })
+    ctx.body = {
+      total: 1,
+      data: res,
+      code: 200,
+      isSucceed: true,
+    }
+  }
 }
 
 module.exports = MealtimeController;

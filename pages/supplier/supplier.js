@@ -13,9 +13,87 @@ Page({
     noneData: false,
     lists: [],
     focus: false,
+    dialogShow: false,
+    reqData: {
+      id: '',
+      name: '',
+      user: '',
+      tel: '',
+      address: '',
+    },
   },
 
-  contentFocus(){
+  showDialog(e) {
+    this.resetData();
+    const record = e.currentTarget.dataset.item;
+    this.setData({
+      dialogShow: true,
+      'reqData.id': record.id,
+      'reqData.name': record.name,
+      'reqData.user': record.user,
+      'reqData.tel': record.tel,
+      'reqData.address': record.address,
+    })
+  },
+
+  dialogOnClose() {
+    this.setData({
+      dialogShow: false,
+    })
+  },
+
+  resetData() {
+    this.setData({
+      reqData: {
+        id: '',
+        name: '',
+        user: '',
+        tel: '',
+        address: '',
+      }
+    })
+  },
+
+  inputName(e) {
+    this.setData({
+      'reqData.name': e.detail.value,
+    })
+  },
+
+  inputUser(e) {
+    this.setData({
+      'reqData.user': e.detail.value,
+    })
+  },
+
+  inputTel(e) {
+    this.setData({
+      'reqData.tel': e.detail.value,
+    })
+  },
+
+  inputAddr(e) {
+    this.setData({
+      'reqData.address': e.detail.value,
+    })
+  },
+
+  modifySupplier() {
+    app.showLoading('', '')
+    let that = this
+    app.requestNoToken({
+      url: `${apiAddress.default.addOrUpdateSupplier}`,
+      data: that.data.reqData,
+      method: 'post'
+    }).then(res => {
+      wx.showToast({
+        title: res.message,
+      })
+      this.getSupplierData()
+    })
+  },
+
+  contentFocus() {
     this.setData({
       focus: true
     })
@@ -95,7 +173,7 @@ Page({
             })
           })
         }
-        
+
       }
     })
   },

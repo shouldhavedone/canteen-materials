@@ -87,6 +87,8 @@ class FoodController extends Controller {
         isSucceed: true,
       }
     } else {
+
+      console.log(params)
       const food = await ctx.model.Food.create(params)
       const stock = await ctx.model.Stock.findAll({
         where: {
@@ -167,6 +169,32 @@ class FoodController extends Controller {
     ctx.body = {
       total: res.count,
       data: res.rows,
+      code: 200,
+      isSucceed: true,
+    }
+  }
+
+  async getFoodDetail() {
+    const {
+      ctx
+    } = this;
+    const params = ctx.request.body;
+    const res = await ctx.model.Food
+      .findOne({
+        include: [{
+          model: ctx.model.Foodtype,
+          attributes: ['id', 'name'],
+        }, {
+          model: ctx.model.Mealtime,
+          attributes: ['id', 'name'],
+        }],
+        where: {
+          id: params.id
+        }
+      })
+    ctx.body = {
+      total: 1,
+      data: res,
       code: 200,
       isSucceed: true,
     }
