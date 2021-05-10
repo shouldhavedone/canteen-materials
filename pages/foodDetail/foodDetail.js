@@ -49,7 +49,7 @@ Page({
       id: '',
       name: '',
       price: 0,
-      preCount: 0,
+      pre_count: 0,
       introduce: '',
       foodtype: '',
       foodtype_id: '',
@@ -152,7 +152,7 @@ Page({
 
   inputPreCount(e) {
     this.setData({
-      ["reqData.preCount"]: e.detail
+      ["reqData.pre_count"]: e.detail
     })
     this.checkData()
   },
@@ -185,7 +185,7 @@ Page({
   },
 
   checkData() {
-    if (this.data.reqData.name && this.data.reqData.price && this.data.reqData.preCount && this.data.reqData.introduce && this.data.reqData.foodtype && this.data.reqData.mealtime) {
+    if (this.data.reqData.name && this.data.reqData.price && this.data.reqData.pre_count && this.data.reqData.introduce && this.data.reqData.foodtype && this.data.reqData.mealtime) {
       this.setData({
         disabled: false,
       })
@@ -266,7 +266,7 @@ Page({
         'reqData.id': res.data.id,
         'reqData.name': res.data.name,
         'reqData.price': res.data.price,
-        'reqData.preCount': res.data.pre_count,
+        'reqData.pre_count': res.data.pre_count,
         'reqData.introduce': res.data.introduce,
         'reqData.foodtype': res.data.Foodtype.name,
         'reqData.foodtype_id': res.data.Foodtype.id,

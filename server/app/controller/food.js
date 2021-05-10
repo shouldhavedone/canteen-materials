@@ -87,6 +87,8 @@ class FoodController extends Controller {
         isSucceed: true,
       }
     } else {
+
+      console.log(params)
       const food = await ctx.model.Food.create(params)
       const stock = await ctx.model.Stock.findAll({
         where: {
